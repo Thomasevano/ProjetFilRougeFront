@@ -1,12 +1,20 @@
 # ProjetFilRougeFront
 
-## first step
+## Equipe
+
+- Amandine Donat-filliod
+- Kento Monthubert
+- Thomas Evano
+- Virgil Limongi
+- Tristan Lemire
+
+## First step
 
 install npm:
 ```
 npm i
 ```
-## second step
+## Second step
 
 run the project:
 ```
