@@ -1,9 +1,14 @@
 # ProjetFilRougeFront
 
-## 1 step
+## first step
 
+install npm:
+```
 npm i
+```
+## second step
 
-## 2 step
-
+run the project:
+```
 npm run start
+```
