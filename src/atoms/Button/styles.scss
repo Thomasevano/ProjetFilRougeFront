@@ -1,0 +1,12 @@
+.button {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #C4C4C4;
+  text-align: center;
+
+  img {
+    margin-top: 50%;
+    transform: translateY(-50%);
+  }
+}

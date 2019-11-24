@@ -20,7 +20,7 @@ function App() {
           Learn React
         </a>
         <h1>Hello mes petites beautées</h1>
-        <Button />
+        <Button img="data/arrowarrow_button.png"/>
       </header>
     </div>
   );
