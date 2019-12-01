@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.scss';
 import Button from './atoms/Button/index';
+import EndPart from './molecules/EndPart1/index';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         </a>
         <h1>Hello mes petites beautées</h1>
         <Button img="data/arrowarrow_button.png" textButton="Start"/>
+        <EndPart text="A platea sit mi senectus nec egestas eget. Tincidunt massa velit vitae volutpat viverra nunc. Leo ipsum egestas quis lacus accumsan ?"/>
       </header>
     </div>
   );
