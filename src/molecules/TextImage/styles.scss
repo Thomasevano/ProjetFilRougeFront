@@ -1,0 +1,22 @@
+.textImage {
+  width: 80vw;
+  margin: auto;
+  display: flex;
+
+  p {
+    width: 50%;
+    text-align: initial;
+    margin: auto;
+    margin-right: 0px;
+  }
+}
+
+.textImage.right {
+  margin: auto;
+  flex-direction: row-reverse;
+
+  p {
+    margin: auto;
+    margin-left: 0px;
+  }
+}
