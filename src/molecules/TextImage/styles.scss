@@ -2,13 +2,15 @@
   width: 80vw;
   margin: auto;
   display: flex;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 
   p {
     width: 50%;
     text-align: initial;
-    margin: auto;
-    margin-right: 0px;
-    font-family: $marvin-vision-regular;
+    font-family: 'Montserrat';
+    color: #6A6D73;
   }
 }
 
@@ -19,5 +21,13 @@
   p {
     margin: auto;
     margin-left: 0px;
+  }
+}
+
+.textImage.left {
+
+  p {
+    margin: auto;
+    margin-right: 0px;
   }
 }
