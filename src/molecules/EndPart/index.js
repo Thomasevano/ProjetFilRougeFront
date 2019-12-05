@@ -7,7 +7,7 @@ export default class EndPart extends React.Component {
       <div className="endPart">
         <div className="endPartContent">
           <p>{this.props.text}</p>
-          <Button img="data/arrowarrow_button.png" textButton="Participate"/>
+          <Button img="data/arrow_button.svg" textButton="Participate"/>
         </div>
       </div>
     )
