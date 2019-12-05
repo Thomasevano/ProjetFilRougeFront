@@ -2,11 +2,50 @@
 
 @import './atoms/Button/styles.scss';
 @import './atoms/Visual/styles.scss';
+@import './atoms/Button/button.scss';
+@import './atoms/Logo/logo.scss';
 
 //scss Molécules
 
 @import './molecules/EndPart/styles.scss';
 @import './molecules/TextImage/styles.scss';
+
+  /* // Variables // */
+//Colors
+$primary-color: #29E898;
+$secondary-color: #55B297;
+$third-color: #005258;
+
+//Fonts
+$marvin-vision-bold: 'Marvin Visions Bold';
+$marvin-vision-medium: 'Marvin Visions Medium';
+$marvin-vision-regular: 'Marvin Visions Regular';
+$marvin-vision-light: 'Marvin Visions Light';
+
+@font-face {
+  font-family: 'Marvin Visions Bold';
+  font-style: normal;
+  font-weight: bold;
+  src: url('/fonts/MarvinVisions/MarvinVisionsSmall-Bold.ttf') format('woff');
+}
+@font-face {
+  font-family: 'Marvin Visions Medium';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/fonts/MarvinVisions/MarvinVisionsSmall-Medium.ttf') format('woff');
+}
+@font-face {
+  font-family: 'Marvin Visions Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url('/fonts/MarvinVisions/MarvinVisionsSmall-Regular.ttf') format('woff');
+}
+@font-face {
+  font-family: 'Marvin Visions Light';
+  font-style: normal;
+  font-weight: 300;
+  src: url('/fonts/MarvinVisions/MarvinVisionsSmall-Light.ttf') format('woff');
+}
 
 .App {
   text-align: center;
@@ -28,4 +67,14 @@
   .App-link {
     color: #09d3ac;
   }
+
+  .intro-text {
+    font-family: 'Montserrat';
+    font-size: 16px;
+    font-weight: 500;
+    width: 470px;
+    margin: 40px auto auto;
+    color: #6A6D73;
+  }
+
 }
