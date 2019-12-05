@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../../atoms/Button/index';
+import Button from '../../atoms/Button/Button';
 
 export default class EndPart extends React.Component {
   render() {
@@ -7,7 +7,7 @@ export default class EndPart extends React.Component {
       <div className="endPart">
         <div className="endPartContent">
           <p>{this.props.text}</p>
-          <Button img="data/arrow_button.svg" textButton="Participate"/>
+          <Button img="data/arrow_button.svg" text="Participate"/>
         </div>
       </div>
     )
