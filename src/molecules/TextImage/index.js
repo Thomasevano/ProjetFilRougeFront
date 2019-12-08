@@ -5,7 +5,7 @@ export default class TextImage extends React.Component {
   render() {
     return (
       <div className={["textImage", this.props.position].join(" ")}>
-        <Visual img="https://www.w3schools.com/w3css/img_lights.jpg" alt="visuel accompagnent le text (a modifié suivant l'image)"/>
+        <Visual img={this.props.img} alt={this.props.alt}/>
         <p>Nulla leo tincidunt placerat nisi, elementum condimentum phasellus duis. Eu netus varius aliquam at nisi gravida pulvinar et integer. Lacinia sollicitudin velit sollicitudin adipiscing vitae auctor ac.</p>
       </div>
     )
