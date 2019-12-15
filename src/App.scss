@@ -4,6 +4,7 @@
 $primary-color: #29E898;
 $secondary-color: #55B297;
 $third-color: #005258;
+$fourth-color: #FB8070;
 
 //Fonts
 $marvin-vision-bold: 'Marvin Visions Bold';
@@ -16,11 +17,15 @@ $marvin-vision-light: 'Marvin Visions Light';
 @import './atoms/Visual/styles.scss';
 @import './atoms/Button/button.scss';
 @import './atoms/Logo/logo.scss';
+@import './atoms/Menu/Menu.scss';
+@import './atoms/Step/Step.scss';
 
 //scss Molécules
 
+@import './molecules/Navbar/Navbar.scss';
 @import './molecules/EndPart/styles.scss';
 @import './molecules/TextImage/styles.scss';
+@import './molecules/IntroBlock/IntroBlock.scss';
 
 @font-face {
   font-family: 'Marvin Visions Bold';
