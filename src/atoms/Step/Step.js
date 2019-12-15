@@ -2,7 +2,7 @@ import React from 'react'
 
 function Step({number}){
   return(
-  <div className="step"><span className="circle"></span><p>Step {number}</p></div>
+  <div className="step"><span className="circle"></span><p className="step-text">Step {number}</p></div>
   )
 }
 
