@@ -12,10 +12,10 @@ function Page1() {
         <IntroBlock title="become aware of our impact"/>
       </section>
       <section className="visualText">
-        <TextImage position="right" img="https://static.cnews.fr/sites/default/files/styles/image_640_360/public/capture_decran_2019-10-22_a_11.32.54_5daecce35d7b4_0.png?itok=Zc1cUYqC"/>
+        <TextImage position="left" img="data/imgThumbnail1.jpg" text="The Stade de France, for example, produces <strong>3 tons of plastic waste per year.</strong> In 2024, it will be the official stadium for the Olympic Games." title="BIG EVENTS MEAN BIGGER IMPACT <strong>.</strong>"/>
       </section>
       <section className="visualText">
-        <TextImage position="left" img="https://blog.nameshield.com/fr/wp-content/uploads/sites/3/2018/02/JO-PyeongChang-2018-cyberattaque-Blog-Nameshield.jpg"/>
+        <TextImage position="right" img="data/tourEiffel.jpg" text="During the 2024 Olympics, <strong>12 millions visitors are expected</strong> in the City of Lights. This is alsmost as many as its 12.2 millions inhabitants. Which will multiply all of the effects we have." title="crowded places and effeverscence"/>
       </section>
       <EndPart text="A platea sit mi senectus nec egestas eget. Tincidunt massa velit vitae volutpat viverra nunc. Leo ipsum egestas quis lacus accumsan ?"/>
     </div>

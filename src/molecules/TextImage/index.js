@@ -5,8 +5,10 @@ export default class TextImage extends React.Component {
   render() {
     return (
       <div className={["textImage", this.props.position].join(" ")}>
+        <img className="backgroundDots" src="./data/dotsBackground.png" alt="background dots"></img>
         <Visual img={this.props.img} alt={this.props.alt}/>
-        <p>Nulla leo tincidunt placerat nisi, elementum condimentum phasellus duis. Eu netus varius aliquam at nisi gravida pulvinar et integer. Lacinia sollicitudin velit sollicitudin adipiscing vitae auctor ac.</p>
+        <h2 dangerouslySetInnerHTML={{__html:this.props.title}}></h2>
+        <p dangerouslySetInnerHTML={{__html:this.props.text}}></p>
       </div>
     )
   }

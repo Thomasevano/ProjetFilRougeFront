@@ -12,6 +12,10 @@ $marvin-vision-medium: 'Marvin Visions Medium';
 $marvin-vision-regular: 'Marvin Visions Regular';
 $marvin-vision-light: 'Marvin Visions Light';
 
+$bigTitle: 80px;
+$title: 50px;
+$text: 20px;
+
 // scss Atomes
 
 @import './atoms/Visual/styles.scss';
@@ -84,6 +88,11 @@ $marvin-vision-light: 'Marvin Visions Light';
 
   .visualText, .intro {
     height: 100vh;
+
   }
 
+  .visualText {
+    margin-left: 92px;
+    margin-right: 92px;
+  }
 }
