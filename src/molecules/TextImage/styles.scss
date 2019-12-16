@@ -14,7 +14,7 @@
   }
 
   h2 {
-    top: 15%;
+    top: 12%;
     font-size: $title;
     position: absolute;
     width: 35vw;
@@ -54,6 +54,10 @@
     margin-right: 20px;
     text-align: right;
   }
+
+  .secondaryButton {
+    right: calc(50vw + 22px);
+  }
 }
 
 .textImage.left {
@@ -66,5 +70,9 @@
   p {
     margin-left: 20px;
     text-align: left;
+  }
+
+  .secondaryButton {
+    left: calc(50vw + 22px);
   }
 }

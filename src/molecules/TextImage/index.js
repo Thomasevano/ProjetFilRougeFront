@@ -1,5 +1,6 @@
 import React from 'react';
 import Visual from '../../atoms/Visual/index';
+import SecondaryButton from '../../atoms/SecondaryButton/secondaryButton'
 
 export default class TextImage extends React.Component {
   render() {
@@ -9,6 +10,7 @@ export default class TextImage extends React.Component {
         <Visual img={this.props.img} alt={this.props.alt}/>
         <h2 dangerouslySetInnerHTML={{__html:this.props.title}}></h2>
         <p dangerouslySetInnerHTML={{__html:this.props.text}}></p>
+        <SecondaryButton text={this.props.buttonText} img={this.props.buttonImg}/>
       </div>
     )
   }
