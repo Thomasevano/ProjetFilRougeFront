@@ -1,16 +1,43 @@
 .textImage {
-  width: 80vw;
-  margin: auto;
   display: flex;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+  position: relative;
+
+  .backgroundDots {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+    top: -40%;
+  }
+
+  h2 {
+    top: 12%;
+    font-size: $title;
+    position: absolute;
+    width: 35vw;
+    text-transform: uppercase;
+    color: $third-color;
+
+    strong {
+      color: $fourth-color;
+    }
+  }
 
   p {
-    width: 50%;
+    width: 35%;
+    margin: 0px;
     text-align: initial;
     font-family: 'Montserrat';
     color: #6A6D73;
+    align-self: flex-end;
+    font-size: $text;
+
+    strong {
+      color: $third-color;
+    }
   }
 }
 
@@ -18,16 +45,34 @@
   margin: auto;
   flex-direction: row-reverse;
 
+  h2 {
+    left: 15%;
+    text-align: right;
+  }
+
   p {
-    margin: auto;
-    margin-left: 0px;
+    margin-right: 20px;
+    text-align: right;
+  }
+
+  .secondaryButton {
+    right: calc(50vw + 22px);
   }
 }
 
 .textImage.left {
 
+  h2 {
+    right: 15%;
+    text-align: left;
+  }
+
   p {
-    margin: auto;
-    margin-right: 0px;
+    margin-left: 20px;
+    text-align: left;
+  }
+
+  .secondaryButton {
+    left: calc(50vw + 22px);
   }
 }

@@ -1,20 +1,46 @@
 .endPart {
   width: 100vw;
-  height: 100vh;
+  height: 70vh;
 
   .endPartContent {
     position: relative;
     width: 40%;
-    margin: auto;
+    left: 20%;
     top: 50%;
     transform: translateY(-50%);
     font-family: 'Montserrat';
-  } 
+    text-align: left;
+
+    .endSubtitle {
+      display: flex;
+      align-self: center;
   
-  p {
-    margin-bottom: 40px;
-    color: #6A6D73;
-    font-size: 16px;
-    line-height: 24px;
-  }
+      .endSubtitleRectangle {
+        background-color: $fourth-color;
+        height: 5px;
+        width: 55px;
+      }
+
+      p {
+        color: $third-color;
+        font-size: $text;
+        font-weight: bold;
+        margin-left: 15px;
+      }
+    }
+
+    h2 {
+      margin-bottom: 40px;
+      font-family: $marvin-vision-bold;
+      color: $third-color;
+      font-size: $title;
+      margin-top: 0px;
+    }
+  
+    .secondaryButton {
+      text-align: center;
+      width: 100%;
+      bottom: -40%;
+    }
+  } 
 } 

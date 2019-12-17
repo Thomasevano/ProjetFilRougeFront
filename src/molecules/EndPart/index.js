@@ -1,13 +1,17 @@
 import React from 'react';
-import Button from '../../atoms/Button/Button';
+import SecondaryButton from '../../atoms/SecondaryButton/secondaryButton';
 
 export default class EndPart extends React.Component {
   render() {
     return (
       <div className="endPart">
         <div className="endPartContent">
-          <p>{this.props.text}</p>
-          <Button img="data/arrow_button.svg" text="Participate"/>
+          <div className="endSubtitle">
+            <div className="endSubtitleRectangle"></div>
+            <p>Next Step</p>
+          </div>
+          <h2>{this.props.title}</h2>
+          <SecondaryButton img="data/arrowSecondaryButton.svg" text="Go to Step 2"/>
         </div>
       </div>
     )

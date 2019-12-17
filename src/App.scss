@@ -12,6 +12,10 @@ $marvin-vision-medium: 'Marvin Visions Medium';
 $marvin-vision-regular: 'Marvin Visions Regular';
 $marvin-vision-light: 'Marvin Visions Light';
 
+$bigTitle: 80px;
+$title: 50px;
+$text: 20px;
+
 // scss Atomes
 
 @import './atoms/Visual/styles.scss';
@@ -19,6 +23,7 @@ $marvin-vision-light: 'Marvin Visions Light';
 @import './atoms/Logo/logo.scss';
 @import './atoms/Menu/Menu.scss';
 @import './atoms/Step/Step.scss';
+@import './atoms/SecondaryButton/secondaryButton.scss';
 
 //scss Molécules
 
@@ -93,7 +98,12 @@ body {
 
     .visualText, .intro {
       height: 100vh;
+
     }
 
+    .visualText {
+      margin-left: 92px;
+      margin-right: 92px;
+    }
   }
 }
