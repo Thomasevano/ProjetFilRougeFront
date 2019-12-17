@@ -1,17 +1,25 @@
 import React from 'react';
+import Step from '../Step/Step'
 
 function Menu() {
-
   return (
-    <div>
-      <ul id="menu">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Portfolio</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
+    <div className="menu">
+      <input type="checkbox" id="burger-menu"/>
+      <label for="burger-menu">
+        <span className="bar top"></span>
+        <span className="bar middle"></span>
+        <span className="bar bottom"></span>
+      </label>
+      <aside>
+        <div className="section">
+          <ul className="list">
+            <li><Step/><a href="#" className="anchor">Link</a></li>
+            <li><Step/><a href="#" clasNames="anchor">Link</a></li>
+            <li><Step/><a href="#" className="anchor">Link</a></li>
+          </ul>
+        </div>
+      </aside>
     </div>
-    
   )
 }
 

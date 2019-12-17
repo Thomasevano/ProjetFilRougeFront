@@ -5,7 +5,7 @@ import Menu from '../../atoms/Menu/Menu';
 function Navbar() {
   return (
     <nav>
-      {/* <Menu/> */}
+      <Menu/>
       <Logo className="menu-logo" leafSymbol="data/greenleaf.svg" title="green paris 2024" logoJo="data/jo-logo.svg"/>
     </nav>
   )

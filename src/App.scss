@@ -27,6 +27,10 @@ $marvin-vision-light: 'Marvin Visions Light';
 @import './molecules/TextImage/styles.scss';
 @import './molecules/IntroBlock/IntroBlock.scss';
 
+//scss Pages
+
+@import './Pages/Home.scss';
+
 @font-face {
   font-family: 'Marvin Visions Bold';
   font-style: normal;
@@ -52,38 +56,44 @@ $marvin-vision-light: 'Marvin Visions Light';
   src: url('/fonts/MarvinVisions/MarvinVisionsSmall-Light.ttf') format('woff');
 }
 
-.App {
-  text-align: center;
+body {
+  background: linear-gradient(61.23deg, $primary-color 0%, $secondary-color 100%);
+  padding: 20px;
+  .App {
+    text-align: center;
+    border-radius: 10px;
+    background-color: white;
 
-  .App-logo {
-    height: 40vmin;
+    .App-logo {
+      height: 40vmin;
+    }
+
+    .App-header {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: calc(10px + 2vmin);
+      color: white;
+    }
+
+    .App-link {
+      color: #09d3ac;
+    }
+
+    .intro-text {
+      font-family: 'Montserrat';
+      font-size: 16px;
+      font-weight: 500;
+      width: 470px;
+      margin: 40px auto auto;
+      color: #6A6D73;
+    }
+
+    .visualText, .intro {
+      height: 100vh;
+    }
+
   }
-
-  .App-header {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-  }
-
-  .App-link {
-    color: #09d3ac;
-  }
-
-  .intro-text {
-    font-family: 'Montserrat';
-    font-size: 16px;
-    font-weight: 500;
-    width: 470px;
-    margin: 40px auto auto;
-    color: #6A6D73;
-  }
-
-  .visualText, .intro {
-    height: 100vh;
-  }
-
 }
