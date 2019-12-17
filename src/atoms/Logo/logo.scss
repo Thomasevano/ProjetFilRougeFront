@@ -1,5 +1,4 @@
 .home-logo {
-  margin: 136px 0 0;
   .title {
     text-transform: uppercase;
     font-family: $marvin-vision-medium;
@@ -14,8 +13,8 @@
   flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
-  height: 400px;
-
+  align-content: center;
+  height: 100%;
   .leafSymbol {
     height: 24px;
     width: 24px;
@@ -29,7 +28,7 @@
     font-size:20px;
     transform: rotate(-90deg);
     width: 240px;
-    // height: 240px;
+    margin: 150px 0;
   }
   .logo-jo {
     transform: rotate(-90deg);
