@@ -1,3 +1,11 @@
+/* // Media Queries// */
+
+@mixin tablet {
+  @media (max-width: 1024px) {
+      @content;
+  }
+}
+
 /* // Variables // */
 
 //Colors
@@ -115,6 +123,11 @@ body {
     .visualText {
       margin-left: 92px;
       margin-right: 92px;
+    }
+
+    .dataVizTimeLine {
+      overflow: scroll;
+      z-index: 0;
     }
   }
 }
