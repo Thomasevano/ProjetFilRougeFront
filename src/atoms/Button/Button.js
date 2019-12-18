@@ -5,9 +5,8 @@ export default class Button extends React.Component {
     return (
       <div className="button-container">
         <div className="button">
-          <img src={this.props.img} alt="arrow left"></img>
+          <span className="text">{this.props.text}</span>
         </div>
-        <span className="text">{this.props.text}</span>
       </div>
     )
   }

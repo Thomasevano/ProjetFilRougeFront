@@ -1,24 +1,19 @@
 .button-container {
-  margin: 28px 0 0;
+  margin: 28px auto auto;
+  width: 250px;
+  height: 45px;
+  border-radius: 30px;
+  background: $primary-color;
+  text-align: center;
   .button {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: #C4C4C4;
-    text-align: center;
     margin: auto;
-    margin-bottom: 10px;
-
-    img {
-      margin-top: 50%;
-      transform: translateY(-50%);
+    position: relative;
+    top: 25%;
+    .text {
+      font-family: $montserrat;
+      font-size: 16px;
+      font-weight: 600;
+      color: white;
     }
-  }
-  .text {
-    font-family: 'Montserrat';
-    font-size: 16px;
-    font-weight: bold;
-    color: #959595;
-    text-transform: uppercase;
   }
 }
