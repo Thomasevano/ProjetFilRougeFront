@@ -13,7 +13,7 @@ function Home() {
           <br/><br/>Et si vous pouviez, vous aussi, en être le premier acteur ?
         </p>
         <Link to="/step1" style={{ textDecoration: 'none' }}>
-          <Button img="data/arrow_button.svg" text="start"/>
+          <Button text="Start the experience"/>
         </Link>
       </div>
     </div>

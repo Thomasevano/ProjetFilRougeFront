@@ -1,0 +1,27 @@
+.info-block {
+  width: 330px;
+  height: 330px;
+  background: linear-gradient(73.27deg, $fourth-color 0%, #FFB097 100%);
+  border-radius: 20px;
+  padding: 30px;
+  float: right;
+  position: relative;
+  z-index: 1;
+  top: -400px;
+  right: 40px;
+  .text {
+    font-family: $montserrat;
+    font-weight: bold;
+    color: white;
+    text-align: left;
+  }
+  .info-title, .info-subtitle {
+    text-transform: uppercase;
+  }
+  .info-title {
+    font-size: 50px;
+  }
+  .info-subtitle {
+    font-size: 30px;
+  }
+}
