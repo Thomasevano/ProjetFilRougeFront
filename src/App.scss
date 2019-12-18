@@ -113,5 +113,10 @@ body {
       margin-left: 92px;
       margin-right: 92px;
     }
+
+    .dataVizTimeLine {
+      overflow: scroll;
+      z-index: 0;
+    }
   }
 }
