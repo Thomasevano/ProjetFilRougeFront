@@ -1,9 +1,7 @@
 .textImage {
   display: flex;
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  position: relative;
+  width: 100%;
 
   .backgroundDots {
     position: absolute;
@@ -44,6 +42,8 @@
 .textImage.right {
   margin: auto;
   flex-direction: row-reverse;
+  top: 50%;
+  transform: translateY(-50%);
 
   h2 {
     left: 15%;
@@ -61,6 +61,8 @@
 }
 
 .textImage.left {
+  top: -25%;
+  transform: translateY(25%);
 
   h2 {
     right: 15%;
