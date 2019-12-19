@@ -16,7 +16,6 @@ class TimeLine extends Component {
     .append("svg")
     .attr("width", w)
     .attr("height", h)
-    .style("margin-left", 92)
     .style("background-color", "#F3F8F9");
 
                   

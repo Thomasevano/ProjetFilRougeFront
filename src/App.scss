@@ -8,6 +8,10 @@
 
 /* // Variables // */
 
+//Margin
+
+$margin-left: 94px;
+
 //Colors
 $primary-color: #29E898;
 $secondary-color: #55B297;
@@ -44,7 +48,6 @@ $text: 20px;
 
 //scss Pages
 
-/* @import './Pages/Home.scss'; */
 @import './molecules//InfoBlock/InfoBlock.scss';
 
 @font-face {
@@ -126,12 +129,11 @@ body {
     }
 
     .visualText {
-      margin-left: 92px;
-      margin-right: 92px;
+      margin-left: $margin-left;
+      margin-right: $margin-left;
     }
 
     .dataVizTimeLine {
-      overflow: scroll;
       z-index: 0;
       height: 100vh;
     }

@@ -5,12 +5,14 @@
   h2 {
     text-transform: uppercase;
     text-align: center;
-    margin-left: 92px;
+    margin-left: $margin-left;
     font-size: $title;
     color: $third-color;
   }
 
   .timeLine {
+    margin-left: $margin-left;
+    overflow: scroll;
     height: 80%;
     position: relative;
     bottom: 0px;
