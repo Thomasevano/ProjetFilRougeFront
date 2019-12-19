@@ -16,13 +16,21 @@
     img {
       width: 40px;
       vertical-align: middle;
-      margin-left: 22px;
+      margin-left: 27%;
+      transition: transform 0.15s ease-in;
     }
 
     .text {
       font-family: 'Montserrat';
       font-size: 16px;
       color: $third-color;
+    }
+
+    &:hover {
+
+      img {
+        transform: scale(1.2);
+      }
     }
   }  
 }

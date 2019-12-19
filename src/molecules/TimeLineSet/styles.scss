@@ -1,0 +1,18 @@
+.timeLineSet {
+  margin-top: 150px;
+  height: 100%;
+
+  h2 {
+    text-transform: uppercase;
+    text-align: center;
+    margin-left: 92px;
+    font-size: $title;
+    color: $third-color;
+  }
+
+  .timeLine {
+    height: 80%;
+    position: relative;
+    bottom: 0px;
+  }
+}
