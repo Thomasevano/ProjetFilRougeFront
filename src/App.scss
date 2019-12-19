@@ -19,6 +19,7 @@ $marvin-vision-bold: 'Marvin Visions Bold';
 $marvin-vision-medium: 'Marvin Visions Medium';
 $marvin-vision-regular: 'Marvin Visions Regular';
 $marvin-vision-light: 'Marvin Visions Light';
+$montserrat: 'Montserrat', sans-serif;
 
 $bigTitle: 80px;
 $title: 50px;
@@ -44,6 +45,7 @@ $text: 20px;
 //scss Pages
 
 @import './Pages/Home.scss';
+@import './molecules//InfoBlock/InfoBlock.scss';
 
 @font-face {
   font-family: 'Marvin Visions Bold';
@@ -68,6 +70,11 @@ $text: 20px;
   font-style: normal;
   font-weight: 300;
   src: url('/fonts/MarvinVisions/MarvinVisionsSmall-Light.ttf') format('woff');
+}
+@font-face {
+  font-family:  'Montserrat', sans-serif;
+  font-style: normal;
+  src: url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap');
 }
 
 body {
@@ -96,13 +103,21 @@ body {
       color: #09d3ac;
     }
 
-    .intro-text {
-      font-family: 'Montserrat';
-      font-size: 16px;
-      font-weight: 500;
-      width: 470px;
-      margin: 40px auto auto;
-      color: #6A6D73;
+    .home {
+      display: flex;
+      flex-direction: column;
+      height: 97vh;
+      .home-container {
+        margin: auto;
+        .intro-text {
+          font-family: $montserrat;
+          font-size: 14px;
+          font-weight: normal;
+          width: 470px;
+          margin: 40px auto auto;
+          color: #6A6D73;
+        }
+      }
     }
 
     .visualText, .intro {
