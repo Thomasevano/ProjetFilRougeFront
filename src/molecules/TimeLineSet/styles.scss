@@ -20,6 +20,20 @@
     width: calc(100vw - 94px - 40px);
     /* transform: rotate(-90deg); */
 
+    .vignette {
+      width: 200px;
+      height: 202px;
+      background-color: #ffff;
+      border-radius: 20px;
+      margin: 0px 150px 0px 150px;
+
+      p {
+        font-size: $text;
+        color: $third-color;
+        font-weight: 600;
+      }
+    }
+
     svg {
       overflow: scroll;
       //transform: rotate(-90deg);
