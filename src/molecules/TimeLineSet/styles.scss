@@ -22,12 +22,12 @@
 
     svg {
       overflow: scroll;
-      width: 300vw;
-      /* transform: rotate(-90deg);
+      //transform: rotate(-90deg);
 
       rect, text {
-        transform: rotate(-180deg) translateX(-100%) translateY(-50%);
-      } */
+        //transform: rotate(-180deg) translateX(-100%) translateY(-50%);
+        margin-top: 50%;
+      }
     }
   }
 }
