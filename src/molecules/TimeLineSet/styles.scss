@@ -18,7 +18,67 @@
     position: relative;
     bottom: 0px;
     width: calc(100vw - 94px - 40px);
+    cursor: grab;
+    scroll-behavior: smooth;
     /* transform: rotate(-90deg); */
+
+    .vignette {
+      width: 230px;
+      height: 232px;
+      background-color: #ffff;
+      border-radius: 20px;
+      margin: 0px 150px 0px 150px;
+
+      p {
+        font-size: $text;
+        color: $third-color;
+        font-weight: 600;
+        text-align: left;
+        margin: 20px 28px 20px 28px;
+      }
+
+      .vignetteTime {
+        font-size: 16px;
+        color: #6A6D73;
+
+        &::before {
+          content: url('/data/clock.png');
+          vertical-align: middle;
+          margin-right: 15px;
+        }
+      }
+
+      .trash {
+        margin: 20px 28px 20px 28px;
+        display: flex;
+        align-items: center;
+
+        div {
+          height: 24px;
+          width: 24px;
+          border-radius: 50%;
+        }
+
+        .Jaune {
+          background-color: $trash-yellow;
+        }
+
+        .Marron {
+          background-color: $trash-brown;
+        }
+
+        .Vert {
+          background-color: $trash-green;
+        }
+
+        &::before {
+          content: url('/data/garbage.png');
+          vertical-align: middle;
+          margin-right: 15px;
+        }
+        
+      }
+    }
 
     svg {
       overflow: scroll;
