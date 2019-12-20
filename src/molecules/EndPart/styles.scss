@@ -7,26 +7,7 @@
     left: 20%;
     top: 50%;
     transform: translateY(-50%);
-    font-family: 'Montserrat';
     text-align: left;
-
-    .endSubtitle {
-      display: flex;
-      align-items: center;
-  
-      .endSubtitleRectangle {
-        background-color: $fourth-color;
-        height: 5px;
-        width: 55px;
-      }
-
-      p {
-        color: $third-color;
-        font-size: $text;
-        font-weight: bold;
-        margin-left: 15px;
-      }
-    }
 
     h2 {
       margin-bottom: 40px;

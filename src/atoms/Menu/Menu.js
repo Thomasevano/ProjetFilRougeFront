@@ -13,9 +13,9 @@ function Menu() {
       <aside>
         <div className="section">
           <ul className="list">
-            <li><Step/><a href="#" className="anchor">Link</a></li>
-            <li><Step/><a href="#" clasNames="anchor">Link</a></li>
-            <li><Step/><a href="#" className="anchor">Link</a></li>
+            <li><Step number="1"/><a href="#" className="anchor">Become aware of our impact</a></li>
+            <li><Step number="2"/><a href="#" className="anchor">Participate</a></li>
+            <li><Step number="3"/><a href="#" className="anchor">Evaluate</a></li>
           </ul>
         </div>
       </aside>

@@ -10,7 +10,7 @@ function IntroBlock({img, alt, title}) {
         <img src={img} alt={alt}/>
       </div>
       <div className="title-block">
-        <Step number="1"/>
+        <Step stepNumber="Step 1" object="circle"/>
         <h1 className="title">{title}</h1>
         <InfoBlock/>
       </div>

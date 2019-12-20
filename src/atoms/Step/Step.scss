@@ -1,12 +1,19 @@
 .step {
   text-align: left;
+  display: flex;
+  align-items: center;
   .circle {
-    display: inline-block;
     height: 16px;
     width: 16px;
     border-radius: 50%;
     background-color: $fourth-color;
     margin-right: 20px;
+  }
+  .rectangle {
+    background-color: $fourth-color;
+    height: 5px;
+    width: 55px;
+    margin-right: 15px;
   }
   .step-text {
     display: inline-block;

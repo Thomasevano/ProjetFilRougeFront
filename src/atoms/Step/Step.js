@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Step({number}){
+function Step({stepNumber, object}){
   return(
-  <div className="step"><span className="circle"></span><p className="step-text">Step {number}</p></div>
+  <div className="step"><span className={object}></span><p className="step-text">{stepNumber}</p></div>
   )
 }
 
