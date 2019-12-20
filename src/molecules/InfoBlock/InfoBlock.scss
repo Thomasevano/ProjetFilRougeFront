@@ -1,6 +1,6 @@
 .info-block {
-  width: 330px;
-  height: 330px;
+  width: 270px;
+  height: 270px;
   background: linear-gradient(73.27deg, $fourth-color 0%, #FFB097 100%);
   border-radius: 20px;
   padding: 30px;
@@ -10,8 +10,7 @@
   top: -400px;
   right: 40px;
   .text {
-    font-family: $montserrat;
-    font-weight: bold;
+    font-family: $montserrat-bold;
     color: white;
     text-align: left;
   }
@@ -20,8 +19,14 @@
   }
   .info-title {
     font-size: 50px;
+    margin: 0;
   }
   .info-subtitle {
     font-size: 30px;
+    margin: 0 0 10px;
+  }
+  .info-description {
+    font-size: 20px;
+    line-height: 30px;
   }
 }

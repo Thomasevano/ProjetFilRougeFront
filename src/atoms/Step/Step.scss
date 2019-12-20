@@ -10,9 +10,7 @@
   }
   .step-text {
     display: inline-block;
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: bold;
+    font-family: $montserrat-bold;
     font-size: 20px;
     line-height: 24px;
     color: $third-color;

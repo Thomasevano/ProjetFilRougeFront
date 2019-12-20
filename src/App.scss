@@ -23,7 +23,10 @@ $marvin-vision-bold: 'Marvin Visions Bold';
 $marvin-vision-medium: 'Marvin Visions Medium';
 $marvin-vision-regular: 'Marvin Visions Regular';
 $marvin-vision-light: 'Marvin Visions Light';
-$montserrat: 'Montserrat', sans-serif;
+$montserrat-bold: 'Montserrat Bold';
+$montserrat-semibold: 'Montserrat SemiBold';
+$montserrat-medium: 'Montserrat Medium';
+$montserrat-regular: 'Montserrat Regular';
 
 $bigTitle: 80px;
 $title: 50px;
@@ -75,9 +78,28 @@ $text: 20px;
   src: url('/fonts/MarvinVisions/MarvinVisionsSmall-Light.ttf') format('woff');
 }
 @font-face {
-  font-family:  'Montserrat', sans-serif;
+  font-family:  'Montserrat Bold';
   font-style: normal;
-  src: url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap');
+  font-weight: bold;
+  src: url('/fonts/Montserrat/Montserrat-Bold.ttf') format('woff');
+}
+@font-face {
+  font-family:  'Montserrat SemiBold';
+  font-style: normal;
+  font-weight: 600;
+  src: url('/fonts/Montserrat/Montserrat-SemiBold.ttf') format('woff');
+}
+@font-face {
+  font-family:  'Montserrat Medium';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/fonts/Montserrat/Montserrat-Medium.ttf') format('woff');
+}
+@font-face {
+  font-family:  'Montserrat Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url('/fonts/Montserrat/Montserrat-Regular.ttf') format('woff');
 }
 
 body {
@@ -113,9 +135,8 @@ body {
       .home-container {
         margin: auto;
         .intro-text {
-          font-family: $montserrat;
+          font-family: $montserrat-regular;
           font-size: 14px;
-          font-weight: normal;
           width: 470px;
           margin: 40px auto auto;
           color: #6A6D73;
