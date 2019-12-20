@@ -1,5 +1,5 @@
 import React from 'react';
-import TimeLine from '../../dataViz/timeLine'
+import TimeLine from '../../dataViz/timeLine';
 
 export default class TimeLineSet extends React.Component {
   render() {

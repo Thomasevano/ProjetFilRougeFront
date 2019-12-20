@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import * as d3 from "d3";
-import * as w from "d3";
-import * as h from "d3";
 
 class TimeLine extends Component {
 
@@ -155,20 +153,62 @@ class TimeLine extends Component {
     const svg = d3.select(".timeLine")
       .append("div")
       .style("height", 100 + "%")
-      .style("width", data.length * 550 + "px")
+      .style("width", data.length * 520 + "px")
       .style("display", "flex")
       .style("background-color", "#F3F8F9");
 
-    svg.selectAll(".vignette")
+    const vignette = svg.selectAll(".vignette")
       .data(data)
       .enter()
       .append("div")
       .attr("class", 'vignette')
       .style("position", "relative")
       .style("top", (d, i) => i % 2 ? 30 + "%" : 45 + "%")
-      .style("transform", (d, i) => i % 2 ? "translateY(" +  -30 + "%)" : "translateY(" + -45 + "%)")
-        .append("p")
-        .text((d) => d.name)
+      .style("transform", (d, i) => i % 2 ? "translateY(" +  -30 + "%)" : "translateY(" + -45 + "%)");
+
+    vignette.append("p")
+      .attr("class", 'vignetteTitle')
+      .text((d) => d.name)
+
+    vignette.append("p")
+      .attr("class", 'vignetteTime')
+      .text((d) => d.degradation_time)
+
+    vignette.append("div")
+      .attr("class",  "trash")
+        .append("div")
+        .attr("class", (d) => d.trash_color)
+
+    const slider = document.querySelector('.timeLine');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+        
+    slider.addEventListener('mousedown', (e) => {
+      isDown = true;
+      slider.classList.add('active');
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    });
+
+    slider.addEventListener('mouseleave', () => {
+      isDown = false;
+      slider.classList.remove('active');
+    });
+
+    slider.addEventListener('mouseup', () => {
+      isDown = false;
+      slider.classList.remove('active');
+    });
+
+    slider.addEventListener('mousemove', (e) => {
+      if(!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 3; //scroll-fast
+      slider.scrollLeft = scrollLeft - walk;
+      console.log(walk);
+    });
   }
         
   render(){
