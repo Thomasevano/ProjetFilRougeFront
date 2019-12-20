@@ -12,9 +12,22 @@
 
   .timeLine {
     margin-left: $margin-left;
-    overflow: scroll;
+    overflow-y: hidden;
+    /* overflow-x: auto; */
     height: 80%;
     position: relative;
     bottom: 0px;
+    width: calc(100vw - 94px - 40px);
+    /* transform: rotate(-90deg); */
+
+    svg {
+      overflow: scroll;
+      width: 300vw;
+      /* transform: rotate(-90deg);
+
+      rect, text {
+        transform: rotate(-180deg) translateX(-100%) translateY(-50%);
+      } */
+    }
   }
 }
