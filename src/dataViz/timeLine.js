@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import * as d3 from "d3";
+import * as h from "d3";
+import * as d from "d3";
 
 class TimeLine extends Component {
 
@@ -8,7 +10,7 @@ class TimeLine extends Component {
   }
     
   drawChart() {
-    const data = [
+    const dataTest = [
       {
         "id": 1,
         "name": "Mouchoir en papier",
@@ -124,7 +126,113 @@ class TimeLine extends Component {
         "trash_color": "Jaune"
       }
     ];
-    
+
+    // Trie des données
+
+    let data = []
+
+    let dataM = []
+    let dataY = []
+    let dataYs = []
+
+    let memoryM = 0;
+    let memoryY = 0;
+    let memoryYs = 0;
+
+    dataTest.forEach(dataTest => {
+      let separator = dataTest.degradation_time.indexOf(' ');
+      let number = Number(dataTest.degradation_time.substr(0, separator));
+      let time = dataTest.degradation_time.substr(separator + 1)
+      let isThis = dataTest;
+      let isThisNumber = number;
+
+      if (time === "mois") {
+        if (number >= memoryM) {
+
+          dataM.push(dataTest)
+          memoryM = number;
+
+        } else {
+          let count = true;
+
+          dataM.forEach(data => {
+            let separator = data.degradation_time.indexOf(' ');
+            let number = Number(data.degradation_time.substr(0, separator));
+            let isPlace = dataM.indexOf(data);
+
+            if (isPlace + 1 < dataM.length) {
+              let nextNumber = Number(dataM[isPlace + 1].degradation_time.substr(0, separator));
+
+              if (isThisNumber >= number && isThisNumber <= nextNumber && count === true) {
+                dataM.splice(isPlace + 1, 0, isThis)
+                count = false;
+              }
+            } else if (isPlace === 0 && number > isThisNumber) {
+              dataM.splice(isPlace, 0, isThis)
+              count = false;
+            }
+          })
+        }
+      } else if (time === "an") {
+
+        if (number >= memoryY) {
+          dataY.push(dataTest)
+          memoryY = number;
+        } else {
+          let count = true;
+
+          dataY.forEach(data => {
+            let separator = data.degradation_time.indexOf(' ');
+            let number = Number(data.degradation_time.substr(0, separator));
+            let isPlace = dataY.indexOf(data);
+
+            if (isPlace + 1 < dataY.length) {
+              let nextNumber = Number(dataY[isPlace + 1].degradation_time.substr(0, separator));
+
+              if (isThisNumber >= number && isThisNumber <= nextNumber && count === true) {
+                dataY.splice(isPlace + 1, 0, isThis)
+                count = false;
+              }
+            } else if (isPlace === 0 && number > isThisNumber) {
+              dataM.splice(isPlace, 0, isThis)
+              count = false;
+            }
+          })
+        }
+      } else if (time === "ans") {
+
+        if (number >= memoryYs) {
+          dataYs.push(dataTest)
+          memoryYs = number;
+        } else {
+          let count = true;
+
+          dataYs.forEach(data => {
+            let separator = data.degradation_time.indexOf(' ');
+            let number = Number(data.degradation_time.substr(0, separator));
+            let isPlace = dataYs.indexOf(data);
+
+            if (isPlace + 1 < dataYs.length) {
+              let nextNumber = Number(dataYs[isPlace + 1].degradation_time.substr(0, separator));
+
+              if (isThisNumber >= number && isThisNumber <= nextNumber && count === true) {
+                dataYs.splice(isPlace + 1, 0, isThis)
+                count = false;
+              }
+            } else if (isPlace === 0 && number > isThisNumber) {
+              dataM.splice(isPlace, 0, isThis)
+              count = false;
+            }
+          })
+        }
+        
+      }
+    })
+
+    data = dataM.concat(dataY, dataYs)
+
+    // time Line
+
     /* const svg = d3.select(".timeLine")
       .append("svg")
       .attr("height", h)
@@ -150,14 +258,14 @@ class TimeLine extends Component {
       .attr("x", (d, i) => 123 + i * 385)
       .attr("y", (d, i) => i % 2 ? 30 + "%" : 40 + "%") */
 
-    const svg = d3.select(".timeLine")
+    const timeLine = d3.select(".timeLine")
       .append("div")
       .style("height", 100 + "%")
       .style("width", data.length * 520 + "px")
       .style("display", "flex")
       .style("background-color", "#F3F8F9");
 
-    const vignette = svg.selectAll(".vignette")
+    const vignette = timeLine.selectAll(".vignette")
       .data(data)
       .enter()
       .append("div")
@@ -178,6 +286,9 @@ class TimeLine extends Component {
       .attr("class",  "trash")
         .append("div")
         .attr("class", (d) => d.trash_color)
+
+    
+    //Scroll drag
 
     const slider = document.querySelector('.timeLine');
     let isDown = false;
@@ -207,7 +318,6 @@ class TimeLine extends Component {
       const x = e.pageX - slider.offsetLeft;
       const walk = (x - startX) * 3; //scroll-fast
       slider.scrollLeft = scrollLeft - walk;
-      console.log(walk);
     });
   }
         
