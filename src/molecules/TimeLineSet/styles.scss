@@ -26,6 +26,11 @@
       cursor: grabbing;
     }
 
+    .timeScale {
+      background: linear-gradient(52.51deg, #FB8070 0%, #FFB097 100%);
+      border-radius: 20px;
+    }
+
     .vignette {
       z-index: 2;
       width: 230px;
@@ -54,7 +59,7 @@
         color: #6A6D73;
 
         &::before {
-          content: url('/data/clock.png');
+          //content: url('/data/clock.png');
           vertical-align: middle;
           margin-right: 15px;
         }
@@ -84,7 +89,7 @@
         }
 
         &::before {
-          content: url('/data/garbage.png');
+         // content: url('/data/garbage.png');
           vertical-align: middle;
           margin-right: 15px;
         }
