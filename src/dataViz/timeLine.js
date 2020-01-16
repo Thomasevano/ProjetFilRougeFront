@@ -502,6 +502,14 @@ class TimeLine extends Component {
       .attr('stroke-width', '0')
       .attr('fill', '#ffffff')
 
+    //time scale
+
+    timeLine.append('div')
+      .attr('class', "timeScale")
+      .style('width', "257px")
+      .style('height', "101px")
+      
+
     //Scroll animate svg
 
     /* var svgC = document.querySelector('.timeLine')
