@@ -7,7 +7,6 @@ class TimeLine extends Component {
   componentDidUpdate() {
     this.drawChart();
     //svgC.addEventListener('scroll', positionCar);
-    console.log(this.props.dataTest)
   }
   
   

@@ -17,11 +17,11 @@ import TimeLine from '../../dataViz/timeLine';
 export default TimeLineSet => {
   const [dataTest, setDataTest] = useState([])
 
-useEffect(() => {
-  fetch('http://127.0.0.1:8000/waste')
-  .then(response => response.json())
-  .then(result => setDataTest(result))
-}, [])
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/waste')
+    .then(response => response.json())
+    .then(result => setDataTest(result))
+  }, [])
 
   return (
     <div className="timeLineSet">
