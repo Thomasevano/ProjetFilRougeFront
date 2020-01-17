@@ -4,133 +4,133 @@ import * as h from "d3";
 import * as d from "d3";
 
 class TimeLine extends Component {
-  componentDidMount() {
+  componentDidUpdate() {
     this.drawChart();
-
     //svgC.addEventListener('scroll', positionCar);
+    console.log(this.props.dataTest)
   }
+  
   
  /*  componentWillUnmount() {
       svgC.removeEventListener('scroll', positionCar);
   } */
-
   drawChart() {
-    const dataTest = [
-      {
-        "id": 1,
-        "name": "Mouchoir en papier",
-        "degradation_time": "1 mois",
-        "trash_color": "Jaune"
-      },
-      {
-        "id": 2,
-        "name": "Pomme",
-        "degradation_time": "4 mois",
-        "trash_color": "Marron"
-      },
-      {
-        "id": 3,
-        "name": "Jus de fruit",
-        "degradation_time": "5 mois",
-        "trash_color": "Jaune"
-      },
-      {
-        "id": 4,
-        "name": "Journal",
-        "degradation_time": "6 mois",
-        "trash_color": "Marron"
-      },
-      {
-        "id": 5,
-        "name": "Banane",
-        "degradation_time": "9 mois",
-        "trash_color": "Jaune"
-      },
-      {
-        "id": 6,
-        "name": "Ticket de métro",
-        "degradation_time": "1 an",
-        "trash_color": "Jaune"
-      },
-      {
-        "id": 7,
-        "name": "Mégot",
-        "degradation_time": "2 ans",
-        "trash_color": "Vert"
-      },
-      {
-        "id": 8,
-        "name": "Bonbon",
-        "degradation_time": "5 ans",
-        "trash_color": "Jaune"
-      },
-      {
-        "id": 9,
-        "name": "Chewing Gum",
-        "degradation_time": "5 ans",
-        "trash_color": "Vert"
-      },
-      {
-        "id": 10,
-        "name": "Canette de soda",
-        "degradation_time": "45 ans",
-        "trash_color": "Jaune"
-      },
-      {
-        "id": 11,
-        "name": "Boîte de conserve",
-        "degradation_time": "50 ans",
-        "trash_color": "Jaune"
-      },
-      {
-        "id": 12,
-        "name": "Briquet",
-        "degradation_time": "100 ans",
-        "trash_color": "Vert"
-      },
-      {
-        "id": 13,
-        "name": "Aluminium",
-        "degradation_time": "200 ans",
-        "trash_color": "Jaune"
-      },
-      {
-        "id": 14,
-        "name": "Couche",
-        "degradation_time": "450 ans",
-        "trash_color": "Vert"
-      },
-      {
-        "id": 15,
-        "name": "Protection hygiénique",
-        "degradation_time": "450 ans",
-        "trash_color": "Vert"
-      },
-      {
-        "id": 16,
-        "name": "Sac en plastique",
-        "degradation_time": "450 ans",
-        "trash_color": "Jaune"
-      },
-      {
-        "id": 17,
-        "name": "Bouteille en plastique",
-        "degradation_time": "500 ans",
-        "trash_color": "Jaune"
-      },
-      {
-        "id": 18,
-        "name": "Carte SIM",
-        "degradation_time": "100 ans",
-        "trash_color": "Vert"
-      },
-      {
-        "id": 19,
-        "name": "Verre",
-        "degradation_time": "5000 ans",
-        "trash_color": "Jaune"
-      }
-    ];
+    // const dataTest = [
+    //   {
+    //     "id": 1,
+    //     "name": "Mouchoir en papier",
+    //     "degradation_time": "1 mois",
+    //     "trash_color": "Jaune"
+    //   },
+    //   {
+    //     "id": 2,
+    //     "name": "Pomme",
+    //     "degradation_time": "4 mois",
+    //     "trash_color": "Marron"
+    //   },
+    //   {
+    //     "id": 3,
+    //     "name": "Jus de fruit",
+    //     "degradation_time": "5 mois",
+    //     "trash_color": "Jaune"
+    //   },
+    //   {
+    //     "id": 4,
+    //     "name": "Journal",
+    //     "degradation_time": "6 mois",
+    //     "trash_color": "Marron"
+    //   },
+    //   {
+    //     "id": 5,
+    //     "name": "Banane",
+    //     "degradation_time": "9 mois",
+    //     "trash_color": "Jaune"
+    //   },
+    //   {
+    //     "id": 6,
+    //     "name": "Ticket de métro",
+    //     "degradation_time": "1 an",
+    //     "trash_color": "Jaune"
+    //   },
+    //   {
+    //     "id": 7,
+    //     "name": "Mégot",
+    //     "degradation_time": "2 ans",
+    //     "trash_color": "Vert"
+    //   },
+    //   {
+    //     "id": 8,
+    //     "name": "Bonbon",
+    //     "degradation_time": "5 ans",
+    //     "trash_color": "Jaune"
+    //   },
+    //   {
+    //     "id": 9,
+    //     "name": "Chewing Gum",
+    //     "degradation_time": "5 ans",
+    //     "trash_color": "Vert"
+    //   },
+    //   {
+    //     "id": 10,
+    //     "name": "Canette de soda",
+    //     "degradation_time": "45 ans",
+    //     "trash_color": "Jaune"
+    //   },
+    //   {
+    //     "id": 11,
+    //     "name": "Boîte de conserve",
+    //     "degradation_time": "50 ans",
+    //     "trash_color": "Jaune"
+    //   },
+    //   {
+    //     "id": 12,
+    //     "name": "Briquet",
+    //     "degradation_time": "100 ans",
+    //     "trash_color": "Vert"
+    //   },
+    //   {
+    //     "id": 13,
+    //     "name": "Aluminium",
+    //     "degradation_time": "200 ans",
+    //     "trash_color": "Jaune"
+    //   },
+    //   {
+    //     "id": 14,
+    //     "name": "Couche",
+    //     "degradation_time": "450 ans",
+    //     "trash_color": "Vert"
+    //   },
+    //   {
+    //     "id": 15,
+    //     "name": "Protection hygiénique",
+    //     "degradation_time": "450 ans",
+    //     "trash_color": "Vert"
+    //   },
+    //   {
+    //     "id": 16,
+    //     "name": "Sac en plastique",
+    //     "degradation_time": "450 ans",
+    //     "trash_color": "Jaune"
+    //   },
+    //   {
+    //     "id": 17,
+    //     "name": "Bouteille en plastique",
+    //     "degradation_time": "500 ans",
+    //     "trash_color": "Jaune"
+    //   },
+    //   {
+    //     "id": 18,
+    //     "name": "Carte SIM",
+    //     "degradation_time": "100 ans",
+    //     "trash_color": "Vert"
+    //   },
+    //   {
+    //     "id": 19,
+    //     "name": "Verre",
+    //     "degradation_time": "5000 ans",
+    //     "trash_color": "Jaune"
+    //   }
+    // ];
 
     // Trie des données
 
@@ -144,7 +144,7 @@ class TimeLine extends Component {
     let memoryY = 0;
     let memoryYs = 0;
 
-    dataTest.forEach(dataTest => {
+    this.props.dataTest.forEach(dataTest => {
       let separator = dataTest.degradation_time.indexOf(' ');
       let number = Number(dataTest.degradation_time.substr(0, separator));
       let time = dataTest.degradation_time.substr(separator + 1)
