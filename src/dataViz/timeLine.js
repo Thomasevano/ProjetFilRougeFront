@@ -508,6 +508,8 @@ class TimeLine extends Component {
       .attr('class', "timeScale")
       .style('width', "257px")
       .style('height', "101px")
+      .append('p')
+      .text('From 1 to 10 years to break down')
       
 
     //Scroll animate svg

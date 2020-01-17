@@ -29,6 +29,21 @@
     .timeScale {
       background: linear-gradient(52.51deg, #FB8070 0%, #FFB097 100%);
       border-radius: 20px;
+      position: absolute;
+      left: 40px;
+      bottom: 45px;
+
+      p {
+        color: #ffffff;
+        font-family: Montserrat;
+        font-weight: bold;
+        width: 90%;
+        margin: auto;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 20px;
+      }
     }
 
     .vignette {
