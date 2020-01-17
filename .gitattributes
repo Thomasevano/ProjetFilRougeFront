@@ -1,0 +1,5 @@
+# JS and CSS and SCSS file use LF
+*.js eol=lf
+*.scss eol=lf
+*.css eol=lf
+"* text=auto" 
