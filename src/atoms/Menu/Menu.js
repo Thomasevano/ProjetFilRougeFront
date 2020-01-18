@@ -2,6 +2,7 @@ import React from 'react';
 import Step from '../Step/Step'
 
 function Menu() {
+  
   return (
     <div className="menu">
       <input type="checkbox" id="burger-menu"/>

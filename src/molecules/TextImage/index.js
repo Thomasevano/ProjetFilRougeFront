@@ -3,6 +3,7 @@ import Visual from '../../atoms/Visual/index';
 import SecondaryButton from '../../atoms/SecondaryButton/secondaryButton'
 
 export default class TextImage extends React.Component {
+  
   render() {
     return (
       <div className={["textImage", this.props.position].join(" ")}>

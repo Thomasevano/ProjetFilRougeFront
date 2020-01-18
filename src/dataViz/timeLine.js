@@ -9,7 +9,6 @@ class TimeLine extends Component {
     //svgC.addEventListener('scroll', positionCar);
   }
   
-  
  /*  componentWillUnmount() {
       svgC.removeEventListener('scroll', positionCar);
   } */

@@ -18,4 +18,5 @@ function IntroBlock({img, alt, title}) {
   )
 }
 
+
 export default IntroBlock

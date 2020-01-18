@@ -1,6 +1,7 @@
 import React from 'react';
 
 function InfoBlock() {
+  
   return(
     <div className="info-block">
       <h1 className="text info-title">1 m</h1>

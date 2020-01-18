@@ -53,7 +53,6 @@ function bubbleChart() {
   return (
     <div className="bubbleChart"></div>
   )
-
 }
 
 export default bubbleChart;
