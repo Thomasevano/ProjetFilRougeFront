@@ -4,6 +4,7 @@ import Button from '../atoms/Button/Button';
 import { Link } from 'react-router-dom';
 
 function Home() {
+  
   return (
     <div className="home">
       <div className="home-container">

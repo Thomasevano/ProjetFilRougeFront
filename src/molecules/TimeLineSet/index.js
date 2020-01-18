@@ -3,7 +3,6 @@ import TimeLine from '../../dataViz/timeLine';
 
 // export default class TimeLineSet extends React.Component {
 
-
 //   render() {
 //     return (
 //       <div className="timeLineSet">
