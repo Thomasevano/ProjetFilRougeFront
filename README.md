@@ -14,7 +14,7 @@ install npm:
 ```
 npm i
 ```
-## Third step
+## Second step
 
 run the project:
 ```
