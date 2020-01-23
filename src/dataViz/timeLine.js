@@ -43,6 +43,7 @@ class TimeLine extends Component {
       let isThis = dataTest;
       let isThisNumber = number;
 
+      // sort month //
       if (time === "month") {
         if (number >= memoryM) {
 
@@ -51,6 +52,7 @@ class TimeLine extends Component {
           lessOneYear = dataTest.id;
 
         } else {
+          // If month are not in the good order sort them //
           let count = true;
 
           dataM.forEach(data => {
@@ -71,13 +73,14 @@ class TimeLine extends Component {
             }
           })
         }
+        // sort year //
       } else if (time === "year") {
-
         if (number >= memoryY) {
           dataY.push(dataTest)
           memoryY = number;
           oneToTen = dataTest.id;
         } else {
+          // If year are not in the good order sort them //
           let count = true;
 
           dataY.forEach(data => {
@@ -98,12 +101,14 @@ class TimeLine extends Component {
             }
           })
         }
+        // sort years //
       } else if (time === "years") {
 
         if (number >= memoryYs) {
           dataYs.push(dataTest)
           memoryYs = number;
 
+          // Get data to use in time scale element //
           if (number <= 10) {
             tenToOneHundred = dataTest
           } else if (number <= 100) {
@@ -112,6 +117,7 @@ class TimeLine extends Component {
             moreOneThousand = dataTest;
           }
         } else {
+          // If years are not in the good order sort them //
           let count = true;
 
           dataYs.forEach(data => {
@@ -332,7 +338,7 @@ class TimeLine extends Component {
       .attr('stroke-width', '0')
       .attr('fill', '#F3F8F9')
 
-    //Ligne time line
+    // Line of time Line //
 
     timeLine.append('svg')
       .attr('class', 'line')
@@ -350,7 +356,7 @@ class TimeLine extends Component {
       //.attr("id", "wire")
       
 
-    //Triangle
+    // Triangle //
 
     /* const triangle = timeLine.append("div")
       .attr("class", 'triangle')
@@ -391,7 +397,7 @@ class TimeLine extends Component {
     .attr('fill', '#ffffff')
     .attr("d", "M12.6364 27.1894L0.872507 3.66152C0.207605 2.33171 1.1746 0.76709 2.66136 0.76709H26.1892C27.676 0.76709 28.643 2.33171 27.9781 3.66152L16.2141 27.1894C15.4771 28.6635 13.3735 28.6635 12.6364 27.1894Z")
 
-    //Circle on time line
+    // Circle on time line //
 
     timeLine.append("svg")
       .attr('class', 'circleLine anime')
@@ -570,7 +576,8 @@ class TimeLine extends Component {
      
       createObserver();
       
-      /* //// Mange timeScale deplacement //// */
+      /* //// Manage timeScale deplacement //// */
+      
       let scrolltest = document.querySelector('.timeLine')
       scrolltest.addEventListener('scroll', function () {
         for (let i = 0; i < hiddenScale.length; i++) {
@@ -624,7 +631,7 @@ class TimeLine extends Component {
     positionCar(); */
   
     
-    //Scroll drag
+    /* //// Scroll drag //// */
 
     const slider = document.querySelector('.timeLine');
     let isDown = false;
