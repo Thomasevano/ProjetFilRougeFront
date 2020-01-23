@@ -7,9 +7,9 @@ export default class EndPart extends React.Component {
     return (
       <div className="endPart">
         <div className="endPartContent">
-          <Step stepNumber="Next step" object="rectangle"/>
+          <Step stepNumber={this.props.subTitle} object="rectangle"/>
           <h2>{this.props.title}</h2>
-          <SecondaryButton img="data/arrowSecondaryButton.svg" text="Go to Step 2"/>
+          <SecondaryButton img="data/arrowSecondaryButton.svg" text={this.props.textButton}/>
         </div>
       </div>
     )

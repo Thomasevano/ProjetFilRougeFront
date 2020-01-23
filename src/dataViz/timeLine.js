@@ -15,147 +15,42 @@ class TimeLine extends Component {
       svgC.removeEventListener('scroll', positionCar);
   } */
   drawChart() {
-    // const dataTest = [
-    //   {
-    //     "id": 1,
-    //     "name": "Mouchoir en papier",
-    //     "degradation_time": "1 mois",
-    //     "trash_color": "Jaune"
-    //   },
-    //   {
-    //     "id": 2,
-    //     "name": "Pomme",
-    //     "degradation_time": "4 mois",
-    //     "trash_color": "Marron"
-    //   },
-    //   {
-    //     "id": 3,
-    //     "name": "Jus de fruit",
-    //     "degradation_time": "5 mois",
-    //     "trash_color": "Jaune"
-    //   },
-    //   {
-    //     "id": 4,
-    //     "name": "Journal",
-    //     "degradation_time": "6 mois",
-    //     "trash_color": "Marron"
-    //   },
-    //   {
-    //     "id": 5,
-    //     "name": "Banane",
-    //     "degradation_time": "9 mois",
-    //     "trash_color": "Jaune"
-    //   },
-    //   {
-    //     "id": 6,
-    //     "name": "Ticket de métro",
-    //     "degradation_time": "1 an",
-    //     "trash_color": "Jaune"
-    //   },
-    //   {
-    //     "id": 7,
-    //     "name": "Mégot",
-    //     "degradation_time": "2 ans",
-    //     "trash_color": "Vert"
-    //   },
-    //   {
-    //     "id": 8,
-    //     "name": "Bonbon",
-    //     "degradation_time": "5 ans",
-    //     "trash_color": "Jaune"
-    //   },
-    //   {
-    //     "id": 9,
-    //     "name": "Chewing Gum",
-    //     "degradation_time": "5 ans",
-    //     "trash_color": "Vert"
-    //   },
-    //   {
-    //     "id": 10,
-    //     "name": "Canette de soda",
-    //     "degradation_time": "45 ans",
-    //     "trash_color": "Jaune"
-    //   },
-    //   {
-    //     "id": 11,
-    //     "name": "Boîte de conserve",
-    //     "degradation_time": "50 ans",
-    //     "trash_color": "Jaune"
-    //   },
-    //   {
-    //     "id": 12,
-    //     "name": "Briquet",
-    //     "degradation_time": "100 ans",
-    //     "trash_color": "Vert"
-    //   },
-    //   {
-    //     "id": 13,
-    //     "name": "Aluminium",
-    //     "degradation_time": "200 ans",
-    //     "trash_color": "Jaune"
-    //   },
-    //   {
-    //     "id": 14,
-    //     "name": "Couche",
-    //     "degradation_time": "450 ans",
-    //     "trash_color": "Vert"
-    //   },
-    //   {
-    //     "id": 15,
-    //     "name": "Protection hygiénique",
-    //     "degradation_time": "450 ans",
-    //     "trash_color": "Vert"
-    //   },
-    //   {
-    //     "id": 16,
-    //     "name": "Sac en plastique",
-    //     "degradation_time": "450 ans",
-    //     "trash_color": "Jaune"
-    //   },
-    //   {
-    //     "id": 17,
-    //     "name": "Bouteille en plastique",
-    //     "degradation_time": "500 ans",
-    //     "trash_color": "Jaune"
-    //   },
-    //   {
-    //     "id": 18,
-    //     "name": "Carte SIM",
-    //     "degradation_time": "100 ans",
-    //     "trash_color": "Vert"
-    //   },
-    //   {
-    //     "id": 19,
-    //     "name": "Verre",
-    //     "degradation_time": "5000 ans",
-    //     "trash_color": "Jaune"
-    //   }
-    // ];
 
-    // Trie des données
+    /* //// Sorts data //// */
 
     let data = []
 
+    // Arrays about data time (month, year, years) //
     let dataM = []
     let dataY = []
     let dataYs = []
 
+    // Memory to compare each data time //
     let memoryM = 0;
     let memoryY = 0;
     let memoryYs = 0;
 
+    // Memory for time scale//
+    let lessOneYear;
+    let oneToTen;
+    let tenToOneHundred;
+    let oneHundredToOneThousand;
+    let moreOneThousand;
+
+    // Loop on data to sorts them //
     this.props.dataTest.forEach(dataTest => {
       let separator = dataTest.degradation_time.indexOf(' ');
       let number = Number(dataTest.degradation_time.substr(0, separator));
-      let time = dataTest.degradation_time.substr(separator + 1)
+      let time = dataTest.degradation_time.substr(separator + 1).toLowerCase()
       let isThis = dataTest;
       let isThisNumber = number;
 
-      if (time === "mois") {
+      if (time === "month") {
         if (number >= memoryM) {
 
           dataM.push(dataTest)
           memoryM = number;
+          lessOneYear = dataTest.id;
 
         } else {
           let count = true;
@@ -178,11 +73,12 @@ class TimeLine extends Component {
             }
           })
         }
-      } else if (time === "an") {
+      } else if (time === "year") {
 
         if (number >= memoryY) {
           dataY.push(dataTest)
           memoryY = number;
+          oneToTen = dataTest.id;
         } else {
           let count = true;
 
@@ -204,11 +100,19 @@ class TimeLine extends Component {
             }
           })
         }
-      } else if (time === "ans") {
+      } else if (time === "years") {
 
         if (number >= memoryYs) {
           dataYs.push(dataTest)
           memoryYs = number;
+
+          if (number <= 10) {
+            tenToOneHundred = dataTest
+          } else if (number <= 100) {
+            oneHundredToOneThousand = dataTest
+          } else if (number >= 1000 && !moreOneThousand) {
+            moreOneThousand = dataTest;
+          }
         } else {
           let count = true;
 
@@ -236,7 +140,7 @@ class TimeLine extends Component {
 
     data = dataM.concat(dataY, dataYs)
 
-    // time Line
+    /* //// Time Line //// */
 
     /* const svg = d3.select(".timeLine")
       .append("svg")
@@ -277,6 +181,7 @@ class TimeLine extends Component {
       .enter()
       .append("svg")
       .attr("class", 'vignette anime')
+      .attr("id", (d) => d.id)
       .style("position", "relative")
       //.style("top", (d, i) => i % 2 ? 12 + "%" : 20 + "%")
       .style("top", (d, i) => i % 2 ? 12 + "%" : 20 + "%")
@@ -433,6 +338,7 @@ class TimeLine extends Component {
 
     timeLine.append('svg')
       .attr('class', 'line')
+      //.attr('height', '125')
       .attr('height', '87')
       //.attr('width', data.length * 520 + "px")
       .attr('fill', 'none')
@@ -440,6 +346,7 @@ class TimeLine extends Component {
       .attr("id", "path1")
       .attr('py', '90')
       .attr('d', 'M-202 2C-9 2 8.36887 85 152 85C295.631 85 362.369 2 506 2C649.631 2 716.369 85 860 85C1003.63 85 1039 2 1214 2')
+      //.attr('d', 'M0,2C121.37,2,121.37,122,242.75,122S364.12,2,485.5,2,606.87,122,728.25,122,849.62,2,971,2')
       .attr('stroke', '#55B297')
       .attr('stroke-width', '4')
       //.attr("id", "wire")
@@ -473,6 +380,7 @@ class TimeLine extends Component {
     .style("width", data.length * 420 + "px")
     .attr("height", 120)
     .style('left', '274px')
+    //.style('left', '130px')
     .selectAll('triangle')
     .data(data)
     .enter()    
@@ -502,14 +410,175 @@ class TimeLine extends Component {
       .attr('stroke-width', '0')
       .attr('fill', '#ffffff')
 
-    //time scale
+    /* //// Time scale //// */
+
+    // All time scale div //
 
     timeLine.append('div')
-      .attr('class', "timeScale")
+      .attr('class', "timeScale oneToTen")
+      .style('width', "257px")
+      .style('height', "101px")
+      .style('opacity', '0%')
+      .append('p')
+      .text('From 1 to 10 years to break down')
+
+    timeLine.append('div')
+      .attr('class', "timeScale lessOne")
       .style('width', "257px")
       .style('height', "101px")
       .append('p')
-      .text('From 1 to 10 years to break down')
+      .text('Les than 1 year to break down')
+
+    timeLine.append('div')
+      .attr('class', "timeScale tenToOneHundred")
+      .style('width', "257px")
+      .style('height', "101px")
+      .style('opacity', '0%')
+      .append('p')
+      .text('from 10 to 100 years to break down ')
+
+    timeLine.append('div')
+      .attr('class', "timeScale oneHundreadToOneThousand")
+      .style('width', "257px")
+      .style('height', "101px")
+      .style('opacity', '0%')
+      .append('p')
+      .text('From 100 to 1 000 years to break down')
+
+     timeLine.append('div')
+      .attr('class', "timeScale moreOneThousand")
+      .style('width', "257px")
+      .style('height', "101px")
+      .style('opacity', '0%')
+      .append('p')
+      .text('More than 1 000 years to break down')
+
+      // Make a selector if time scale is needed //
+
+      if (lessOneYear) {
+        var divLessOneYear = document.getElementById(lessOneYear)
+      }
+      if (oneToTen) {
+        var divOneToTen = document.getElementById(oneToTen)
+      }
+      if (tenToOneHundred) {
+        var divTenToOneHundred = document.getElementById(tenToOneHundred.id)
+        var infdivTenToOneHundred = document.getElementById(data.indexOf(tenToOneHundred))
+      }
+      if (oneHundredToOneThousand) {
+        var divOneHundredToOneThousand = document.getElementById(oneHundredToOneThousand.id)
+        var infdivOneHundredToOneThousand = document.getElementById(data.indexOf(oneHundredToOneThousand))
+      }
+      if (moreOneThousand) {
+        var divMoreOneThousand = document.getElementById(moreOneThousand.id)
+        var infdivMoreOneThousand = document.getElementById(data.indexOf(moreOneThousand) - 1)
+      }
+
+      // Select all time scale //
+      let hiddenScale = document.querySelectorAll('.timeScale')
+     
+      // Use IntersectionObserver to know when an element is on the screen and display scale has we need //
+      function handleIntersect(entries, observer) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (entry.target.id == lessOneYear) {
+              let timeScaleLO = document.querySelector('.lessOne')
+              for (let i = 0; i < hiddenScale.length; i++) {
+                hiddenScale[i].style.opacity = "0%"
+              }
+              timeScaleLO.style.opacity = "100%"
+            } else if (entry.target.id == oneToTen) {
+              let timeScaleOTY = document.querySelector('.oneToTen')
+              for (let i = 0; i < hiddenScale.length; i++) {
+                hiddenScale[i].style.opacity = "0%"
+              }
+              timeScaleOTY.style.opacity = "100%"
+            } else if (entry.target.id == tenToOneHundred.id) {
+              let timeScaleTOH = document.querySelector('.tenToOneHundred')
+              for (let i = 0; i < hiddenScale.length; i++) {
+                hiddenScale[i].style.opacity = "0%"
+              }
+              timeScaleTOH.style.opacity = "100%"
+            } else if (entry.target.id == oneHundredToOneThousand.id) {
+              let timeScaleOHOT = document.querySelector('.oneHundreadToOneThousand')
+              for (let i = 0; i < hiddenScale.length; i++) {
+                hiddenScale[i].style.opacity = "0%"
+              }
+              timeScaleOHOT.style.opacity = "100%"
+            } else if (entry.target.id == moreOneThousand.id) {
+              let timeScaleMOT = document.querySelector('.moreOneThousand')
+              for (let i = 0; i < hiddenScale.length; i++) {
+                hiddenScale[i].style.opacity = "0%"
+              }
+              timeScaleMOT.style.opacity = "100%"
+            } else if (entry.target.id == infdivMoreOneThousand.id) {
+              let timeScaleIMOT = document.querySelector('.oneHundreadToOneThousand')
+              for (let i = 0; i < hiddenScale.length; i++) {
+                hiddenScale[i].style.opacity = "0%"
+              }
+              timeScaleIMOT.style.opacity = "100%"
+            } else if (entry.target.id == infdivOneHundredToOneThousand.id) {
+              let timeScaleIOHOT = document.querySelector('.tenToOneHundred')
+              for (let i = 0; i < hiddenScale.length; i++) {
+                hiddenScale[i].style.opacity = "0%"
+              }
+              timeScaleIOHOT.style.opacity = "100%"
+            } else if (entry.target.id == infdivTenToOneHundred.id) {
+              let timeScaleITOH = document.querySelector('.oneToTen')
+              for (let i = 0; i < hiddenScale.length; i++) {
+                hiddenScale[i].style.opacity = "0%"
+              }
+              timeScaleITOH.style.opacity = "100%"
+            }
+            return
+          }
+        });
+      }
+     
+      // Options of our observer //
+      function createObserver() {
+        let observer;
+     
+        let options = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 1.0
+        };
+     
+        observer = new IntersectionObserver(handleIntersect, options);
+        observer.observe(divLessOneYear);
+       
+        observer = new IntersectionObserver(handleIntersect, options);
+        observer.observe(divOneToTen);
+
+        observer = new IntersectionObserver(handleIntersect, options);
+        observer.observe(divTenToOneHundred);
+
+        observer = new IntersectionObserver(handleIntersect, options);
+        observer.observe(divOneHundredToOneThousand);
+
+        observer = new IntersectionObserver(handleIntersect, options);
+        observer.observe(divMoreOneThousand);
+
+        observer = new IntersectionObserver(handleIntersect, options);
+        observer.observe(infdivMoreOneThousand);
+
+        observer = new IntersectionObserver(handleIntersect, options);
+        observer.observe(infdivOneHundredToOneThousand);
+
+        observer = new IntersectionObserver(handleIntersect, options);
+        observer.observe(infdivTenToOneHundred);
+      }
+     
+      createObserver();
+      
+      /* //// Mange timeScale deplacement //// */
+      let scrolltest = document.querySelector('.timeLine')
+      scrolltest.addEventListener('scroll', function () {
+        for (let i = 0; i < hiddenScale.length; i++) {
+          hiddenScale[i].style.transform = "translateX(" + scrolltest.scrollLeft + "px)"
+        }
+      })
       
 
     //Scroll animate svg

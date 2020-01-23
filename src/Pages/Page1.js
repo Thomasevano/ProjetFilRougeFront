@@ -25,7 +25,7 @@ function Page1() {
       <section className="dataVizBubbleChart">
         <BubbleChartBlock/>
       </section>
-      <EndPart title="Now It’s Time to Participate"/>
+      <EndPart title="Now It’s Time to Participate" subTitle="Next Step" textButton="Go to Step 2"/>
     </div>
     
   )

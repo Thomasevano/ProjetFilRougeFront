@@ -1,6 +1,5 @@
 import React from 'react';
 import EndPart from '../molecules/EndPart/index';
-import TextImage from '../molecules/TextImage/index';
 import Navbar from '../molecules/Navbar/Navbar';
 import IntroBlock from '../molecules/IntroBlock/IntroBlock';
 
@@ -9,9 +8,9 @@ function Page2() {
     <div>
       <Navbar/>
       <section className="intro">
-        <IntroBlock img="./data/intro-background-eiffelTower.jpg" alt="eiffel tower view" title="become aware of our impact"/>
+        <IntroBlock img="./data/intro-background-eiffelTower.jpg" alt="eiffel tower view" title="Participate"/>
       </section>
-      <EndPart title="Now It’s Time to Participate"/>
+      <EndPart title="Now It’s Time to Participate" subTitle="Last Step" textButton="Go to Step 3"/>
     </div>
   )
 }

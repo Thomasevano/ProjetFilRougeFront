@@ -8,6 +8,7 @@
     margin-left: $margin-left;
     font-size: $title;
     color: $third-color;
+    font-family: $marvin-vision-bold;
   }
 
   .timeLine {
@@ -53,12 +54,14 @@
       background-color: #ffff;
       border-radius: 20px;
       margin: 0px 100px 0px 100px;
+      //margin: 0px 120px 0px 120px;
       -webkit-box-shadow: 0px 48px 36px -50px rgba(0,0,0,0.8);
       -moz-box-shadow: 0px 48px 36px -50px rgba(0,0,0,0.8);
       box-shadow: 0px 40px 36px -50px rgba(0,0,0,0.8);
 
       &:first-child {
         margin-left: 275px;
+        //margin-left: 130px;
       }
 
       p {
@@ -91,15 +94,15 @@
           border-radius: 50%;
         }
 
-        .Jaune {
+        .Yellow {
           fill: $trash-yellow;
         }
 
-        .Marron {
+        .Brown {
           fill: $trash-brown;
         }
 
-        .Vert {
+        .Green {
           fill: $trash-green;
         }
 
@@ -115,6 +118,7 @@
     .line {
       position: absolute;
       top: 60%;
+      //top: 57%;
       left: 0px;
       z-index: 0;
       width: 100%;
@@ -153,6 +157,7 @@
     .circleLine {
       position: absolute;
       left: 290px;
+      //left: 145px;
       //transform: translateX(-50%);
       //bottom: -33%;
       -webkit-filter: drop-shadow( 0px 4px 5px rgba(158, 158, 158, 0.75));
