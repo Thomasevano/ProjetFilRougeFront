@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default class Visual extends React.Component {
+  
   render() {
     return (
       <div className="visual">

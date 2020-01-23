@@ -7,6 +7,7 @@ import TimeLineSet from '../molecules/TimeLineSet/index';
 import BubbleChartBlock from '../molecules/BubbleChartBlock/BubbleChartBlock'
 
 function Page1() {
+  
   return (
     <div>
       <Navbar/>

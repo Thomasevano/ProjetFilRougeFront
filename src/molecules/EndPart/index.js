@@ -3,6 +3,7 @@ import SecondaryButton from '../../atoms/SecondaryButton/secondaryButton';
 import Step from '../../atoms/Step/Step';
 
 export default class EndPart extends React.Component {
+  
   render() {
     return (
       <div className="endPart">
