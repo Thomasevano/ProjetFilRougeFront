@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import * as d3 from "d3";
-import * as h from "d3";
-import * as d from "d3";
+// import * as h from "d3";
+// import * as d from "d3";
 
 class TimeLine extends Component {
   componentDidUpdate() {
@@ -485,49 +485,49 @@ class TimeLine extends Component {
       function handleIntersect(entries, observer) {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            if (entry.target.id == lessOneYear) {
+            if (entry.target.id === lessOneYear) {
               let timeScaleLO = document.querySelector('.lessOne')
               for (let i = 0; i < hiddenScale.length; i++) {
                 hiddenScale[i].style.opacity = "0%"
               }
               timeScaleLO.style.opacity = "100%"
-            } else if (entry.target.id == oneToTen) {
+            } else if (entry.target.id === oneToTen) {
               let timeScaleOTY = document.querySelector('.oneToTen')
               for (let i = 0; i < hiddenScale.length; i++) {
                 hiddenScale[i].style.opacity = "0%"
               }
               timeScaleOTY.style.opacity = "100%"
-            } else if (entry.target.id == tenToOneHundred.id) {
+            } else if (entry.target.id === tenToOneHundred.id) {
               let timeScaleTOH = document.querySelector('.tenToOneHundred')
               for (let i = 0; i < hiddenScale.length; i++) {
                 hiddenScale[i].style.opacity = "0%"
               }
               timeScaleTOH.style.opacity = "100%"
-            } else if (entry.target.id == oneHundredToOneThousand.id) {
+            } else if (entry.target.id === oneHundredToOneThousand.id) {
               let timeScaleOHOT = document.querySelector('.oneHundreadToOneThousand')
               for (let i = 0; i < hiddenScale.length; i++) {
                 hiddenScale[i].style.opacity = "0%"
               }
               timeScaleOHOT.style.opacity = "100%"
-            } else if (entry.target.id == moreOneThousand.id) {
+            } else if (entry.target.id === moreOneThousand.id) {
               let timeScaleMOT = document.querySelector('.moreOneThousand')
               for (let i = 0; i < hiddenScale.length; i++) {
                 hiddenScale[i].style.opacity = "0%"
               }
               timeScaleMOT.style.opacity = "100%"
-            } else if (entry.target.id == infdivMoreOneThousand.id) {
+            } else if (entry.target.id === infdivMoreOneThousand.id) {
               let timeScaleIMOT = document.querySelector('.oneHundreadToOneThousand')
               for (let i = 0; i < hiddenScale.length; i++) {
                 hiddenScale[i].style.opacity = "0%"
               }
               timeScaleIMOT.style.opacity = "100%"
-            } else if (entry.target.id == infdivOneHundredToOneThousand.id) {
+            } else if (entry.target.id === infdivOneHundredToOneThousand.id) {
               let timeScaleIOHOT = document.querySelector('.tenToOneHundred')
               for (let i = 0; i < hiddenScale.length; i++) {
                 hiddenScale[i].style.opacity = "0%"
               }
               timeScaleIOHOT.style.opacity = "100%"
-            } else if (entry.target.id == infdivTenToOneHundred.id) {
+            } else if (entry.target.id === infdivTenToOneHundred.id) {
               let timeScaleITOH = document.querySelector('.oneToTen')
               for (let i = 0; i < hiddenScale.length; i++) {
                 hiddenScale[i].style.opacity = "0%"
