@@ -9,7 +9,7 @@ function Page2() {
     <div>
       <Navbar/>
       <section className="intro">
-        <IntroBlock img="./data/intro-background-eiffelTower.jpg" alt="eiffel tower view" title="Participate"/>
+        <IntroBlock img="./data/intro-background-eiffelTower.jpg" alt="eiffel tower view" title="Participate" stepNumber="step 2" infoTitle="" infoSubtitle="HOW TO USE THE MONDRIAN GRID" infoDescription="Click on the different locations below to see how you can limit your impact"/>
       </section>
       <section className="dataVizTreeMap">
         <TreeMapSet />

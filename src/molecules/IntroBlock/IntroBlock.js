@@ -2,7 +2,7 @@ import React from 'react'
 import Step from '../../atoms/Step/Step'
 import InfoBlock from '../InfoBlock/InfoBlock';
 
-function IntroBlock({img, alt, title}) {
+function IntroBlock({img, alt, title, stepNumber, infoTitle, infoSubtitle, infoDescription}) {
 
   return(
     <div className="introBlock">
@@ -10,9 +10,9 @@ function IntroBlock({img, alt, title}) {
         <img src={img} alt={alt}/>
       </div>
       <div className="title-block">
-        <Step stepNumber="Step 1" object="circle"/>
+        <Step stepNumber={stepNumber} object="circle"/>
         <h1 className="title">{title}</h1>
-        <InfoBlock/>
+        <InfoBlock infoTitle={infoTitle} infoSubtitle={infoSubtitle} infoDescription={infoDescription}/>
       </div>
     </div>
   )
