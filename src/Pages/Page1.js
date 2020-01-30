@@ -12,7 +12,7 @@ function Page1() {
     <div>
       <Navbar/>
       <section className="intro">
-        <IntroBlock img="./data/intro-background-eiffelTower.jpg" alt="eiffel tower view" title="become aware of our impact"/>
+        <IntroBlock img="./data/intro-background-eiffelTower.jpg" alt="eiffel tower view" title="become aware of our impact" stepNumber="step 1" infoTitle="1 m" infoSubtitle="tons" infoDescription="The city of Paris produces about 1 million tons of waste per year, and only 19% of this volume is recycled."/>
       </section>
       <section className="visualText">
         <TextImage position="left" img="data/imgThumbnail1.jpg" text="The Stade de France, for example, produces <strong>3 tons of plastic waste per year.</strong> In 2024, it will be the official stadium for the Olympic Games." title="BIG EVENTS MEAN BIGGER IMPACT <strong>.</strong>" buttonText="Read the article" buttonImg="data/arrowSecondaryButton.svg"/>
@@ -26,7 +26,7 @@ function Page1() {
       <section className="dataVizBubbleChart">
         <BubbleChartBlock/>
       </section>
-      <EndPart title="Now It’s Time to Participate"/>
+      <EndPart title="Now It’s Time to Participate" subTitle="Next Step" textButton="Go to Step 2"/>
     </div>
     
   )

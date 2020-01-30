@@ -55,6 +55,7 @@ $text: 20px;
 @import './molecules/IntroBlock/IntroBlock.scss';
 @import './molecules/TimeLineSet/styles.scss';
 @import './molecules/BubbleChartBlock/BubbleChartBlock.scss';
+@import './molecules/TreeMap/styles.scss';
 
 //scss Pages
 
@@ -170,7 +171,7 @@ body {
     .home {
       display: flex;
       flex-direction: column;
-      height: 95vh;
+      height: calc(100vh - 40px);
       .home-container {
         margin: auto;
         .intro-text {
