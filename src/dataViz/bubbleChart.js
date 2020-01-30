@@ -52,12 +52,13 @@ function BubbleChart(wasteData) {
       "amount_of_waste": 300,
     }
   ];
+  console.log(data)
 
   function createSVG() {
     return d3.select(svgRef.current)
       .append('svg')
       .attr('width', 400)
-      .attr('height', 400)
+      .attr('height', 100 + '%')
       .attr('style', 'border: thin red solid')
   }
   
@@ -75,6 +76,22 @@ function BubbleChart(wasteData) {
       .attr('r', d => d.r)
       .attr('fill-opacity', 0.7)
       .attr('fill', 'navy');
+
+    // leaf.append('clipPath')
+    //   .append('use')
+    //     .attr('xlink:href', d => d.leafUid.href);
+
+    // leaf.append('text')
+    //   .attr('clip-path', d => d.clipUid)
+    //   .selectAll('tspan')
+    //   .data(d => d.data.name.split(/(?=[A-Z[^A-Z]])/g))
+    //   .join('tspan')
+    //     .attr('x', 0)
+    //     .attr('y', (d, i, nodes) => `${i - nodes.length / 2 + 0.8}em`)
+    //     .text(d => d);
+
+    // leaf.append('title')
+    //   .text(d => `${d.data.title}\n${format(d.value)}`);
 
     return svg.node();
   }
@@ -96,9 +113,7 @@ function BubbleChart(wasteData) {
   }, [])
 
   return (
-    <div>
-      <svg className="bubbleChart" ref={svgRef}></svg>
-    </div>
+    <div className="bubbleChart" ref={svgRef}></div>
   )
 }
 
