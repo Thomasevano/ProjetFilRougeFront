@@ -6,7 +6,7 @@ function Menu() {
   return (
     <div className="menu">
       <input type="checkbox" id="burger-menu"/>
-      <label for="burger-menu">
+      <label htmlFor="burger-menu">
         <span className="bar top"></span>
         <span className="bar middle"></span>
         <span className="bar bottom"></span>
@@ -14,9 +14,9 @@ function Menu() {
       <aside>
         <div className="section">
           <ul className="list">
-            <li><Step number="1"/><a href="#" className="anchor">Become aware of our impact</a></li>
-            <li><Step number="2"/><a href="#" className="anchor">Participate</a></li>
-            <li><Step number="3"/><a href="#" className="anchor">Evaluate</a></li>
+            <li><Step number="1"/><a href="/step1" className="anchor">Become aware of our impact</a></li>
+            <li><Step number="2"/><a href="/step2" className="anchor">Participate</a></li>
+            <li><Step number="3"/><a href="/step3" className="anchor">Evaluate</a></li>
           </ul>
         </div>
       </aside>
