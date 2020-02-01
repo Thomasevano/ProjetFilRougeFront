@@ -5,7 +5,7 @@ export default TreeMapSet => {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/monument')
+    fetch('http://127.0.0.1:8000/monument-all-dist/2000')
     .then(response => response.json())
     .then(result => setData(result))
   }, [])
