@@ -22,7 +22,7 @@ class TreeMap extends Component {
       left: 10
     },
 
-    width = sizeWindow - margin.left - margin.right,
+    width = sizeWindow - margin.left - margin.right - 20,
     height = 650 - margin.top - margin.bottom;
     
 
@@ -50,6 +50,7 @@ class TreeMap extends Component {
       .data(root.leaves())
       .enter()
       .append("rect")
+      .attr('class', "vignette")
       .attr('x', function (d) {
         return d.x0;
       })
@@ -62,8 +63,7 @@ class TreeMap extends Component {
       .attr('height', function (d) {
         return (d.y1 - d.y0);
       })
-      .style("stroke", "black")
-      .style("fill", "slateblue")
+      .style("fill", "#ffffff")
 
     // and to add the text labels
     svg.selectAll("text")
@@ -80,7 +80,32 @@ class TreeMap extends Component {
         return d.data.name
       })
       .attr("font-size", "15px")
-      .attr("fill", "white")
+      .attr("fill", "black")
+
+
+    // //d3.select('.treeMap')
+    //   svg.append('svg')
+    //   .attr('class', 'circle opacity')
+    //   .attr("width", 200)
+    //   .attr("height", 270)
+    //   .append('circle')
+    //   .attr('cx', '0')
+    //   .attr('cy', '140')
+    //   .attr('r', '120')
+    //   .attr('stroke-width', '0')
+    //   .attr('fill', '#FB8070')
+
+    // //d3.select('.treeMap')
+    //   svg.append('svg')
+    //   .attr('class', 'circle littleCircle')
+    //   .attr("width", 200)
+    //   .attr("height", 210)
+    //   .append('circle')
+    //   .attr('cx', '0')
+    //   .attr('cy', '100')
+    //   .attr('r', '65')
+    //   .attr('stroke-width', '0')
+    //   .attr('fill', '#F3F8F9')
   }
 
   render(){
