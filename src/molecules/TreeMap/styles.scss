@@ -10,4 +10,38 @@
     color: $third-color;
     font-family: $marvin-vision-bold;
   }
+
+  .treeMap {
+    position: relative;
+    overflow: hidden;
+
+    svg {
+      margin-left: 92px;
+      background-color: #F3F8F9;
+
+      .vignette {
+        border-radius: 20px;
+        margin: 0px 64px 0px 64px;
+        //margin: 0px 120px 0px 120px;
+        -webkit-box-shadow: 0px 48px 36px -50px rgba(0,0,0,0.8);
+        -moz-box-shadow: 0px 48px 36px -50px rgba(0,0,0,0.8);
+        box-shadow: 0px 40px 36px -50px rgba(0,0,0,0.8);
+      }
+    }
+
+    .circle.opacity {
+      opacity: 0.2;
+    }
+
+    .circle {
+      position: absolute;
+      bottom: -20px;
+      left: 0px;
+      background-color: unset;
+    }
+
+    .littleCircle {
+      bottom: 0px;
+    }
+  }
 }
