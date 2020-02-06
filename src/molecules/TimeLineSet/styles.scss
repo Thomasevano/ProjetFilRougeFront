@@ -40,6 +40,7 @@
       position: absolute;
       left: 40px;
       bottom: 45px;
+      will-change: auto;
 
       p {
         color: #ffffff;
@@ -65,6 +66,7 @@
       -webkit-box-shadow: 0px 48px 36px -50px rgba(0,0,0,0.8);
       -moz-box-shadow: 0px 48px 36px -50px rgba(0,0,0,0.8);
       box-shadow: 0px 40px 36px -50px rgba(0,0,0,0.8);
+      overflow: unset;
 
       &:first-child {
         margin-left: 247px;
