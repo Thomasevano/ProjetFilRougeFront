@@ -191,6 +191,13 @@ class TimeLine extends Component {
       .style("top", (d, i) => i % 2 ? 12 + "%" : 20 + "%")
       //.style("transform", (d, i) => i % 2 ? "translateY(" +  -50 + "%)" : "translateY(" + -65 + "%)");
 
+      //Add images
+      vignette.append("image")
+      .attr('href', (i) => './data/timeLine/' + i.id + '.png')
+      .attr('y', "-100")
+      .attr('x', "162")
+      .style('transform', 'translateX(-50%)')
+
       vignette.append("text")
       .text((d) => d.name)
       .attr("y", "85")

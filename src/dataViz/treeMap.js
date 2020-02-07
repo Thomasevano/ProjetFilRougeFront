@@ -22,35 +22,43 @@ class TreeMap extends Component {
       left: 10
     },
 
-    width = sizeWindow - margin.left - margin.right - 20,
-    height = 650 - margin.top - margin.bottom;
+    width = sizeWindow - margin.left - margin.right - 80,
+    height = 33.5 * data.children.length - margin.top - margin.bottom;
     
 
     // append the svg object to the body of the page
     var svg = d3.select(".treeMap")
       .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .attr("width", '100%')
+      .attr("height", 35 * data.children.length + margin.top + margin.bottom)
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     // Give the data to this cluster layout:
-    var root = d3.hierarchy(data).sum((d) =>
-      d.nbTrilibs + d.nbTrimobiles
-    ) // Here the size of each leave is given in the 'value' field in input data
+    var root = d3.hierarchy(data).sum(function(d) {
+      if (d.nbTrilibs + d.nbTrimobiles > 20) {
+        return d.nbTrilibs + d.nbTrimobiles + 30
+      } else if (d.nbTrilibs + d.nbTrimobiles === 0) {
+        return 30
+      } else {
+        return d.nbTrilibs + d.nbTrimobiles + 30
+      }
+    }) // Here the size of each leave is given in the 'value' field in input data
 
     // Then d3.treemap computes the position of each element of the hierarchy
     d3.treemap()
-      .size([width + 50, height + 50])
+      .size([width, height])
       .padding(20)
       (root)
 
     // use this information to add rectangles:
-    svg.selectAll("rect")
+
+    const vignette = svg.selectAll("svg")
       .data(root.leaves())
       .enter()
-      .append("rect")
-      .attr('class', "vignette")
+      .append("foreignObject")
+      .attr('class', (d) => "vignette vignette" + d.data.id)
+      .attr('rx', 10)
       .attr('x', function (d) {
         return d.x0;
       })
@@ -64,12 +72,11 @@ class TreeMap extends Component {
         return (d.y1 - d.y0);
       })
       .style("fill", "#ffffff")
+      .style('background-color', '#ffffff')
 
-    // and to add the text labels
-    svg.selectAll("text")
-      .data(root.leaves())
-      .enter()
-      .append("text")
+      vignette.append("xhtml:p")
+      .attr('class', 'place')
+      //.attr("clip-path", 'polygon(0 0, 115px 0, 115px 100%, 0% 100%)')
       .attr("x", function (d) {
         return d.x0 + 5
       }) // +10 to adjust position (more right)
@@ -80,7 +87,92 @@ class TreeMap extends Component {
         return d.data.name
       })
       .attr("font-size", "15px")
+      .attr("fill", "#005258")
+
+      vignette.append("xhtml:p")
+      .attr('class', 'sport')
+      .attr("x", function (d) {
+        return d.x0 + 5
+      }) // +10 to adjust position (more right)
+      .attr("y", function (d) {
+        return d.y0 + 40
+      }) // +20 to adjust position (lower)
+      .text(function (d) {
+        return d.data.sport
+      })
+      .attr("font-size", "15px")
       .attr("fill", "black")
+
+      vignette.append('xhtml:img')
+      .attr('class', 'image')
+      .style('width', '90%')
+      .style('margin', 'auto')
+      .style('height', function(d) {
+        var pSize = document.querySelector('.vignette' + d.data.id + " .place");
+        var p2Size = document.querySelector('.vignette' + d.data.id + " .sport");
+        var vSize = d.y1 - d.y0;
+
+        return vSize - pSize.offsetHeight - p2Size.offsetHeight - 40 + 'px'
+      })
+      .attr('src', 'data/intro-background-eiffelTower.jpg')
+      .style('object-fit', 'cover')
+      .style('background', '#C4C4C4')
+      .style('border-radius', '5px')
+      .style('display', function(d) {
+        if ((d.y1 - d.y0) > 90) {
+          return 'block'
+        } else {
+          return 'none'
+        }
+      })
+
+      vignette.append('xhtml:div')
+      .attr('class', 'interet')
+      .style('top', function(d) {
+        if ((d.y1 - d.y0) > 90) {
+          return '-20px'
+        } else {
+          return '0px'
+        }
+      })
+      .append('xhtml:p')
+      .text((d) => d.data.nbTrilibs + d.data.nbTrimobiles)
+
+    // svg.selectAll("rect")
+    //   .data(root.leaves())
+    //   .enter()
+    //   .append("rect")
+    //   .attr('class', "vignette")
+    //   .attr('x', function (d) {
+    //     return d.x0;
+    //   })
+    //   .attr('y', function (d) {
+    //     return d.y0;
+    //   })
+    //   .attr('width', function (d) {
+    //     return (d.x1 - d.x0);
+    //   })
+    //   .attr('height', function (d) {
+    //     return (d.y1 - d.y0);
+    //   })
+    //   .style("fill", "#ffffff")
+
+    // // and to add the text labels
+    // svg.selectAll("text")
+    //   .data(root.leaves())
+    //   .enter()
+    //   .append("text")
+    //   .attr("x", function (d) {
+    //     return d.x0 + 5
+    //   }) // +10 to adjust position (more right)
+    //   .attr("y", function (d) {
+    //     return d.y0 + 20
+    //   }) // +20 to adjust position (lower)
+    //   .text(function (d) {
+    //     return d.data.name
+    //   })
+    //   .attr("font-size", "15px")
+    //   .attr("fill", "black")
 
 
     // //d3.select('.treeMap')
