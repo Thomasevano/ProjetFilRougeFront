@@ -11,7 +11,8 @@ class TreeMap extends Component {
   drawChart() {
 
     const data = {"children": this.props.data}
-
+    
+// 20200207203852
     // set the dimensions and margins of the graph
     const sizeWindow = window.innerWidth - 115;
 
