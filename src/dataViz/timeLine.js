@@ -18,6 +18,8 @@ class TimeLine extends Component {
 
     let data = []
 
+    console.log(this.props.dataTest)
+
     // Arrays about data time (month, year, years) //
     let dataM = []
     let dataY = []
@@ -44,7 +46,7 @@ class TimeLine extends Component {
       let isThisNumber = number;
 
       // sort month //
-      if (time === "month") {
+      if (time === "month" || time === "months") {
         if (number >= memoryM) {
 
           dataM.push(dataTest)
@@ -188,15 +190,20 @@ class TimeLine extends Component {
       .attr("id", (d) => d.id)
       .style("position", "relative")
       //.style("top", (d, i) => i % 2 ? 12 + "%" : 20 + "%")
-      .style("top", (d, i) => i % 2 ? 12 + "%" : 20 + "%")
+      .style("top", (d, i) => i % 2 ? 14 + "%" : 22 + "%")
       //.style("transform", (d, i) => i % 2 ? "translateY(" +  -50 + "%)" : "translateY(" + -65 + "%)");
 
       //Add images
-      vignette.append("image")
-      .attr('href', (i) => './data/timeLine/' + i.id + '.png')
-      .attr('y', "-100")
-      .attr('x', "162")
-      .style('transform', 'translateX(-50%)')
+      vignette.append("foreignObject")
+      .style('overflow', 'visible')
+      .style('width', '100%')
+      .style('height', '100%')
+      .append("xhtml:img")
+      .style('position', 'relative')
+      .style('top', '-12%')
+      .attr('src', (d) => d.img_url)
+      //.style('max-height', '25%')
+      .style('max-height', '20%')
 
       vignette.append("text")
       .text((d) => d.name)
@@ -409,13 +416,13 @@ class TimeLine extends Component {
       .attr('class', 'circleLine anime')
       .style("top", "57%")
       .style("width", data.length * 360 + "px")
-      .attr("height", 120)
+      .attr("height", 130)
       .selectAll('circleTimeLine')
       .data(data)
       .enter()    
       .append('circle')
       .attr('cx', (d, i) => 358 * i + 100)
-      .attr('cy', (d, i) => i % 2 ? 23 + "%" : 90 + "%")
+      .attr('cy', (d, i) => i % 2 ? 25 + "%" : 88 + "%")
       .attr('r', '10')
       .attr('stroke-width', '0')
       .attr('fill', '#ffffff')
@@ -491,49 +498,49 @@ class TimeLine extends Component {
       function handleIntersect(entries, observer) {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            if (entry.target.id === lessOneYear) {
+            if (lessOneYear && entry.target.id === lessOneYear) {
               let timeScaleLO = document.querySelector('.lessOne')
               for (let i = 0; i < hiddenScale.length; i++) {
                 hiddenScale[i].style.opacity = "0%"
               }
               timeScaleLO.style.opacity = "100%"
-            } else if (entry.target.id === oneToTen) {
+            } else if (oneToTen && entry.target.id === oneToTen) {
               let timeScaleOTY = document.querySelector('.oneToTen')
               for (let i = 0; i < hiddenScale.length; i++) {
                 hiddenScale[i].style.opacity = "0%"
               }
               timeScaleOTY.style.opacity = "100%"
-            } else if (entry.target.id === tenToOneHundred.id) {
+            } else if (tenToOneHundred && entry.target.id === tenToOneHundred.id) {
               let timeScaleTOH = document.querySelector('.tenToOneHundred')
               for (let i = 0; i < hiddenScale.length; i++) {
                 hiddenScale[i].style.opacity = "0%"
               }
               timeScaleTOH.style.opacity = "100%"
-            } else if (entry.target.id === oneHundredToOneThousand.id) {
+            } else if (oneHundredToOneThousand && entry.target.id === oneHundredToOneThousand.id) {
               let timeScaleOHOT = document.querySelector('.oneHundreadToOneThousand')
               for (let i = 0; i < hiddenScale.length; i++) {
                 hiddenScale[i].style.opacity = "0%"
               }
               timeScaleOHOT.style.opacity = "100%"
-            } else if (entry.target.id === moreOneThousand.id) {
+            } else if (moreOneThousand && entry.target.id === moreOneThousand.id) {
               let timeScaleMOT = document.querySelector('.moreOneThousand')
               for (let i = 0; i < hiddenScale.length; i++) {
                 hiddenScale[i].style.opacity = "0%"
               }
               timeScaleMOT.style.opacity = "100%"
-            } else if (entry.target.id === infdivMoreOneThousand.id) {
+            } else if (infdivMoreOneThousand && entry.target.id === infdivMoreOneThousand.id) {
               let timeScaleIMOT = document.querySelector('.oneHundreadToOneThousand')
               for (let i = 0; i < hiddenScale.length; i++) {
                 hiddenScale[i].style.opacity = "0%"
               }
               timeScaleIMOT.style.opacity = "100%"
-            } else if (entry.target.id === infdivOneHundredToOneThousand.id) {
+            } else if (infdivOneHundredToOneThousand && entry.target.id === infdivOneHundredToOneThousand.id) {
               let timeScaleIOHOT = document.querySelector('.tenToOneHundred')
               for (let i = 0; i < hiddenScale.length; i++) {
                 hiddenScale[i].style.opacity = "0%"
               }
               timeScaleIOHOT.style.opacity = "100%"
-            } else if (entry.target.id === infdivTenToOneHundred.id) {
+            } else if (infdivTenToOneHundred && entry.target.id === infdivTenToOneHundred.id) {
               let timeScaleITOH = document.querySelector('.oneToTen')
               for (let i = 0; i < hiddenScale.length; i++) {
                 hiddenScale[i].style.opacity = "0%"
@@ -555,29 +562,45 @@ class TimeLine extends Component {
           threshold: 1.0
         };
      
-        observer = new IntersectionObserver(handleIntersect, options);
-        observer.observe(divLessOneYear);
+        if (divLessOneYear) {
+          observer = new IntersectionObserver(handleIntersect, options);
+          observer.observe(divLessOneYear);
+        }
        
-        observer = new IntersectionObserver(handleIntersect, options);
-        observer.observe(divOneToTen);
+        if (divOneToTen) {
+          observer = new IntersectionObserver(handleIntersect, options);
+          observer.observe(divOneToTen);
+        }
 
-        observer = new IntersectionObserver(handleIntersect, options);
-        observer.observe(divTenToOneHundred);
+        if (divTenToOneHundred) {
+          observer = new IntersectionObserver(handleIntersect, options);
+          observer.observe(divTenToOneHundred);
+        }
 
-        observer = new IntersectionObserver(handleIntersect, options);
-        observer.observe(divOneHundredToOneThousand);
+        if (divOneHundredToOneThousand) {
+          observer = new IntersectionObserver(handleIntersect, options);
+          observer.observe(divOneHundredToOneThousand);
+        }
 
-        observer = new IntersectionObserver(handleIntersect, options);
-        observer.observe(divMoreOneThousand);
+        if (divMoreOneThousand) {
+          observer = new IntersectionObserver(handleIntersect, options);
+          observer.observe(divMoreOneThousand);
+        }
 
-        observer = new IntersectionObserver(handleIntersect, options);
-        observer.observe(infdivMoreOneThousand);
+        if (infdivMoreOneThousand) {
+          observer = new IntersectionObserver(handleIntersect, options);
+          observer.observe(infdivMoreOneThousand);
+        }
 
-        observer = new IntersectionObserver(handleIntersect, options);
-        observer.observe(infdivOneHundredToOneThousand);
+        if (infdivOneHundredToOneThousand) {
+          observer = new IntersectionObserver(handleIntersect, options);
+          observer.observe(infdivOneHundredToOneThousand);
+        }
 
-        observer = new IntersectionObserver(handleIntersect, options);
-        observer.observe(infdivTenToOneHundred);
+        if (infdivTenToOneHundred) {
+          observer = new IntersectionObserver(handleIntersect, options);
+          observer.observe(infdivTenToOneHundred);
+        } 
       }
      
       createObserver();
