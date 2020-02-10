@@ -9,4 +9,49 @@
     color: $third-color;
     font-family: $marvin-vision-bold;
   }
+
+  .wasteAmountBlock {
+    background-color: #F3F8F9;
+    position: relative;
+
+      .data-text {
+        font-family: $montserrat-regular;
+        font-size: 14px;
+        color: $third-color;
+      }
+      .data-name {
+        font-weight: bold;
+        font-size: 16px;
+      }
+    
+      .totalTons {
+        background: linear-gradient(52.51deg, #FB8070 0%, #FFB097 100%);
+        border-radius: 20px;
+        position: absolute;
+        left: 40px;
+        bottom: 45px;
+        text-align: left;
+
+        p {
+          color: #ffffff;
+          font-family: Montserrat;
+          font-weight: bold;
+          width: 90%;
+          margin: auto;
+          position: relative;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 20px;
+        }
+      }
+
+      .circle-opacity {
+        opacity: 0.2;
+      }
+
+      .circle {
+        position: absolute;
+        bottom: -20px;
+      }
+  }
 }
