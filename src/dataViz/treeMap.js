@@ -11,8 +11,9 @@ class TreeMap extends Component {
   drawChart() {
 
     const data = {"children": this.props.data}
+
+    console.log(this.props.dataTD)
     
-// 20200207203852
     // set the dimensions and margins of the graph
     const sizeWindow = window.innerWidth - 115;
 
@@ -72,7 +73,7 @@ class TreeMap extends Component {
       .attr('height', function (d) {
         return (d.y1 - d.y0);
       })
-      .style("fill", "#ffffff")
+      .style("cursor", "pointer")
       .style('background-color', '#ffffff')
 
       vignette.append("xhtml:p")
@@ -138,6 +139,11 @@ class TreeMap extends Component {
       })
       .append('xhtml:p')
       .text((d) => d.data.nbTrilibs + d.data.nbTrimobiles)
+
+      //vignette with all distance
+
+      const vignetteD = vignette.append('xhtml:div')
+
 
     // svg.selectAll("rect")
     //   .data(root.leaves())
