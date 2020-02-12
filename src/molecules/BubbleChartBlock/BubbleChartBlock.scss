@@ -17,10 +17,10 @@
       .data-text {
         font-family: $montserrat-regular;
         font-size: 14px;
-        color: $third-color;
+        fill: $third-color;
       }
       .data-name {
-        font-weight: bold;
+        font-family: $montserrat-bold;
         font-size: 16px;
       }
     
@@ -34,8 +34,7 @@
 
         p {
           color: #ffffff;
-          font-family: Montserrat;
-          font-weight: bold;
+          font-family: $montserrat-bold;
           width: 90%;
           margin: auto;
           position: relative;
@@ -45,13 +44,11 @@
         }
       }
 
-      .circle-opacity {
-        opacity: 0.2;
-      }
-
-      .circle {
-        position: absolute;
-        bottom: -20px;
+      .wasteAmount {
+        background-color: #F3F8F9;
+        background-image: url("/data/rond.png");
+        background-repeat: no-repeat;
+        background-position: bottom left;
       }
   }
 }
