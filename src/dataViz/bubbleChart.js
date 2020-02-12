@@ -1,33 +1,37 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 
-function BubbleChart(wasteOneDay, wasteTwoWeeks, wasteOlympicsOneDay, wasteOlympicsTwoWeeks) {
-  // const [waste, setWaste] = useState([wasteParisOneDay.wasteParisOneDay])
-  let waste = wasteOneDay.wasteOneDay
-  const wastePTW = wasteOneDay.wasteTwoWeeks
-  const wastePOOD = wasteOneDay.wasteOlympicsOneDay
-  const wastePOTW = wasteOneDay.wasteOlympicsTwoWeeks
+const BubbleChart = ({waste, setWaste, nbDays, setNbDays, isOlympic, setIsOlympic}) => {
   const svgRef = useRef();
 
   const width = 1241;
   const height = 600;
   let div = createDiv();
   let svg = createSVG();
+  // console.log(waste)
 
-  useEffect(() => {
+  const DrawChart = (waste) => {
     let hierachalData = makeHierarchy(waste)
-    let packLayout = pack([width - 5, height - 5])
+    let packLayout = pack([width -5 , height - 5])
     const root = packLayout(hierachalData);
 
     const leaf = svg
       .selectAll("g")
       .data(root.leaves())
-      .join("g")
-      // .attr("transform", d => `translate(${d.y - 200},${d.x + 100})`);
-      .attr("transform", d => `translate(${d.y + 200},${d.x - 330})`);
+      // .enter()
+      // .append("g")
+      .join('g')
+      .attr("transform", d =>  `translate(${d.y + 300},${d.x - 330})`)
 
     leaf.append("circle")
-        .attr("r", d => d.r)
+        // .attr("r", function(d) {
+        //   if (nbDays === 14) {
+        //     return d.r / 1.5
+        //   }
+        //   else
+        //   return d.r
+        // })
+        .attr('r', d => d.r)
         .attr("fill", "#C4C4C4");
   
     leaf.append("text")
@@ -43,37 +47,54 @@ function BubbleChart(wasteOneDay, wasteTwoWeeks, wasteOlympicsOneDay, wasteOlymp
         .attr('class', 'data-text data-tons')
         .attr('x', - 3 + '%')
         .text(d => d.tons + ' tons');
-    
-    svg.append('svg')
-    .attr('class', 'circle-opacity')
-    .attr("width", 200)
-    .attr("height", 250)
-    .append('circle')
-    .attr('cx', '0')
-    .attr('cy', '140')
-    .attr('r', '120')
-    .attr('stroke-width', '0')
-    .attr('fill', '#FB8070')
 
-    svg.append('svg')
-    .attr('class', 'circle')
-    .attr("width", 200)
-    .attr("height", 200)
-    .append('circle')
-    .attr('cx', '0')
-    .attr('cy', '90')
-    .attr('r', '65')
-    .attr('stroke-width', '0')
-    .attr('fill', '#F3F8F9')
-
-    div.append('div')
+    let totalTons = div.append('div')
     .attr('class', 'totalTons')
     .style('width', "257px")
     .style('height', "101px")
+    // .append('p')
+    // .text('TOTAL')
     .append('p')
-    .text('TOTAL')
-    .append('p')
-    .text(waste.reduce((accumulator, d)=> accumulator + d.tons ,0) + ' tons')
+    .text('TOTAL ' + waste.reduce((accumulator, d) => accumulator + d.tons ,0) + ' tons')
+  }
+
+  const UpdateChart = (waste, setNbDays, days) => {
+    let hierachalData = makeHierarchy(waste)
+    let packLayout = pack([width - 5 , height - 5])
+    const root = packLayout(hierachalData);
+    setNbDays(days)
+    
+    const leaf = svg
+      .selectAll("g")
+      .data(root.leaves())
+      .transition()
+      // .attr("transform", d =>  `translate(${d.y + 300},${d.x - 330})`)
+
+    leaf.select('circle')
+        .duration(500)
+        .attr('r', d => d.r * 1.5)
+        
+    // svg.selectAll('g')
+    //     .select('text')
+    //     .data(waste)
+    //     .transition()
+    //     .duration(500)
+    //     .text(d => d.name);
+    
+    svg.selectAll('g')
+        .select('.data-tons')
+        .data(waste)
+        .transition()
+        .duration(500)
+        .text(d => d.tons + ' tons');
+
+    // let totalTons = div.select('div')
+    // .duration(500)
+    // .text('TOTAL ' + waste.reduce((accumulator, d) => accumulator + d.tons ,0) + ' tons')
+  }
+
+  useEffect(() => {
+    DrawChart(waste)
   }, [waste])
   
   function createSVG() {
@@ -97,13 +118,27 @@ function BubbleChart(wasteOneDay, wasteTwoWeeks, wasteOlympicsOneDay, wasteOlymp
   function pack(size) {
     return d3.pack()
     .size(size)
-    .padding(3)
+    // .padding(paddingValue(nbDays))
+  }
+
+  function paddingValue(nbDays) {
+    if (nbDays === 14) {
+        return 3
+      }
+      else
+      return 3
   }
 
   return (
     <div>
-      <button onClick= {() => waste = waste.map(tons => tons * 13.4)}>2 weeks in paris</button>
-      <div className="wasteAmountBlock" ref={svgRef}></div>
+    {console.log(nbDays)}
+    {console.log(waste.map(waste => waste.tons))}
+    <button onClick={() => UpdateChart(waste, setNbDays, 3)}> 2 weeks</button>
+      {/* {/* <button onClick={() => setNbDays(14)}>2 weeks in paris</button> */}
+      {/* <button onClick={() => setIsOlympic(true)}>1 day in paris during olympics</button> */}
+      {/* <button onClick={() => {setNbDays(14); setIsOlympic(true)}}>14 days in paris during olympics</button> */}
+      <div className="wasteAmountBlock" ref={svgRef}>
+      </div>
     </div>
     
   )

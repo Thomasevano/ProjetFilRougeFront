@@ -21,7 +21,6 @@ export default TimeLineSet => {
     .then(response => response.json())
     .then(result => setDataTest(result))
   }, [])
-
   return (
     <div className="timeLineSet">
       <h2>Waste likely to end up on public roads</h2>
