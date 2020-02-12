@@ -1,23 +1,29 @@
-import React, {Component} from 'react';
+import React, {useState, useEffect} from 'react';
 import * as d3 from "d3";
-// import * as h from "d3";
-// import * as d from "d3";
 
-class TreeMap extends Component {
-  componentDidUpdate() {
-    this.drawChart();
-  }
+const TreeMap = ({monuments}) => {
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     count: 0,
+  //     velib: {}
+  //   }
+  // }
 
-  drawChart() {
+  const[count, setCount] = useState(0)
+  const[trilib, setTrilib] = useState({})
 
-    const data = {"children": this.props.data}
+  // componentDidUpdate() {
+  //   this.drawChart();
+  // }
 
-    console.log(this.props.dataTD)
+  const drawChart = (listMonument) => {
+    const data = {"children": listMonument}
     
     // set the dimensions and margins of the graph
     const sizeWindow = window.innerWidth - 115;
 
-    var margin = {
+    const margin = {
       top: 10,
       right: 10,
       bottom: 10,
@@ -25,14 +31,14 @@ class TreeMap extends Component {
     },
 
     width = sizeWindow - margin.left - margin.right - 80,
-    height = 33.5 * data.children.length - margin.top - margin.bottom;
+    height = 100 * data.children.length - margin.top - margin.bottom;
     
 
     // append the svg object to the body of the page
     var svg = d3.select(".treeMap")
       .append("svg")
       .attr("width", '100%')
-      .attr("height", 35 * data.children.length + margin.top + margin.bottom)
+      .attr("height", 100 * data.children.length + margin.top + margin.bottom)
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -41,7 +47,7 @@ class TreeMap extends Component {
       if (d.nbTrilibs + d.nbTrimobiles > 20) {
         return d.nbTrilibs + d.nbTrimobiles + 30
       } else if (d.nbTrilibs + d.nbTrimobiles === 0) {
-        return 30
+        return 20
       } else {
         return d.nbTrilibs + d.nbTrimobiles + 30
       }
@@ -51,7 +57,7 @@ class TreeMap extends Component {
     d3.treemap()
       .size([width, height])
       .padding(20)
-      (root)
+      (root);
 
     // use this information to add rectangles:
 
@@ -75,6 +81,7 @@ class TreeMap extends Component {
       })
       .style("cursor", "pointer")
       .style('background-color', '#ffffff')
+      .on("click", handleClick)
 
       vignette.append("xhtml:p")
       .attr('class', 'place')
@@ -116,12 +123,12 @@ class TreeMap extends Component {
 
         return vSize - pSize.offsetHeight - p2Size.offsetHeight - 40 + 'px'
       })
-      .attr('src', 'data/intro-background-eiffelTower.jpg')
+      .attr('src', (d) => d.data.img_url)
       .style('object-fit', 'cover')
       .style('background', '#C4C4C4')
       .style('border-radius', '5px')
       .style('display', function(d) {
-        if ((d.y1 - d.y0) > 90) {
+        if ((d.y1 - d.y0) > 120) {
           return 'block'
         } else {
           return 'none'
@@ -140,76 +147,193 @@ class TreeMap extends Component {
       .append('xhtml:p')
       .text((d) => d.data.nbTrilibs + d.data.nbTrimobiles)
 
-      //vignette with all distance
+    //Description of points of interest by monument
+    const zoomVignette = d3.select(".treeMap")
+      .append('div')
+      .attr('class', 'vignetteMonumentContainer')
+      .style('display', 'none')
+      .style('width', 'calc(100% - 92px)')
+      //.style('position', 'absolute')
+      .style('height', '100vh')
+      .style('top', '0px')
+      .style('margin-left', '92px')
+      .selectAll('div')
+      .data(data.children)
+      .enter()
+      .append('div')
+      //.attr('id', (d) => 'vignette' + d.id)
+      .attr('class', (d) => 'zoomMonument vignette' + d.id)
+      .style('display', 'none')
+      //.style('display', 'flex')
+      .style('width', '90%')
+      .style('height', '70%')
+      .style('margin', 'auto')
+      .style('background-color','#FFFFFF')
+      .style('border-radius', '10px')
+      .style('padding', '20px')
+      .style('position', 'relative')
+      .style('top', '50%')
+      .style('transform', 'translateY(-50%)')
 
-      const vignetteD = vignette.append('xhtml:div')
+    const backMondrian = zoomVignette.append('div')
+    .style('position', 'absolute')
+    .style('display', 'flex')
+    .style('top', '-60px')
+    .style('left', '0px')
+    .style('cursor','pointer')
+    .on("click", handleClickZoomVignette)
+
+    backMondrian.append('img')
+    .attr('src', './data/arrowSecondaryButton.svg')
+    .style('transform', 'rotate(180deg)')
+
+    backMondrian.append('p')
+    .text('Back to Mondrian Grid')
+    .style('margin-left', '30px')
+    .style('color', '#005258')
+    .style('font-szie', '16px')
+
+    const illustration = zoomVignette.append('div')
+      .style('text-align', 'left')
+      .style('width', '35%')
+
+    illustration.append('h3')
+    .text((d) => d.name)
+    .style('color', '#005258')
+    .style('font-size', '30px')
+    .style('margin', '0px')
+
+    illustration.append('h4')
+    .text((d) => d.sport)
+    .style('color', '#6A6D73')
+    .style('font-size', '14px')
+      
+    illustration.append("img")
+      .attr('src', (d) => d.img_url)
+      .style('width', '100%')
+      .style('object-fit', 'contain')
+      .style('border-radius', '5px')
+
+    const contentVignette = zoomVignette.append('div')
+    .attr('class', 'contentVignette')
+
+    const button = contentVignette.append('div')
+    .attr('class', 'buttonContainer')
+
+    button.append('button')
+    .attr('class', " buttonVignette buttonTrilib active")
+    .text('Trilib')
+    .on("click", handleClickVignette)
+
+    button.append('button')
+    .attr('class', "buttonVignette buttonTrimobile")
+    .text('Tri Mobile')
+    .on("click", handleClickVignette)
+
+    contentVignette.append('div')
+      //.text("Trilib :")
+      .attr('class','vignetteTrilib')
+      .append('ul')
+      .each(function(d) {
+        d3.select(this)
+        .selectAll('li')
+        .data(d.interets.trilib)
+        .enter()
+        .append('li')
+        .text(function(d) {
+          return "Le point d'interet est à " + d.distance_m + " m"
+        })
+        .style('text-align', 'left')
+        .style('list-style-image', 'url(./data/puceList.png)')
+        .style('margin-top', '5px')
+      })
+
+    contentVignette.append('div')
+      //.text("Trimobile :")
+      .attr('class','vignetteTrimobile')
+      .append('ul')
+      .each(function(d) {
+        d3.select(this)
+        .selectAll('li')
+        .data(d.interets.trimobile)
+        .enter()
+        .append('li')
+        .text(function(d) {
+          return "Le point d'interet est à " + d.distance_m + " m"
+        })
+        .style('text-align', 'left')
+        .style('list-style-image', 'url(./data/puceList.png)')
+        .style('margin-top', '5px')
+      })
+
+    function handleClick() {
+      d3.select('.vignetteMonumentContainer')
+      .style('display', 'block')
+
+      d3.select('.treeMap svg')
+      .style('display', 'none')
+
+      //choose the vignette to display
+      var vignette = document.querySelector('.zoomMonument.' + this.classList[1])
+
+      d3.select(vignette)
+      .style('display', 'flex')
+    }
+
+    function handleClickVignette() {
+      // let button = document.querySelector('.buttonVignette.active')
+      // button.classList.remove('active')
+      // this.classList.add("active");
+
+      // if (this.classList.contains('buttonTrilib')) {
+      //   let trilib = document.querySelectorAll('vignetteTrilib')
+      //   let trimobile = document.querySelectorAll('vignetteTrimobile')
+      //   for(let i = 0; i < trilib.length; i++) {
+      //     trilib[i].style.display('block')
+      //   }
+      //   for(let i = 0; i < trimobile.length; i++) {
+      //     trimobile.style.display('none')
+      //   }
+      // }
 
 
-    // svg.selectAll("rect")
-    //   .data(root.leaves())
-    //   .enter()
-    //   .append("rect")
-    //   .attr('class', "vignette")
-    //   .attr('x', function (d) {
-    //     return d.x0;
-    //   })
-    //   .attr('y', function (d) {
-    //     return d.y0;
-    //   })
-    //   .attr('width', function (d) {
-    //     return (d.x1 - d.x0);
-    //   })
-    //   .attr('height', function (d) {
-    //     return (d.y1 - d.y0);
-    //   })
-    //   .style("fill", "#ffffff")
+      // d3.json('http://127.0.0.1:8000/velib/1' , function(error, velib) {
+      //   if (error) throw error;
 
-    // // and to add the text labels
-    // svg.selectAll("text")
-    //   .data(root.leaves())
-    //   .enter()
-    //   .append("text")
-    //   .attr("x", function (d) {
-    //     return d.x0 + 5
-    //   }) // +10 to adjust position (more right)
-    //   .attr("y", function (d) {
-    //     return d.y0 + 20
-    //   }) // +20 to adjust position (lower)
-    //   .text(function (d) {
-    //     return d.data.name
-    //   })
-    //   .attr("font-size", "15px")
-    //   .attr("fill", "black")
+      //   console.log(velib)
+      // })
 
+      fetch(`http://127.0.0.1:8000/trilib/1`)
+       .then(response => response.json())
+       .then(result => setTrilib(result))
+      console.log(this.parentNode.parentNode.parentNode)
+      d3.select('.buttonContainer')
+      .append('div')
+      .append('p')
+      .style('position', 'absolute')
+      .style('z-index', '1')
+      .text(trilib.address)
+    }
 
-    // //d3.select('.treeMap')
-    //   svg.append('svg')
-    //   .attr('class', 'circle opacity')
-    //   .attr("width", 200)
-    //   .attr("height", 270)
-    //   .append('circle')
-    //   .attr('cx', '0')
-    //   .attr('cy', '140')
-    //   .attr('r', '120')
-    //   .attr('stroke-width', '0')
-    //   .attr('fill', '#FB8070')
+    function handleClickZoomVignette() {
+      d3.select('.treeMap svg')
+      .style('display', 'block')
 
-    // //d3.select('.treeMap')
-    //   svg.append('svg')
-    //   .attr('class', 'circle littleCircle')
-    //   .attr("width", 200)
-    //   .attr("height", 210)
-    //   .append('circle')
-    //   .attr('cx', '0')
-    //   .attr('cy', '100')
-    //   .attr('r', '65')
-    //   .attr('stroke-width', '0')
-    //   .attr('fill', '#F3F8F9')
+      d3.select(this.parentNode)
+      .style('display', 'none')
+
+      d3.select('.vignetteMonumentContainer')
+      .style('display', 'none')
+    }
   }
 
-  render(){
-    return <div className="treeMap"></div>
-  }
+  useEffect(() => {
+    drawChart(monuments);
+  })
+
+  return (
+    <div className="treeMap"></div>
+  )
 }
 
 export default TreeMap;

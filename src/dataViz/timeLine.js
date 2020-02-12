@@ -18,8 +18,6 @@ class TimeLine extends Component {
 
     let data = []
 
-    console.log(this.props.dataTest)
-
     // Arrays about data time (month, year, years) //
     let dataM = []
     let dataY = []

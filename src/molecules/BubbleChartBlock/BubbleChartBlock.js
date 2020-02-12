@@ -33,9 +33,9 @@ function BubbleChartBlock() {
 
   useEffect(() => {
     getWasteOneDay()
-    getWasteTwoWeeks()
-    getWasteOlympicsOneDay()
-    getWasteOlympicsTwoWeeks()
+    // getWasteTwoWeeks()
+    // getWasteOlympicsOneDay()
+    // getWasteOlympicsTwoWeeks()
   }, [])
   
   return(
