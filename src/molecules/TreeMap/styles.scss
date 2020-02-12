@@ -63,6 +63,29 @@
       }
     }
 
+    .vignetteMonumentContainer {
+      background-color: #F3F8F9;
+      background-image: url("/data/rond.png");
+      background-repeat: no-repeat;
+      background-position: bottom left;
+
+      .buttonVignette {
+        border: none;
+        font-size: 20px;
+        color: #005258;
+        border-radius: 10px;
+        width: 168.5px;
+        height: 55px;
+        cursor: pointer;
+        margin: 0px 5px 0px 5px;
+
+        &.active {
+          color: #FFFFFF;
+          background-color: #FB8070;
+        }
+      }
+    }
+
     .circle.opacity {
       opacity: 0.2;
     }
