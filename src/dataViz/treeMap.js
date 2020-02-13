@@ -2,13 +2,6 @@ import React, {useState, useEffect} from 'react';
 import * as d3 from "d3";
 
 const TreeMap = ({monuments}) => {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     count: 0,
-  //     velib: {}
-  //   }
-  // }
 
   const[trilibs, setTrilibs] = useState({})
   const[trimobiles, setTrimobiles] = useState({})
@@ -19,7 +12,6 @@ const TreeMap = ({monuments}) => {
 
     d3.selectAll('.contentVignette')
       .append('div')
-      //.text("Trilib :")
       .attr('class','vignetteTrimobiles')
       .style('display', 'none')
       .append('ul')
@@ -37,8 +29,14 @@ const TreeMap = ({monuments}) => {
       .text((d) => d.address)
       .style('font-size', '16px')
       .style('color', '#005258')
-      
-      
+
+      d3.selectAll('.vignetteTrimobiles')
+      .append('p')
+      .text( (d) => {
+        if (trimobiles == "") {
+          return 'There is no Trilib/Tri Mobile around here at the moment. Please make sure to take your own bag for your waste.'
+        }
+      })
   }, [trimobiles])
 
   //Create a tag for trimobiles on click on monument
@@ -47,7 +45,6 @@ const TreeMap = ({monuments}) => {
 
     d3.selectAll('.contentVignette')
       .append('div')
-      //.text("Trilib :")
       .attr('class','vignetteTrilibs')
       .append('ul')
       .style('column-count', '2')
@@ -65,13 +62,15 @@ const TreeMap = ({monuments}) => {
       .text((d) => d.address)
       .style('font-size', '16px')
       .style('color', '#005258')
-      
-      
-  }, [trilibs])
 
-  // componentDidUpdate() {
-  //   this.drawChart();
-  // }
+      d3.selectAll('.vignetteTrilibs')
+      .append('p')
+      .text( (d) => {
+        if (trilibs == "") {
+          return 'There is no Trilib/Tri Mobile around here at the moment. Please make sure to take your own bag for your waste.'
+        }
+      })
+  }, [trilibs])
 
   const drawChart = (listMonument) => {
     const data = {"children": listMonument}
@@ -115,7 +114,6 @@ const TreeMap = ({monuments}) => {
       (root);
 
     // use this information to add rectangles:
-
     const vignette = svg.selectAll("svg")
       .data(root.leaves())
       .enter()
@@ -141,7 +139,6 @@ const TreeMap = ({monuments}) => {
 
       vignette.append("xhtml:p")
       .attr('class', 'place')
-      //.attr("clip-path", 'polygon(0 0, 115px 0, 115px 100%, 0% 100%)')
       .attr("x", function (d) {
         return d.x0 + 5
       }) // +10 to adjust position (more right)
@@ -209,7 +206,6 @@ const TreeMap = ({monuments}) => {
       .attr('class', 'vignetteMonumentContainer')
       .style('display', 'none')
       .style('width', 'calc(100% - 92px)')
-      //.style('position', 'absolute')
       .style('height', '100vh')
       .style('top', '0px')
       .style('margin-left', '92px')
@@ -217,12 +213,9 @@ const TreeMap = ({monuments}) => {
       .data(data.children)
       .enter()
       .append('div')
-      //.attr('id', (d) => 'vignette' + d.id)
       .attr('class', (d) => 'zoomMonument vignette' + d.id)
       .style('display', 'none')
-      //.style('display', 'flex')
       .style('width', '90%')
-      // .style('height', '70%')
       .style('height', '70%')
       .style('margin', 'auto')
       .style('background-color','#FFFFFF')
@@ -372,9 +365,6 @@ const TreeMap = ({monuments}) => {
     }
 
     function handleClickButton() {
-      let buttonActive = document.querySelectorAll('.buttonVignette.active')
-      //let buttonDisabled = document.querySelectorAll('.buttonVignette.disabled')
-
       let trilib = document.querySelectorAll('.buttonTrilib')
       let trimobile = document.querySelectorAll('.buttonTrimobile')
 
