@@ -13,6 +13,9 @@
   .wasteAmountBlock {
     background-color: #F3F8F9;
     position: relative;
+    background-image: url("/data/rond.png");
+    background-repeat: no-repeat;
+    background-position: bottom left;
 
       .data-text {
         font-family: $montserrat-regular;
@@ -42,13 +45,6 @@
           transform: translateY(-50%);
           font-size: 20px;
         }
-      }
-
-      .wasteAmount {
-        background-color: #F3F8F9;
-        background-image: url("/data/rond.png");
-        background-repeat: no-repeat;
-        background-position: bottom left;
-      }
+    }
   }
 }
