@@ -135,7 +135,8 @@ const BubbleChart = ({waste, setWaste, nbDays, setNbDays, isOlympic, setIsOlympi
 
   return (
     <div className="wasteAmountBlock" ref={svgRef}>
-      {console.log(nbDays)}
+      {/* {console.log(nbDays)} */}
+      {console.log(waste)}
       {console.log(waste.map(waste => waste.tons))}
       {/* <div className="filter">
         <h3 className="filter-title">Duration</h3>
@@ -155,7 +156,7 @@ const BubbleChart = ({waste, setWaste, nbDays, setNbDays, isOlympic, setIsOlympi
           <label htmlFor="2WeeksParisOlympics">Olympics</label>
         </div>
       </div> */}
-      <Filter title="Duration" labelId="1DayParis" label="1 Day" functionName={() => UpdateChart(waste, setNbDays, 1, false)} secondLabelId="2WeeksParis" secondLabel="2 Weeks" secondFunctionName={() => UpdateChart(waste, setNbDays, 14, false)}></Filter>
+      <Filter title="Duration" labelId="1DayParis" label="1 Day" functionName={UpdateChart(waste, setNbDays, 1, false)} secondLabelId="2WeeksParis" secondLabel="2 Weeks" secondFunctionName={() => UpdateChart(waste, setNbDays, 14, false)}></Filter>
       <Filter title="Population" labelId="1DayParisOlympics" label="Paris" functionName={() => UpdateChart(waste, setNbDays, 1, true)} secondLabelId="2WeeksParisOlympics" secondLabel="Olympics" secondFunctionName={() => UpdateChart(waste, setNbDays, 14, true)}></Filter>
     </div>
   )

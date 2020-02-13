@@ -1,6 +1,7 @@
 import React from 'react';
 import SecondaryButton from '../../atoms/SecondaryButton/secondaryButton';
 import Step from '../../atoms/Step/Step';
+import './styles.scss'
 
 export default class EndPart extends React.Component {
   

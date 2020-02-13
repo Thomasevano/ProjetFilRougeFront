@@ -1,5 +1,6 @@
 import React , { useState, useEffect}from 'react';
 import TimeLine from '../../dataViz/timeLine';
+import './styles.scss'
 
 // export default class TimeLineSet extends React.Component {
 

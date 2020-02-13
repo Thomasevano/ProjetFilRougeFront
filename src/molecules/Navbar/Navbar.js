@@ -1,6 +1,7 @@
 import React from 'react';
 import Logo from '../../atoms/Logo/Logo';
 import Menu from '../../atoms/Menu/Menu';
+import './Navbar.scss'
 
 function Navbar() {
   return (

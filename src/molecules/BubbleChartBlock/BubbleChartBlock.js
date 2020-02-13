@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react'
 import BubbleChart from '../../dataViz/bubbleChart';
+import './BubbleChartBlock.scss'
 
 function BubbleChartBlock() {
   const [waste, setWaste] = useState([])

@@ -1,4 +1,5 @@
 import React from 'react';
+import './InfoBlock.scss'
 
 function InfoBlock({infoTitle, infoSubtitle, infoDescription}) {
   
