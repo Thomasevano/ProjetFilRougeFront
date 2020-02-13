@@ -84,6 +84,10 @@
           color: #FFFFFF;
           background-color: #FB8070;
         }
+
+        &:focus {
+          outline:0
+        }
       }
 
       .contentVignette {

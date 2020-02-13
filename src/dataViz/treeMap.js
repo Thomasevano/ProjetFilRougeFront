@@ -222,6 +222,7 @@ const TreeMap = ({monuments}) => {
       .style('display', 'none')
       //.style('display', 'flex')
       .style('width', '90%')
+      // .style('height', '70%')
       .style('height', '70%')
       .style('margin', 'auto')
       .style('background-color','#FFFFFF')
@@ -274,6 +275,7 @@ const TreeMap = ({monuments}) => {
     .attr('class', 'contentVignette')
     .style('width', '65%')
     .style('padding', '15px')
+    .style('overflow', 'scroll')
 
     contentVignette.append('img')
     .attr('src', './data/treeMap/trilib.png')
@@ -424,37 +426,17 @@ const TreeMap = ({monuments}) => {
           .style('display', 'inline')
         }
       }
-        
-      //.classList.add("active");
-
-      //buttonVignette buttonTrilib
-      
-      // let trilib = document.querySelectorAll('vignetteTrilibs')
-      // let trimobile = document.querySelectorAll('vignetteTrimobiles')
-
-      // if (this.classList.contains('buttonTrilib')) {
-        
-      //   trilib.style.display('block')
-      //   trimobile.style.display('none')
-
-      //   // for(let i = 0; i < trimobile.length; i++) {
-      //   //   trimobile.style.display('none')
-      //   // }
-      // } else {
-      //   trilib.style.display('none')
-      //   trimobile.style.display('block')
-      // }
     }
 
     function handleClickBackMondrian() {
-      d3.select('.treeMap svg')
-      .style('display', 'block')
 
-      d3.select(this.parentNode)
-      .style('display', 'none')
-
-      d3.select('.vignetteMonumentContainer')
-      .style('display', 'none')
+      let trilib = document.querySelectorAll('.buttonTrilib')
+      let trimobile = document.querySelectorAll('.buttonTrimobile')
+      
+      for (let i = 0; i < trilib.length; i++) {
+        trilib[i].classList.add('active')
+        trimobile[i].classList.remove('active')
+      }
 
       d3.selectAll('.vignetteTrimobiles')
       .style('display', 'none')
@@ -473,6 +455,15 @@ const TreeMap = ({monuments}) => {
 
       d3.selectAll('.imageTrilib')
       .style('display', 'inline')
+
+      d3.select('.treeMap svg')
+      .style('display', 'block')
+
+      d3.select(this.parentNode)
+      .style('display', 'none')
+
+      d3.select('.vignetteMonumentContainer')
+      .style('display', 'none')
     }
   }
 
