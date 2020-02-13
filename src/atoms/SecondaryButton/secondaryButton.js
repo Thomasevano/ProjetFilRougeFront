@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './secondaryButton.scss'
 
 export default class SecondaryButton extends React.Component {
   

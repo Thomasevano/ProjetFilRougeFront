@@ -1,5 +1,6 @@
 import React from 'react';
 import Step from '../Step/Step'
+import './Menu.scss'
 
 function Menu() {
   
@@ -14,9 +15,9 @@ function Menu() {
       <aside>
         <div className="section">
           <ul className="list">
-            <li><Step number="1"/><a href="/sensitization" className="anchor">Become aware of our impact</a></li>
-            <li><Step number="2"/><a href="/participate" className="anchor">Participate</a></li>
-            <li><Step number="3"/><a href="/step3" className="anchor">Evaluate</a></li>
+            <li><Step object="circle" stepNumber="Step 1"/><a href="/sensitization" className="anchor">Become aware of our impact</a></li>
+            <li><Step object="circle" stepNumber="Step 2"/><a href="/participate" className="anchor">Participate</a></li>
+            <li><Step object="circle" stepNumber="Step 3"/><a href="/step3" className="anchor">Evaluate</a></li>
           </ul>
         </div>
       </aside>
