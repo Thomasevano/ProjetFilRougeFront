@@ -13,43 +13,64 @@ const TreeMap = ({monuments}) => {
   const[trilibs, setTrilibs] = useState({})
   const[trimobiles, setTrimobiles] = useState({})
 
+  //Create a tag for trilibs click on monument
   React.useEffect(() => {
-    // d3.selectAll('.buttonContainer')
-    //   .append('div')
-    //   .data(trilibs)
-    //   .enter()
-    //   .append('p')
-    //   .style('position', 'absolute')
-    //   .style('z-index', '1')
-    //   .text(trilibs.address)
+    d3.selectAll('.vignetteTrimobiles').remove()
 
     d3.selectAll('.contentVignette')
       .append('div')
       //.text("Trilib :")
-      .attr('class','vignetteTrilib')
+      .attr('class','vignetteTrimobiles')
       .append('ul')
+      .style('column-count', function(d) {
+    
+        return console.log(trimobiles.lenght)
+      } )
       .selectAll('li')
       .data(trimobiles)
       .enter()
       .append('li')
+      .style('text-align', 'left')
+      .style('list-style-image', 'url(./data/puceList.png)')
+      .style('margin-top', '5px')
+      .append('a')
+      .style('text-decoration', 'none')
+      .attr('target', '_blank')
+      .attr('href', (d) => `https://www.google.com/maps/search/?api=1&query=${d.latitude},${d.longitude}`)
       .text((d) => d.address)
+      .style('font-size', '16px')
+      .style('color', '#005258')
       
-      // .each(function(d) {
-      //   d3.select(this)
-      //   .selectAll('li')
-      //   .data(d)
-      //   .enter()
-      //   .append('li')
-      //   .text(function(d) {
-      //     return "Le point d'interet est à " + d.distance_m + " m"
-      //   })
-      //   .style('text-align', 'left')
-      //   .style('list-style-image', 'url(./data/puceList.png)')
-      //   .style('margin-top', '5px')
-      // })
-      console.log(trilibs)
       console.log(trimobiles)
   }, [trimobiles])
+
+  //Create a tag for trimobiles on click on monument
+  React.useEffect(() => {
+    d3.selectAll('.vignetteTrilibs').remove()
+
+    d3.selectAll('.contentVignette')
+      .append('div')
+      //.text("Trilib :")
+      .attr('class','vignetteTrilibs')
+      .append('ul')
+      .style('column-count', '2')
+      .selectAll('li')
+      .data(trilibs)
+      .enter()
+      .append('li')
+      .style('text-align', 'left')
+      .style('list-style-image', 'url(./data/puceList.png)')
+      .style('margin-top', '5px')
+      .append('a')
+      .style('text-decoration', 'none')
+      .attr('target', '_blank')
+      .attr('href', (d) => `https://www.google.com/maps/search/?api=1&query=${d.latitude},${d.longitude}`)
+      .text((d) => d.address)
+      .style('font-size', '16px')
+      .style('color', '#005258')
+      
+      console.log(trilibs)
+  }, [trilibs])
 
   // componentDidUpdate() {
   //   this.drawChart();
@@ -57,6 +78,8 @@ const TreeMap = ({monuments}) => {
 
   const drawChart = (listMonument) => {
     const data = {"children": listMonument}
+
+    console.log(data)
     
     // set the dimensions and margins of the graph
     const sizeWindow = window.innerWidth - 115;
@@ -70,7 +93,6 @@ const TreeMap = ({monuments}) => {
 
     width = sizeWindow - margin.left - margin.right - 80,
     height = 100 * data.children.length - margin.top - margin.bottom;
-    
 
     // append the svg object to the body of the page
     var svg = d3.select(".treeMap")
@@ -270,43 +292,8 @@ const TreeMap = ({monuments}) => {
     .text('Tri Mobile')
     .on("click", handleClickButton)
 
-    // contentVignette.append('div')
-    //   //.text("Trilib :")
-    //   .attr('class','vignetteTrilib')
-    //   .append('ul')
-    //   .each(function(d) {
-    //     d3.select(this)
-    //     .selectAll('li')
-    //     .data(d.interets.trilib)
-    //     .enter()
-    //     .append('li')
-    //     .text(function(d) {
-    //       return "Le point d'interet est à " + d.distance_m + " m"
-    //     })
-    //     .style('text-align', 'left')
-    //     .style('list-style-image', 'url(./data/puceList.png)')
-    //     .style('margin-top', '5px')
-    //   })
-
-    // contentVignette.append('div')
-    //   //.text("Trimobile :")
-    //   .attr('class','vignetteTrimobile')
-    //   .append('ul')
-    //   .each(function(d) {
-    //     d3.select(this)
-    //     .selectAll('li')
-    //     .data(d.interets.trimobile)
-    //     .enter()
-    //     .append('li')
-    //     .text(function(d) {
-    //       return "Le point d'interet est à " + d.distance_m + " m"
-    //     })
-    //     .style('text-align', 'left')
-    //     .style('list-style-image', 'url(./data/puceList.png)')
-    //     .style('margin-top', '5px')
-    //   })
-
     function handleClickMonument() {
+
 
       d3.select('.vignetteMonumentContainer')
       .style('display', 'block')
@@ -325,7 +312,7 @@ const TreeMap = ({monuments}) => {
 
       data.children.forEach(element => {
        if (this.id == element.id) {
-         trimobileID.push(element.interets.trimobiles)
+         trimobileID.push(element.interests.trimobiles)
         }
       });
      
@@ -345,7 +332,7 @@ const TreeMap = ({monuments}) => {
 
       data.children.forEach(element => {
         if (this.id == element.id) {
-          trilibID.push(element.interets.trilibs)
+          trilibID.push(element.interests.trilibs)
         }
       });
       
@@ -362,33 +349,27 @@ const TreeMap = ({monuments}) => {
     }
 
     function handleClickButton() {
-      let button = document.querySelector('.buttonVignette.active')
+      let button = document.querySelectorAll('.buttonVignette.active')
       button.classList.remove('active')
       this.classList.add("active");
 
-      if (this.classList.contains('buttonTrilib')) {
-        let trilib = document.querySelectorAll('vignetteTrilib')
-        let trimobile = document.querySelectorAll('vignetteTrimobile')
-        for(let i = 0; i < trilib.length; i++) {
-          trilib[i].style.display('block')
-        }
-        for(let i = 0; i < trimobile.length; i++) {
-          trimobile.style.display('none')
-        }
-      }
+      //buttonVignette buttonTrilib
+      
+      let trilib = document.querySelectorAll('vignetteTrilibs')
+      let trimobile = document.querySelectorAll('vignetteTrimobiles')
 
-      // fetch(`http://127.0.0.1:8000/trimobiles/1,4,10`)
-      //  .then(response => response.json())
-      //  .then(result => setTrimobiles(result))
-      //  console.log(trimobiles)
-      // d3.select('.buttonContainer')
-      // .append('div')
-      // .data(trimobiles)
-      // .enter()
-      // .append('p')
-      // .style('position', 'absolute')
-      // .style('z-index', '1')
-      // .text(trimobiles.address)
+      if (this.classList.contains('buttonTrilib')) {
+        
+        trilib.style.display('block')
+        trimobile.style.display('none')
+
+        // for(let i = 0; i < trimobile.length; i++) {
+        //   trimobile.style.display('none')
+        // }
+      } else {
+        trilib.style.display('none')
+        trimobile.style.display('block')
+      }
     }
 
     function handleClickBackMondrian() {
