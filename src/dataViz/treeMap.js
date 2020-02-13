@@ -24,7 +24,7 @@ const TreeMap = ({monuments}) => {
       .append('ul')
       .style('column-count', function(d) {
     
-        return console.log(trimobiles.lenght)
+        return console.log('oui')
       } )
       .selectAll('li')
       .data(trimobiles)
@@ -41,7 +41,7 @@ const TreeMap = ({monuments}) => {
       .style('font-size', '16px')
       .style('color', '#005258')
       
-      console.log(trimobiles)
+      
   }, [trimobiles])
 
   //Create a tag for trimobiles on click on monument
@@ -69,7 +69,7 @@ const TreeMap = ({monuments}) => {
       .style('font-size', '16px')
       .style('color', '#005258')
       
-      console.log(trilibs)
+      
   }, [trilibs])
 
   // componentDidUpdate() {
@@ -78,8 +78,6 @@ const TreeMap = ({monuments}) => {
 
   const drawChart = (listMonument) => {
     const data = {"children": listMonument}
-
-    console.log(data)
     
     // set the dimensions and margins of the graph
     const sizeWindow = window.innerWidth - 115;
