@@ -21,6 +21,7 @@ const TreeMap = ({monuments}) => {
       .append('div')
       //.text("Trilib :")
       .attr('class','vignetteTrimobiles')
+      .style('display', 'none')
       .append('ul')
       .style('column-count', function(d) {
     
@@ -347,27 +348,56 @@ const TreeMap = ({monuments}) => {
     }
 
     function handleClickButton() {
-      let button = document.querySelectorAll('.buttonVignette.active')
-      button.classList.remove('active')
-      this.classList.add("active");
+      let buttonActive = document.querySelectorAll('.buttonVignette.active')
+      //let buttonDisabled = document.querySelectorAll('.buttonVignette.disabled')
+
+      let trilib = document.querySelectorAll('.buttonTrilib')
+      let trimobile = document.querySelectorAll('.buttonTrimobile')
+
+      if (!this.classList.contains('active') && this.classList.contains('buttonTrimobile')) {
+        for (let i = 0; i < trilib.length; i++) {
+          trilib[i].classList.remove('active')
+          trimobile[i].classList.add('active')
+
+          d3.selectAll('.vignetteTrimobiles')
+          .style('display', 'block')
+
+          d3.selectAll('.vignetteTrilibs')
+          .style('display', 'none')
+
+        }
+      } else if (!this.classList.contains('active') && this.classList.contains('buttonTrilib')) {
+        for (let i = 0; i < trilib.length; i++) {
+          trimobile[i].classList.remove('active')
+          trilib[i].classList.add('active')
+
+          d3.selectAll('.vignetteTrimobiles')
+          .style('display', 'none')
+
+          d3.selectAll('.vignetteTrilibs')
+          .style('display', 'block')
+        }
+      }
+        
+      //.classList.add("active");
 
       //buttonVignette buttonTrilib
       
-      let trilib = document.querySelectorAll('vignetteTrilibs')
-      let trimobile = document.querySelectorAll('vignetteTrimobiles')
+      // let trilib = document.querySelectorAll('vignetteTrilibs')
+      // let trimobile = document.querySelectorAll('vignetteTrimobiles')
 
-      if (this.classList.contains('buttonTrilib')) {
+      // if (this.classList.contains('buttonTrilib')) {
         
-        trilib.style.display('block')
-        trimobile.style.display('none')
+      //   trilib.style.display('block')
+      //   trimobile.style.display('none')
 
-        // for(let i = 0; i < trimobile.length; i++) {
-        //   trimobile.style.display('none')
-        // }
-      } else {
-        trilib.style.display('none')
-        trimobile.style.display('block')
-      }
+      //   // for(let i = 0; i < trimobile.length; i++) {
+      //   //   trimobile.style.display('none')
+      //   // }
+      // } else {
+      //   trilib.style.display('none')
+      //   trimobile.style.display('block')
+      // }
     }
 
     function handleClickBackMondrian() {
