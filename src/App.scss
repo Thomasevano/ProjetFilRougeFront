@@ -1,113 +1,13 @@
+// Import
+@import './vendors/fonts';
+@import './vendors/variables';
+
 /* // Media Queries// */
 
 @mixin tablet {
   @media (max-width: 1024px) {
       @content;
   }
-}
-
-/* // Variables // */
-
-//Margin
-
-$margin-left: 94px;
-
-//Colors
-$primary-color: #29E898;
-$secondary-color: #55B297;
-$third-color: #005258;
-$fourth-color: #FB8070;
-
-//trash color
-
-$trash-yellow: #FFCF73;
-$trash-green: #55B297;
-$trash-brown: #C7A27F;
-
-//Fonts
-$marvin-vision-bold: 'Marvin Visions Bold';
-$marvin-vision-medium: 'Marvin Visions Medium';
-$marvin-vision-regular: 'Marvin Visions Regular';
-$marvin-vision-light: 'Marvin Visions Light';
-$montserrat-bold: 'Montserrat Bold';
-$montserrat-semibold: 'Montserrat SemiBold';
-$montserrat-medium: 'Montserrat Medium';
-$montserrat-regular: 'Montserrat Regular';
-
-$bigTitle: 80px;
-$title: 50px;
-$text: 20px;
-
-// scss Atomes
-
-@import './atoms/Visual/styles.scss';
-@import './atoms/Button/button.scss';
-@import './atoms/Logo/logo.scss';
-@import './atoms/Menu/Menu.scss';
-@import './atoms/Step/Step.scss';
-@import './atoms/SecondaryButton/secondaryButton.scss';
-
-//scss Molécules
-
-@import './molecules/Navbar/Navbar.scss';
-@import './molecules/EndPart/styles.scss';
-@import './molecules/TextImage/styles.scss';
-@import './molecules/IntroBlock/IntroBlock.scss';
-@import './molecules/TimeLineSet/styles.scss';
-@import './molecules/BubbleChartBlock/BubbleChartBlock.scss';
-@import './molecules/TreeMap/styles.scss';
-
-//scss Pages
-
-@import './molecules//InfoBlock/InfoBlock.scss';
-
-@font-face {
-  font-family: 'Marvin Visions Bold';
-  font-style: normal;
-  font-weight: bold;
-  src: url('/fonts/MarvinVisions/MarvinVisionsSmall-Bold.ttf') format('woff');
-}
-@font-face {
-  font-family: 'Marvin Visions Medium';
-  font-style: normal;
-  font-weight: 500;
-  src: url('/fonts/MarvinVisions/MarvinVisionsSmall-Medium.ttf') format('woff');
-}
-@font-face {
-  font-family: 'Marvin Visions Regular';
-  font-style: normal;
-  font-weight: normal;
-  src: url('/fonts/MarvinVisions/MarvinVisionsSmall-Regular.ttf') format('woff');
-}
-@font-face {
-  font-family: 'Marvin Visions Light';
-  font-style: normal;
-  font-weight: 300;
-  src: url('/fonts/MarvinVisions/MarvinVisionsSmall-Light.ttf') format('woff');
-}
-@font-face {
-  font-family:  'Montserrat Bold';
-  font-style: normal;
-  font-weight: bold;
-  src: url('/fonts/Montserrat/Montserrat-Bold.ttf') format('woff');
-}
-@font-face {
-  font-family:  'Montserrat SemiBold';
-  font-style: normal;
-  font-weight: 600;
-  src: url('/fonts/Montserrat/Montserrat-SemiBold.ttf') format('woff');
-}
-@font-face {
-  font-family:  'Montserrat Medium';
-  font-style: normal;
-  font-weight: 500;
-  src: url('/fonts/Montserrat/Montserrat-Medium.ttf') format('woff');
-}
-@font-face {
-  font-family:  'Montserrat Regular';
-  font-style: normal;
-  font-weight: normal;
-  src: url('/fonts/Montserrat/Montserrat-Regular.ttf') format('woff');
 }
 
 body {

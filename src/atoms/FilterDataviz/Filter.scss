@@ -1,0 +1,41 @@
+@import '../../App.scss';
+
+.filter {
+  display: inline-block;
+  width: 50%;
+  padding-top: 40px;
+  .filter-title {
+    font-family: $montserrat-bold;
+    font-size: 26px;
+    color: $third-color;
+  }
+  input {
+    display: none;
+    &:checked + label {
+      background-color: $fourth-color;
+      border-radius: 10px;
+      color: #FFF;
+      
+      &:after {
+        left: calc(50% - 1px);
+      }
+    }
+  }
+  .secondary {
+    border-radius: 0 10px 10px 0;
+  }
+  label {
+    position: relative;
+    color: $third-color;
+    display: inline-block;
+    height: 55px;
+    width: 168px;
+    font-family: $montserrat-medium;
+    font-size: 20px;
+    line-height: 55px;
+    background-color: #FFF;
+    border-radius: 10px 0 0 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-out;
+  }
+}

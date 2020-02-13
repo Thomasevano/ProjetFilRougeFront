@@ -1,6 +1,7 @@
 import React from 'react';
 import Visual from '../../atoms/Visual/index';
 import SecondaryButton from '../../atoms/SecondaryButton/secondaryButton'
+import './styles.scss'
 
 export default class TextImage extends React.Component {
   

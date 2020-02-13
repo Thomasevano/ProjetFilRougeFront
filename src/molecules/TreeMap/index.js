@@ -1,5 +1,6 @@
 import React , { useState, useEffect}from 'react';
 import TreeMap from '../../dataViz/treeMap';
+import './styles.scss'
 
 export default TreeMapSet => {
   const [monuments, setMonuments] = useState([])

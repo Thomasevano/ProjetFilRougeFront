@@ -1,16 +1,17 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
+import Filter from '../atoms/FilterDataviz/Filter';
 
 const BubbleChart = ({waste, setWaste, nbDays, setNbDays, isOlympic, setIsOlympic}) => {
   const svgRef = useRef();
 
-  const width = 1241;
+  const width = 900;
   const height = 600;
   let div = createDiv();
   let svg = createSVG();
   // console.log(waste)
 
-  const DrawChart = (waste) => {
+  const DrawChart = () => {
     let hierachalData = makeHierarchy(waste)
     let packLayout = pack([width -5 , height - 5])
     const root = packLayout(hierachalData);
@@ -21,7 +22,7 @@ const BubbleChart = ({waste, setWaste, nbDays, setNbDays, isOlympic, setIsOlympi
       // .enter()
       // .append("g")
       .join('g')
-      .attr("transform", d =>  `translate(${d.y + 300},${d.x - 330})`)
+      .attr("transform", d =>  `translate(${d.y + 200},${d.x - 200})`)
 
     leaf.append("circle")
         // .attr("r", function(d) {
@@ -58,11 +59,13 @@ const BubbleChart = ({waste, setWaste, nbDays, setNbDays, isOlympic, setIsOlympi
     .text('TOTAL ' + waste.reduce((accumulator, d) => accumulator + d.tons ,0) + ' tons')
   }
 
-  const UpdateChart = (waste, setNbDays, days) => {
+  const UpdateChart = (waste, setNbDays, days, olympic) => {
     let hierachalData = makeHierarchy(waste)
     let packLayout = pack([width - 5 , height - 5])
     const root = packLayout(hierachalData);
     setNbDays(days)
+    setIsOlympic(olympic)
+    console.log(nbDays)
     
     const leaf = svg
       .selectAll("g")
@@ -94,7 +97,7 @@ const BubbleChart = ({waste, setWaste, nbDays, setNbDays, isOlympic, setIsOlympi
   }
 
   useEffect(() => {
-    DrawChart(waste)
+    DrawChart()
   }, [waste])
   
   function createSVG() {
@@ -118,29 +121,44 @@ const BubbleChart = ({waste, setWaste, nbDays, setNbDays, isOlympic, setIsOlympi
   function pack(size) {
     return d3.pack()
     .size(size)
-    // .padding(paddingValue(nbDays))
+    // .padding(3)
+    .padding(paddingValue(nbDays))
   }
 
   function paddingValue(nbDays) {
     if (nbDays === 14) {
-        return 3
+        return 5
       }
       else
-      return 3
+      return 100
   }
 
   return (
-    <div>
-    {console.log(nbDays)}
-    {console.log(waste.map(waste => waste.tons))}
-    <button onClick={() => UpdateChart(waste, setNbDays, 3)}> 2 weeks</button>
-      {/* {/* <button onClick={() => setNbDays(14)}>2 weeks in paris</button> */}
-      {/* <button onClick={() => setIsOlympic(true)}>1 day in paris during olympics</button> */}
-      {/* <button onClick={() => {setNbDays(14); setIsOlympic(true)}}>14 days in paris during olympics</button> */}
-      <div className="wasteAmountBlock" ref={svgRef}>
-      </div>
+    <div className="wasteAmountBlock" ref={svgRef}>
+      {/* {console.log(nbDays)} */}
+      {console.log(waste)}
+      {console.log(waste.map(waste => waste.tons))}
+      {/* <div className="filter">
+        <h3 className="filter-title">Duration</h3>
+        <div className="filter-button">
+          <input type="checkbox" className="UpdateButton" id="1DayParis" defaultChecked={true} onClick={() => UpdateChart(waste, setNbDays, 1, false)}></input>
+          <label htmlFor="1DayParis">1 Day</label>
+          <input type="checkbox" className="UpdateButton" id="2WeeksParis" onClick={() => UpdateChart(waste, setNbDays, 14, false)}></input>
+          <label htmlFor="2WeeksParis">2 Weeks</label>
+        </div>
+      </div> */}
+      {/* <div>
+        <h3 className="filter-title">Population</h3>
+        <div>
+          <input type="checkbox" className="UpdateButton" id="1DayParisOlympics" defaultChecked={true} onClick={() => UpdateChart(waste, setNbDays, 14, false)}></input>
+          <label htmlFor="1DayParisOlympics">Paris</label>
+          <input type="checkbox" className="UpdateButton" id="2WeeksParisOlympics" onClick={() => UpdateChart(waste, setNbDays, 14, false)}></input>
+          <label htmlFor="2WeeksParisOlympics">Olympics</label>
+        </div>
+      </div> */}
+      <Filter title="Duration" labelId="1DayParis" label="1 Day" functionName={UpdateChart(waste, setNbDays, 1, false)} secondLabelId="2WeeksParis" secondLabel="2 Weeks" secondFunctionName={() => UpdateChart(waste, setNbDays, 14, false)}></Filter>
+      <Filter title="Population" labelId="1DayParisOlympics" label="Paris" functionName={() => UpdateChart(waste, setNbDays, 1, true)} secondLabelId="2WeeksParisOlympics" secondLabel="Olympics" secondFunctionName={() => UpdateChart(waste, setNbDays, 14, true)}></Filter>
     </div>
-    
   )
 }
 
