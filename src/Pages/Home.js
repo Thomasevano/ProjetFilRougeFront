@@ -13,7 +13,7 @@ function Home() {
           <br/>Un grand défi au coeur des préocupations actuelles.
           <br/><br/>Et si vous pouviez, vous aussi, en être le premier acteur ?
         </p>
-        <Link to="/step1" style={{ textDecoration: 'none' }}>
+        <Link to="/sensitization" style={{ textDecoration: 'none' }}>
           <Button text="Start the experience"/>
         </Link>
       </div>

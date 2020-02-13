@@ -5,7 +5,7 @@ export default class SecondaryButton extends React.Component {
   
   render() {
     return (
-      <Link to="/step2" style={{ textDecoration: 'none' }}>
+      <Link to="participate" style={{ textDecoration: 'none' }}>
         <div className="secondaryButton"> 
           <div className="buttonContainer">
             <span className="text">{this.props.text}</span>

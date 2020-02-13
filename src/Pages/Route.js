@@ -1,16 +1,16 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from './Home';
-import Page1 from './Page1';
-import Page2 from './Page2';
+import Sensitization from './Sensitization';
+import Participate from './Participate';
 
 function Routes() {
   
   return (
     <Switch>
       <Route path="/" exact component={Home}/>
-      <Route path="/step1" exact component={Page1}/>
-      <Route path="/step2" exact component={Page2}/>
+      <Route path="/sensitization" exact component={Sensitization}/>
+      <Route path="/participate" exact component={Participate}/>
     </Switch>
   )
 }
