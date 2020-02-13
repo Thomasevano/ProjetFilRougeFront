@@ -202,6 +202,7 @@ class TimeLine extends Component {
       .attr('src', (d) => d.img_url)
       //.style('max-height', '25%')
       .style('max-height', '20%')
+      .style('min-height', "95px")
 
       vignette.append("text")
       .text((d) => d.name)

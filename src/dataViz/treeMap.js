@@ -21,11 +21,8 @@ const TreeMap = ({monuments}) => {
       .append('div')
       //.text("Trilib :")
       .attr('class','vignetteTrimobiles')
+      .style('display', 'none')
       .append('ul')
-      .style('column-count', function(d) {
-    
-        return console.log('oui')
-      } )
       .selectAll('li')
       .data(trimobiles)
       .enter()
@@ -276,9 +273,22 @@ const TreeMap = ({monuments}) => {
     const contentVignette = zoomVignette.append('div')
     .attr('class', 'contentVignette')
     .style('width', '65%')
+    .style('padding', '15px')
+
+    contentVignette.append('img')
+    .attr('src', './data/treeMap/trilib.png')
+    .attr('class', 'imageTrilib')
+    .style('height', "96px")
+
+    contentVignette.append('img')
+    .attr('src', './data/treeMap/trimobile.png')
+    .attr('class', 'imageTrimobile')
+    .style('display', 'none')
+    .style('height', "96px")
 
     const button = contentVignette.append('div')
     .attr('class', 'buttonContainer')
+    .style('margin-bottom', '50px')
 
     button.append('button')
     .attr('class', " buttonVignette buttonTrilib active")
@@ -289,6 +299,19 @@ const TreeMap = ({monuments}) => {
     .attr('class', "buttonVignette buttonTrimobile")
     .text('Tri Mobile')
     .on("click", handleClickButton)
+
+    button.append('p')
+    .attr('class', 'textTrimobile')
+    .style('display', 'none')
+    .style('color', '#6A6D73')
+    .style('color', 'font-size: 14px')
+    .text('Tri Mobile is a device that allows you to drop off all of your bulky items.')
+
+    button.append('p')
+    .attr('class', 'textTrilib')
+    .style('color', '#6A6D73')
+    .style('color', 'font-size: 14px')
+    .text('These proximity waste containers allows you to collect more and better, in particular glass, plastic and metal packaging, paper and cardboard.')
 
     function handleClickMonument() {
 
@@ -347,27 +370,80 @@ const TreeMap = ({monuments}) => {
     }
 
     function handleClickButton() {
-      let button = document.querySelectorAll('.buttonVignette.active')
-      button.classList.remove('active')
-      this.classList.add("active");
+      let buttonActive = document.querySelectorAll('.buttonVignette.active')
+      //let buttonDisabled = document.querySelectorAll('.buttonVignette.disabled')
+
+      let trilib = document.querySelectorAll('.buttonTrilib')
+      let trimobile = document.querySelectorAll('.buttonTrimobile')
+
+      if (!this.classList.contains('active') && this.classList.contains('buttonTrimobile')) {
+        for (let i = 0; i < trilib.length; i++) {
+          trilib[i].classList.remove('active')
+          trimobile[i].classList.add('active')
+
+          d3.selectAll('.vignetteTrimobiles')
+          .style('display', 'block')
+
+          d3.selectAll('.vignetteTrilibs')
+          .style('display', 'none')
+
+          d3.selectAll('.textTrimobile')
+          .style('display', 'block')
+
+          d3.selectAll('.textTrilib')
+          .style('display', 'none')
+
+          d3.selectAll('.imageTrimobile')
+          .style('display', 'inline')
+
+          d3.selectAll('.imageTrilib')
+          .style('display', 'none')
+
+        }
+      } else if (!this.classList.contains('active') && this.classList.contains('buttonTrilib')) {
+        for (let i = 0; i < trilib.length; i++) {
+          trimobile[i].classList.remove('active')
+          trilib[i].classList.add('active')
+
+          d3.selectAll('.vignetteTrimobiles')
+          .style('display', 'none')
+
+          d3.selectAll('.vignetteTrilibs')
+          .style('display', 'block')
+
+          d3.selectAll('.textTrimobile')
+          .style('display', 'none')
+
+          d3.selectAll('.textTrilib')
+          .style('display', 'block')
+
+          d3.selectAll('.imageTrimobile')
+          .style('display', 'none')
+
+          d3.selectAll('.imageTrilib')
+          .style('display', 'inline')
+        }
+      }
+        
+      //.classList.add("active");
 
       //buttonVignette buttonTrilib
       
-      let trilib = document.querySelectorAll('vignetteTrilibs')
-      let trimobile = document.querySelectorAll('vignetteTrimobiles')
+      // let trilib = document.querySelectorAll('vignetteTrilibs')
+      // let trimobile = document.querySelectorAll('vignetteTrimobiles')
 
-      if (this.classList.contains('buttonTrilib')) {
+      // if (this.classList.contains('buttonTrilib')) {
         
-        trilib.style.display('block')
-        trimobile.style.display('none')
+      //   trilib.style.display('block')
+      //   trimobile.style.display('none')
 
-        // for(let i = 0; i < trimobile.length; i++) {
-        //   trimobile.style.display('none')
-        // }
-      } else {
-        trilib.style.display('none')
-        trimobile.style.display('block')
-      }
+      //   // for(let i = 0; i < trimobile.length; i++) {
+      //   //   trimobile.style.display('none')
+      //   // }
+      // } else {
+      //   trilib.style.display('none')
+      //   trimobile.style.display('block')
+      // }
     }
 
     function handleClickBackMondrian() {
@@ -379,12 +455,30 @@ const TreeMap = ({monuments}) => {
 
       d3.select('.vignetteMonumentContainer')
       .style('display', 'none')
+
+      d3.selectAll('.vignetteTrimobiles')
+      .style('display', 'none')
+
+      d3.selectAll('.vignetteTrilibs')
+      .style('display', 'block')
+
+      d3.selectAll('.textTrimobile')
+      .style('display', 'none')
+
+      d3.selectAll('.textTrilib')
+      .style('display', 'block')
+
+      d3.selectAll('.imageTrimobile')
+      .style('display', 'none')
+
+      d3.selectAll('.imageTrilib')
+      .style('display', 'inline')
     }
   }
 
   useEffect(() => {
     drawChart(monuments);
-  })
+  }, [monuments])
 
   return (
     <div className="treeMap"></div>
