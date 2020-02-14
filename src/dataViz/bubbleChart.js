@@ -1,17 +1,20 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import * as d3 from 'd3';
 import Filter from '../atoms/FilterDataviz/Filter';
 
 const BubbleChart = ({waste, setWaste, nbDays, setNbDays, isOlympic, setIsOlympic}) => {
-  const svgRef = useRef();
+
+  const [wasteTwoWeeks, setWasteTwoWeeks] = useState([]);
+  const [wasteOlympics, setWasteOlympics] = useState([]);
 
   const width = 900;
   const height = 600;
-  let div = createDiv();
-  let svg = createSVG();
-  // console.log(waste)
+  const svgRef = useRef();
+  const div = d3.select(svgRef.current);
+  const svg = createSVG();
+  var hierachalData = '';
 
-  const DrawChart = () => {
+  const DrawChart = (waste) => {
     let hierachalData = makeHierarchy(waste)
     let packLayout = pack([width -5 , height - 5])
     const root = packLayout(hierachalData);
@@ -25,13 +28,6 @@ const BubbleChart = ({waste, setWaste, nbDays, setNbDays, isOlympic, setIsOlympi
       .attr("transform", d =>  `translate(${d.y + 200},${d.x - 200})`)
 
     leaf.append("circle")
-        // .attr("r", function(d) {
-        //   if (nbDays === 14) {
-        //     return d.r / 1.5
-        //   }
-        //   else
-        //   return d.r
-        // })
         .attr('r', d => d.r)
         .attr("fill", "#C4C4C4");
   
@@ -59,13 +55,46 @@ const BubbleChart = ({waste, setWaste, nbDays, setNbDays, isOlympic, setIsOlympi
     .text('TOTAL ' + waste.reduce((accumulator, d) => accumulator + d.tons ,0) + ' tons')
   }
 
-  const UpdateChart = (waste, setNbDays, days, olympic) => {
-    let hierachalData = makeHierarchy(waste)
-    let packLayout = pack([width - 5 , height - 5])
-    const root = packLayout(hierachalData);
+
+  const UpdateChart = (days, olympic) => {
     setNbDays(days)
     setIsOlympic(olympic)
-    console.log(nbDays)
+
+    // console.log(nbDays)
+    // console.log(setIsOlympic)
+    console.log(days)
+    console.log(olympic)
+    // if (nbDays === 14) {
+    if (days === 14) {
+        console.log("wasteTwoWeeks")
+        console.log(days)
+        console.log(olympic)
+      fetch(`http://127.0.0.1:8000/records-waste-multiplicateur/${nbDays}/${isOlympic}`)
+      // fetch(`http://127.0.0.1:8000/records-waste-multiplicateur/${days}/${olympic}`)
+        .then(response => response.json())
+        .then(result => setWasteTwoWeeks(result))
+        .catch(e => console.error(e))
+        console.log(wasteTwoWeeks)
+      hierachalData = makeHierarchy(wasteTwoWeeks);
+    }
+    // else if (isOlympics === true) {
+    else if (olympic === true) {
+        console.log("wasteOlympics")
+      fetch(`http://127.0.0.1:8000/records-waste-multiplicateur/${nbDays}/${isOlympic}`)
+      // fetch(`http://127.0.0.1:8000/records-waste-multiplicateur/${days}/${olympic}`)
+        .then(response => response.json())
+        .then(result => setWasteOlympics(result))
+        .catch(e => console.error(e))
+        console.log(wasteOlympics)
+       hierachalData = makeHierarchy(wasteOlympics);
+    }
+    else {
+      console.log("waste")
+      hierachalData = makeHierarchy(waste);
+    }
+
+    let packLayout = pack([width - 5 , height - 5])
+    const root = packLayout(hierachalData);
     
     const leaf = svg
       .selectAll("g")
@@ -76,13 +105,6 @@ const BubbleChart = ({waste, setWaste, nbDays, setNbDays, isOlympic, setIsOlympi
     leaf.select('circle')
         .duration(500)
         .attr('r', d => d.r * 1.5)
-        
-    // svg.selectAll('g')
-    //     .select('text')
-    //     .data(waste)
-    //     .transition()
-    //     .duration(500)
-    //     .text(d => d.name);
     
     svg.selectAll('g')
         .select('.data-tons')
@@ -94,11 +116,7 @@ const BubbleChart = ({waste, setWaste, nbDays, setNbDays, isOlympic, setIsOlympi
     // let totalTons = div.select('div')
     // .duration(500)
     // .text('TOTAL ' + waste.reduce((accumulator, d) => accumulator + d.tons ,0) + ' tons')
-  }
-
-  useEffect(() => {
-    DrawChart()
-  }, [waste])
+    }
   
   function createSVG() {
   return div
@@ -106,12 +124,6 @@ const BubbleChart = ({waste, setWaste, nbDays, setNbDays, isOlympic, setIsOlympi
     .attr("class", "wasteAmount")
     .attr("width", width)
     .attr("height", height)
-  }
-
-  function createDiv() {
-    return d3.select(svgRef.current)
-      // .attr("width", width)
-      // .attr("height", height)
   }
 
   function makeHierarchy(data) {
@@ -133,31 +145,16 @@ const BubbleChart = ({waste, setWaste, nbDays, setNbDays, isOlympic, setIsOlympi
       return 100
   }
 
+  // const valueChecked = () => {}
+
   return (
     <div className="wasteAmountBlock" ref={svgRef}>
-      {/* {console.log(nbDays)} */}
-      {console.log(waste)}
-      {console.log(waste.map(waste => waste.tons))}
-      {/* <div className="filter">
-        <h3 className="filter-title">Duration</h3>
-        <div className="filter-button">
-          <input type="checkbox" className="UpdateButton" id="1DayParis" defaultChecked={true} onClick={() => UpdateChart(waste, setNbDays, 1, false)}></input>
-          <label htmlFor="1DayParis">1 Day</label>
-          <input type="checkbox" className="UpdateButton" id="2WeeksParis" onClick={() => UpdateChart(waste, setNbDays, 14, false)}></input>
-          <label htmlFor="2WeeksParis">2 Weeks</label>
-        </div>
-      </div> */}
-      {/* <div>
-        <h3 className="filter-title">Population</h3>
-        <div>
-          <input type="checkbox" className="UpdateButton" id="1DayParisOlympics" defaultChecked={true} onClick={() => UpdateChart(waste, setNbDays, 14, false)}></input>
-          <label htmlFor="1DayParisOlympics">Paris</label>
-          <input type="checkbox" className="UpdateButton" id="2WeeksParisOlympics" onClick={() => UpdateChart(waste, setNbDays, 14, false)}></input>
-          <label htmlFor="2WeeksParisOlympics">Olympics</label>
-        </div>
-      </div> */}
-      <Filter title="Duration" labelId="1DayParis" label="1 Day" functionName={UpdateChart(waste, setNbDays, 1, false)} secondLabelId="2WeeksParis" secondLabel="2 Weeks" secondFunctionName={() => UpdateChart(waste, setNbDays, 14, false)}></Filter>
-      <Filter title="Population" labelId="1DayParisOlympics" label="Paris" functionName={() => UpdateChart(waste, setNbDays, 1, true)} secondLabelId="2WeeksParisOlympics" secondLabel="Olympics" secondFunctionName={() => UpdateChart(waste, setNbDays, 14, true)}></Filter>
+      {DrawChart(waste)}
+      {/* <Filter title="Duration" labelId="1DayParis" label="1 Day" functionName={UpdateChart(waste, setNbDays, 1, false)} secondLabelId="2WeeksParis" secondLabel="2 Weeks" secondFunctionName={() => UpdateChart(waste, setNbDays, 14, false)}></Filter> */}
+      {/* <Filter title="Population" labelId="1DayParisOlympics" label="Paris" functionName={UpdateChart} secondLabelId="2WeeksParisOlympics" secondLabel="Olympics" labelDays="1" labelOlympics="false" secondLabelDays="14" secondLabelOlympics="false"></Filter> */}
+      <Filter title="Duration" labelId="1DayParis" label="1 Day" functionName={UpdateChart} secondLabelId="2WeeksParis" secondLabel="2 Weeks" labelDays={1} labelOlympics={false} secondLabelDays={14} secondLabelOlympics={false}></Filter>
+      {/* <Filter title="Population" labelId="1DayParisOlympics" label="Paris" functionName={UpdateChart(waste, setNbDays, 1, true)} secondLabelId="2WeeksParisOlympics" secondLabel="Olympics" secondFunctionName={() => UpdateChart(waste, setNbDays, 14, true)}></Filter> */}
+      <Filter title="Population" labelId="1DayParisOlympics" label="Paris" functionName={UpdateChart} secondLabelId="2WeeksParisOlympics" secondLabel="Olympics" labelDays={1} labelOlympics={true} secondLabelDays={1} secondLabelOlympics={true}></Filter>
     </div>
   )
 }
