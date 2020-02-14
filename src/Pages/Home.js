@@ -9,9 +9,9 @@ function Home() {
     <div className="home">
       <div className="home-container">
         <Logo className="home-logo" leafSymbol="data/greenleaf.svg" title="green paris 2024" logoJo="data/jo-logo.svg"/>
-        <p className="intro-text">100 ans après sa dernière édition, La Ville Lumière s’est fixé comme ambition d’organiser des Jeux Olympiques à impact environnemental positif.
-          <br/>Un grand défi au coeur des préocupations actuelles.
-          <br/><br/>Et si vous pouviez, vous aussi, en être le premier acteur ?
+        <p className="intro-text">100 years after its last edition, The City of Lights has set the goal of organizing the first environmentally-friendly Olympic Games.
+        <br></br>A great challenge at the center of our current concerns.
+        <br></br><br></br>And if you could, too, be the first actor of this positive impact ?.
         </p>
         <Link to="/sensitization" style={{ textDecoration: 'none' }}>
           <Button text="Start the experience"/>

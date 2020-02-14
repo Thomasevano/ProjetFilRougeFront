@@ -31,6 +31,8 @@
         -webkit-box-shadow: 0px 48px 36px -50px rgba(0,0,0,0.8);
         -moz-box-shadow: 0px 48px 36px -50px rgba(0,0,0,0.8);
         box-shadow: 0px 40px 36px -50px rgba(0,0,0,0.8);
+        -o-box-shadow: 0px 40px 36px -50px rgba(0,0,0,0.8);
+
       }
 
       p {
@@ -86,6 +88,10 @@
           color: #FFFFFF;
           background-color: #FB8070;
         }
+
+        &:focus {
+          outline:0
+        }
       }
 
       .contentVignette {
@@ -101,7 +107,7 @@
 
     .circle {
       position: absolute;
-      bottom: -20px;
+      bottom: 0px;
       left: 0px;
       background-color: unset;
     }
