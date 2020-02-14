@@ -2,11 +2,11 @@
 
 .menu {
   .section {
-    top: 0;
+    top: -20px;
     bottom: 0;
     position: absolute;
     width: calc(100vw - 94px - 40px);
-    height: 100%;
+    height: 100vh;
     left: $margin-left;
     border-radius: 0 10px 10px 0;
     background-color: white;
