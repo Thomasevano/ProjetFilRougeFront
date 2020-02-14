@@ -5,7 +5,7 @@
     top: 0;
     bottom: 0;
     position: absolute;
-    width: 91.9vw;
+    width: calc(100vw - 94px - 40px);
     height: 100%;
     left: $margin-left;
     border-radius: 0 10px 10px 0;

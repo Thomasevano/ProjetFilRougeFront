@@ -15,6 +15,13 @@ const TreeMap = ({monuments}) => {
       .attr('class','vignetteTrimobiles')
       .style('display', 'none')
       .append('ul')
+      .style('column-count', (d) => {
+        if (trimobiles.length > 10) {
+          return 2
+        } else {
+          return 1
+        }
+      })
       .selectAll('li')
       .data(trimobiles)
       .enter()
@@ -34,7 +41,7 @@ const TreeMap = ({monuments}) => {
       .append('p')
       .text( (d) => {
         if (trimobiles == "") {
-          return 'There is no Trilib/Tri Mobile around here at the moment. Please make sure to take your own bag for your waste.'
+          return 'There is no Tri Mobile around here at the moment. Please make sure to take your own bag for your waste.'
         }
       })
   }, [trimobiles])
@@ -47,7 +54,13 @@ const TreeMap = ({monuments}) => {
       .append('div')
       .attr('class','vignetteTrilibs')
       .append('ul')
-      .style('column-count', '2')
+      .style('column-count', (d) => {
+        if (trilibs.length > 10) {
+          return 2
+        } else {
+          return 1
+        }
+      })
       .selectAll('li')
       .data(trilibs)
       .enter()
@@ -67,7 +80,7 @@ const TreeMap = ({monuments}) => {
       .append('p')
       .text( (d) => {
         if (trilibs == "") {
-          return 'There is no Trilib/Tri Mobile around here at the moment. Please make sure to take your own bag for your waste.'
+          return 'There is no Trilib around here at the moment. Please make sure to take your own bag for your waste.'
         }
       })
   }, [trilibs])
