@@ -89,7 +89,7 @@ const TreeMap = ({monuments}) => {
     const data = {"children": listMonument}
     
     // set the dimensions and margins of the graph
-    const sizeWindow = window.innerWidth - 115;
+    const sizeWindow = window.innerWidth - 50;
 
     const margin = {
       top: 10,
@@ -147,8 +147,12 @@ const TreeMap = ({monuments}) => {
         return (d.y1 - d.y0);
       })
       .style("cursor", "pointer")
-      .style('background-color', '#ffffff')
       .on("click", handleClickMonument)
+      .append('xhtml:div')
+      .style('background-color', '#ffffff')
+      .style('position', 'absolute')
+      .style('width', '100%')
+      .style('height', '100%')
 
       vignette.append("xhtml:p")
       .attr('class', 'place')
@@ -322,8 +326,6 @@ const TreeMap = ({monuments}) => {
     .text('These proximity waste containers allows you to collect more and better, in particular glass, plastic and metal packaging, paper and cardboard.')
 
     function handleClickMonument() {
-
-
       d3.select('.vignetteMonumentContainer')
       .style('display', 'block')
 
