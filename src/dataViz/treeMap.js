@@ -311,6 +311,7 @@ const TreeMap = ({monuments}) => {
       .catch(e => console.error(e))
     }
 
+    // Click on trimobile et trilib button
     function handleClickButton() {
       let trilib = document.querySelectorAll('.buttonTrilib')
       let trimobile = document.querySelectorAll('.buttonTrimobile')
@@ -365,6 +366,7 @@ const TreeMap = ({monuments}) => {
       }
     }
 
+    //Click on button back 
     function handleClickBackMondrian() {
 
       let trilib = document.querySelectorAll('.buttonTrilib')
