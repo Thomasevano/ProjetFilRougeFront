@@ -13,7 +13,6 @@ const TreeMap = ({monuments}) => {
     d3.selectAll('.contentVignette')
       .append('div')
       .attr('class','vignetteTrimobiles')
-      .style('display', 'none')
       .append('ul')
       .style('column-count', (d) => {
         if (trimobiles.length > 10) {
@@ -22,23 +21,17 @@ const TreeMap = ({monuments}) => {
           return 1
         }
       })
-      .style('line-height', '160%')
       .selectAll('li')
       .data(trimobiles)
       .enter()
       .append('li')
-      .style('text-align', 'left')
       .style('list-style-image', 'url(./data/puceList.png)')
-      .style('margin-top', '5px')
       .append('a')
-      .style('text-decoration', 'none')
       .attr('target', '_blank')
       .attr('href', (d) => `https://www.google.com/maps/search/?api=1&query=${d.latitude},${d.longitude}`)
       .text((d) => d.address)
-      .style('font-size', '16px')
-      .style('color', '#005258')
 
-      d3.selectAll('.vignetteTrimobiles')
+    d3.selectAll('.vignetteTrimobiles')
       .append('p')
       .text( (d) => {
         if (trimobiles == "") {
@@ -62,23 +55,17 @@ const TreeMap = ({monuments}) => {
           return 1
         }
       })
-      .style('line-height', '160%')
       .selectAll('li')
       .data(trilibs)
       .enter()
       .append('li')
-      .style('text-align', 'left')
       .style('list-style-image', 'url(./data/puceList.png)')
-      .style('margin-top', '5px')
       .append('a')
-      .style('text-decoration', 'none')
       .attr('target', '_blank')
       .attr('href', (d) => `https://www.google.com/maps/search/?api=1&query=${d.latitude},${d.longitude}`)
       .text((d) => d.address)
-      .style('font-size', '16px')
-      .style('color', '#005258')
 
-      d3.selectAll('.vignetteTrilibs')
+    d3.selectAll('.vignetteTrilibs')
       .append('p')
       .text( (d) => {
         if (trilibs == "") {
@@ -148,15 +135,11 @@ const TreeMap = ({monuments}) => {
       .attr('height', function (d) {
         return (d.y1 - d.y0);
       })
-      .style("cursor", "pointer")
       .on("click", handleClickMonument)
       .append('xhtml:div')
-      .style('background-color', '#ffffff')
-      .style('position', 'absolute')
-      .style('width', '100%')
-      .style('height', '100%')
+      .attr('class' ,'vignetteContainer')
 
-      vignette.append("xhtml:p")
+    vignette.append("xhtml:p")
       .attr('class', 'place')
       .attr("x", function (d) {
         return d.x0 + 5
@@ -167,10 +150,8 @@ const TreeMap = ({monuments}) => {
       .text(function (d) {
         return d.data.name
       })
-      .attr("font-size", "15px")
-      .attr("fill", "#005258")
 
-      vignette.append("xhtml:p")
+    vignette.append("xhtml:p")
       .attr('class', 'sport')
       .attr("x", function (d) {
         return d.x0 + 5
@@ -181,13 +162,9 @@ const TreeMap = ({monuments}) => {
       .text(function (d) {
         return d.data.sport
       })
-      .attr("font-size", "15px")
-      .attr("fill", "black")
 
-      vignette.append('xhtml:img')
+    vignette.append('xhtml:img')
       .attr('class', 'image')
-      .style('width', '90%')
-      .style('margin', 'auto')
       .style('height', function(d) {
         var pSize = document.querySelector('.vignette' + d.data.id + " .place");
         var p2Size = document.querySelector('.vignette' + d.data.id + " .sport");
@@ -196,9 +173,6 @@ const TreeMap = ({monuments}) => {
         return vSize - pSize.offsetHeight - p2Size.offsetHeight - 40 + 'px'
       })
       .attr('src', (d) => d.data.img_url)
-      .style('object-fit', 'cover')
-      .style('background', '#C4C4C4')
-      .style('border-radius', '5px')
       .style('display', function(d) {
         if ((d.y1 - d.y0) > 120) {
           return 'block'
@@ -207,7 +181,7 @@ const TreeMap = ({monuments}) => {
         }
       })
 
-      vignette.append('xhtml:div')
+    vignette.append('xhtml:div')
       .attr('class', 'interet')
       .style('top', function(d) {
         if ((d.y1 - d.y0) > 90) {
@@ -223,122 +197,78 @@ const TreeMap = ({monuments}) => {
     const zoomVignette = d3.select(".treeMap")
       .append('div')
       .attr('class', 'vignetteMonumentContainer')
-      .style('display', 'none')
-      .style('width', 'calc(100% - 92px)')
-      .style('height', '100vh')
-      .style('top', '0px')
-      .style('margin-left', '92px')
       .selectAll('div')
       .data(data.children)
       .enter()
       .append('div')
       .attr('class', (d) => 'zoomMonument vignette' + d.id)
-      .style('display', 'none')
-      .style('width', '90%')
-      .style('height', '70%')
-      .style('margin', 'auto')
-      .style('background-color','#FFFFFF')
-      .style('border-radius', '10px')
-      .style('padding', '20px')
-      .style('position', 'relative')
-      .style('top', '50%')
-      .style('transform', 'translateY(-50%)')
 
     const backMondrian = zoomVignette.append('div')
-    .style('position', 'absolute')
-    .style('display', 'flex')
-    .style('top', '-60px')
-    .style('left', '0px')
-    .style('cursor','pointer')
-    .on("click", handleClickBackMondrian)
+      .attr('class', 'buttonBack')
+      .on("click", handleClickBackMondrian)
 
     backMondrian.append('img')
-    .attr('src', './data/arrowSecondaryButton.svg')
-    .style('transform', 'rotate(180deg)')
+      .attr('src', './data/arrowSecondaryButton.svg')
 
     backMondrian.append('p')
-    .text('Back to Mondrian Grid')
-    .style('margin-left', '30px')
-    .style('color', '#005258')
-    .style('font-szie', '16px')
+      .text('Back to Mondrian Grid')
 
     const illustration = zoomVignette.append('div')
-      .style('text-align', 'left')
-      .style('width', '35%')
+      .attr('class', 'imageZoom')
 
     illustration.append('h3')
-    .text((d) => d.name)
-    .style('color', '#005258')
-    .style('font-size', '30px')
-    .style('margin', '0px')
+      .text((d) => d.name)
 
     illustration.append('h4')
-    .text((d) => d.sport)
-    .style('color', '#6A6D73')
-    .style('font-size', '14px')
+      .text((d) => d.sport)
       
     illustration.append("img")
       .attr('src', (d) => d.img_url)
-      .style('width', '100%')
-      .style('object-fit', 'contain')
-      .style('border-radius', '5px')
 
     const contentVignette = zoomVignette.append('div')
-    .attr('class', 'contentVignette')
-    .style('width', '65%')
-    .style('padding', '15px')
-    .style('overflow', 'scroll')
+      .attr('class', 'contentVignette')
 
     contentVignette.append('img')
-    .attr('src', './data/treeMap/trilib.png')
-    .attr('class', 'imageTrilib')
-    .style('height', "96px")
+      .attr('src', './data/treeMap/trilib.png')
+      .attr('class', 'imageTrilib')
 
     contentVignette.append('img')
-    .attr('src', './data/treeMap/trimobile.png')
-    .attr('class', 'imageTrimobile')
-    .style('display', 'none')
-    .style('height', "96px")
+      .attr('src', './data/treeMap/trimobile.png')
+      .attr('class', 'imageTrimobile')
 
     const button = contentVignette.append('div')
-    .attr('class', 'buttonContainer')
-    .style('margin-bottom', '50px')
+      .attr('class', 'buttonContainer')
 
     button.append('button')
-    .attr('class', " buttonVignette buttonTrilib active")
-    .text('Trilib')
-    .on("click", handleClickButton)
+      .attr('class', " buttonVignette buttonTrilib active")
+      .text('Trilib')
+      .on("click", handleClickButton)
 
     button.append('button')
-    .attr('class', "buttonVignette buttonTrimobile")
-    .text('Tri Mobile')
-    .on("click", handleClickButton)
+      .attr('class', "buttonVignette buttonTrimobile")
+      .text('Tri Mobile')
+      .on("click", handleClickButton)
 
     button.append('p')
-    .attr('class', 'textTrimobile')
-    .style('display', 'none')
-    .style('color', '#6A6D73')
-    .style('color', 'font-size: 14px')
-    .text('Tri Mobile is a device that allows you to drop off all of your bulky items.')
+      .attr('class', 'textTrimobile')
+      .text('Tri Mobile is a device that allows you to drop off all of your bulky items.')
 
     button.append('p')
-    .attr('class', 'textTrilib')
-    .style('color', '#6A6D73')
-    .style('color', 'font-size: 14px')
-    .text('These proximity waste containers allows you to collect more and better, in particular glass, plastic and metal packaging, paper and cardboard.')
+      .attr('class', 'textTrilib')
+      .text('These proximity waste containers allows you to collect more and better, in particular glass, plastic and metal packaging, paper and cardboard.')
 
     function handleClickMonument() {
       d3.select('.vignetteMonumentContainer')
-      .style('display', 'block')
+        .style('display', 'block')
 
       d3.select('.treeMap svg')
-      .style('display', 'none')
+        .style('display', 'none')
 
       //choose the vignette to display
       var vignette = document.querySelector('.zoomMonument.' + this.classList[1])
 
       d3.select(vignette)
-      .style('display', 'flex')
+        .style('display', 'flex')
 
       //Get trimobiles
       var trimobileID = []
@@ -349,11 +279,11 @@ const TreeMap = ({monuments}) => {
         }
       });
      
-     var trimobilesID = trimobileID.join()
+      var trimobilesID = trimobileID.join()
      
-     if(trimobilesID === ""){
-      trimobilesID = "null"
-    }
+      if(trimobilesID === ""){
+        trimobilesID = "null"
+      }
 
       fetch(`http://127.0.0.1:8000/trimobiles/${trimobilesID}`)
         .then(response => response.json())
@@ -391,22 +321,22 @@ const TreeMap = ({monuments}) => {
           trimobile[i].classList.add('active')
 
           d3.selectAll('.vignetteTrimobiles')
-          .style('display', 'block')
+            .style('display', 'block')
 
           d3.selectAll('.vignetteTrilibs')
-          .style('display', 'none')
+            .style('display', 'none')
 
           d3.selectAll('.textTrimobile')
-          .style('display', 'block')
+            .style('display', 'block')
 
           d3.selectAll('.textTrilib')
-          .style('display', 'none')
+            .style('display', 'none')
 
           d3.selectAll('.imageTrimobile')
-          .style('display', 'inline')
+            .style('display', 'inline')
 
           d3.selectAll('.imageTrilib')
-          .style('display', 'none')
+            .style('display', 'none')
 
         }
       } else if (!this.classList.contains('active') && this.classList.contains('buttonTrilib')) {
@@ -415,22 +345,22 @@ const TreeMap = ({monuments}) => {
           trilib[i].classList.add('active')
 
           d3.selectAll('.vignetteTrimobiles')
-          .style('display', 'none')
+            .style('display', 'none')
 
           d3.selectAll('.vignetteTrilibs')
-          .style('display', 'block')
+            .style('display', 'block')
 
           d3.selectAll('.textTrimobile')
-          .style('display', 'none')
+            .style('display', 'none')
 
           d3.selectAll('.textTrilib')
-          .style('display', 'block')
+            .style('display', 'block')
 
           d3.selectAll('.imageTrimobile')
-          .style('display', 'none')
+            .style('display', 'none')
 
           d3.selectAll('.imageTrilib')
-          .style('display', 'inline')
+            .style('display', 'inline')
         }
       }
     }
@@ -446,31 +376,31 @@ const TreeMap = ({monuments}) => {
       }
 
       d3.selectAll('.vignetteTrimobiles')
-      .style('display', 'none')
+        .style('display', 'none')
 
       d3.selectAll('.vignetteTrilibs')
-      .style('display', 'block')
+        .style('display', 'block')
 
       d3.selectAll('.textTrimobile')
-      .style('display', 'none')
+        .style('display', 'none')
 
       d3.selectAll('.textTrilib')
-      .style('display', 'block')
+        .style('display', 'block')
 
       d3.selectAll('.imageTrimobile')
-      .style('display', 'none')
+        .style('display', 'none')
 
       d3.selectAll('.imageTrilib')
-      .style('display', 'inline')
+        .style('display', 'inline')
 
       d3.select('.treeMap svg')
-      .style('display', 'block')
+        .style('display', 'block')
 
       d3.select(this.parentNode)
-      .style('display', 'none')
+        .style('display', 'none')
 
       d3.select('.vignetteMonumentContainer')
-      .style('display', 'none')
+        .style('display', 'none')
     }
   }
 
