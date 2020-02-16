@@ -22,6 +22,7 @@ const TreeMap = ({monuments}) => {
           return 1
         }
       })
+      .style('line-height', '160%')
       .selectAll('li')
       .data(trimobiles)
       .enter()
@@ -61,6 +62,7 @@ const TreeMap = ({monuments}) => {
           return 1
         }
       })
+      .style('line-height', '160%')
       .selectAll('li')
       .data(trilibs)
       .enter()

@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import * as d3 from "d3";
-// import * as h from "d3";
-// import * as d from "d3";
 
 class TimeLine extends Component {
   componentDidUpdate() {
@@ -9,9 +7,6 @@ class TimeLine extends Component {
     //svgC.addEventListener('scroll', positionCar);
   }
   
- /*  componentWillUnmount() {
-      svgC.removeEventListener('scroll', positionCar);
-  } */
   drawChart() {
 
     /* //// Sorts data //// */
@@ -146,41 +141,11 @@ class TimeLine extends Component {
 
     /* //// Time Line //// */
 
-    /* const svg = d3.select(".timeLine")
-      .append("svg")
-      .attr("height", h)
-      .attr("width", data.length * 387 + "px")
-      .style("background-color", "#F3F8F9");
-
-    svg.selectAll("rect")
-      .data(data)
-      .enter()
-      .append("rect")
-      .attr("x", (d, i) => 123 + i * 385)
-      .attr("y", (d, i) => i % 2 ? 30 + "%" : 40 + "%")
-      .attr("width", 200)
-      .attr("height", 202)
-      .attr("fill", "white")
-      .attr("border-radius", "50%")
-
-     svg.selectAll("text")
-      .data(data)
-      .enter()
-      .append("text")
-      .text((d) => d.name)
-      .attr("x", (d, i) => 123 + i * 385)
-      .attr("y", (d, i) => i % 2 ? 30 + "%" : 40 + "%") */
-
     const timeLine = d3.select(".timeLine")
-      //.style("max-width", data.length * 520 + "px")
       .append("div")
-      //.style("height", 100 + "%")
-      .style("height", '697px')
-      .style('position', ('relative'))
+      .attr('class', 'timeLineContainer')
       .style("width", data.length * 380 + "px")
       .style("max-width", data.length * 520 + "px")
-      .style("display", "flex")
-      .style("background-color", "#F3F8F9");
 
     const vignette = timeLine.selectAll(".vignette")
       .data(data)
@@ -188,34 +153,19 @@ class TimeLine extends Component {
       .append("svg")
       .attr("class", 'vignette anime')
       .attr("id", (d) => d.id)
-      .style("position", "relative")
-      //.style("top", (d, i) => i % 2 ? 12 + "%" : 20 + "%")
       .style("top", (d, i) => i % 2 ? 14 + "%" : 22 + "%")
-      //.style("transform", (d, i) => i % 2 ? "translateY(" +  -50 + "%)" : "translateY(" + -65 + "%)");
 
       //Add images
       vignette.append("foreignObject")
-      .style('overflow', 'visible')
-      .style('width', '100%')
-      .style('height', '100%')
+      .attr('class', 'imgContainer')
       .append("xhtml:img")
-      .style('position', 'relative')
-      .style('top', '-12%')
       .attr('src', (d) => d.img_url)
-      //.style('max-height', '25%')
-      .style('max-height', '20%')
-      .style('min-height', "95px")
 
       vignette.append("text")
+      .attr('class', 'title')
       .text((d) => d.name)
       .attr("y", "85")
       .attr('x', "50%")
-      .attr('text-anchor', "middle")
-      .attr('font-weight', '600')
-      //.attr('transform', "translate(50)")
-      .attr("fill", "#005258")
-      .attr('font-size', '20px')
-      //.attr("y", (d, i) => i % 2 ? 30 + "%" : 40 + "%")
 
       vignette.append("text")
       .attr("class", 'vignetteTime')
@@ -226,7 +176,6 @@ class TimeLine extends Component {
       const montre = vignette.append("svg")
       .attr('height', '25')
       .attr('fill', 'none')
-      //.attr('viewBox', '0 0 21 25')
       .attr('x', '15')
       .attr('y', '115')
 
@@ -293,9 +242,6 @@ class TimeLine extends Component {
 
       const circleTrash = vignette.append("svg")
       .attr("class",  "trash")
-      .attr('fill', 'none')
-      .attr('width', '25')
-      .attr('heigth', '25')
       .attr("y", "160")
       .attr("x", "50")
 
@@ -303,108 +249,29 @@ class TimeLine extends Component {
       .attr('cx', '12.7705')
       .attr('cy', '12.7676')
       .attr('r', '12')
-      .attr("class", (d) => d.trash_color)
-
-      /* 
-        <animateMotion dur="1.6s" repeatCount="indefinite">
-          <mpath xlink:href="#wire"></mpath>
-        </animateMotion>
-
-        .append('animateMotion')
-          .attr('dur', '1.6s')
-          .attr('repeatCount', 'indefinite')
-          .append('mpath')
-          .attr('xlink:href', '#wire')
-      */
-
-    /* vignette.append("p")
-      .attr("class", 'vignetteTitle')
-      .text((d) => d.name) */
-
-   /*  vignette.append("p")
-      .attr("class", 'vignetteTime')
-      .text((d) => d.degradation_time) */
-
-    /* vignette.append("div")
-      .attr("class",  "trash")
-        .append("div")
-        .attr("class", (d) => d.trash_color) */
-      
+      .attr("class", (d) => d.trash_color)   
     
     timeLine.append('svg')
       .attr('class', 'circle opacity')
-      .attr("width", 200)
-      .attr("height", 250)
       .append('circle')
       .attr('cx', '0')
       .attr('cy', '140')
       .attr('r', '120')
-      .attr('stroke-width', '0')
-      .attr('fill', '#FB8070')
 
     timeLine.append('svg')
       .attr('class', 'circle')
-      .attr("width", 200)
-      .attr("height", 200)
       .append('circle')
       .attr('cx', '0')
       .attr('cy', '90')
       .attr('r', '65')
-      .attr('stroke-width', '0')
-      .attr('fill', '#F3F8F9')
-
-    // Line of time Line //
-
-    // timeLine.append('svg')
-    //   .attr('class', 'line')
-    //   //.attr('height', '125')
-    //   .attr('height', '87')
-    //   .attr('width', data.length * 520 + "px")
-    //   .attr('fill', 'none')
-    //   .append('path')
-    //   .attr("id", "path1")
-    //   //.attr('py', '90')
-    //   .attr('d', 'M0,2.5c177.12,0,177.12,80,354.24,80s177.13-80,354.26-80,177.12,80,354.25,80,177.12-80,354.25-80')
-    //   .attr('stroke', '#55B297')
-    //   .attr('stroke-width', '4')
-    //   //.attr("id", "wire")
-      
-
-    // Triangle //
-
-    /* const triangle = timeLine.append("div")
-      .attr("class", 'triangle')
- */
-
-    // timeLine.append("svg")
-    // .attr("class", 'triangle')
-    // .style("top", "43%")
-    // .style("width", data.length * 420 + "px")
-    // .attr("height", 120)
-    // .selectAll("triangle")
-    // .data(data)
-    // .enter()   
-    // .append("path")
-    // .attr('x', (d, i) => 240 * i + 100)
-    // .attr('y', (d, i) => i % 2 ? 38 + "%" : 82 + "%")
-    // .attr("fill", "white")
-    // .attr("d", "M12.6364 27.1894L0.872507 3.66152C0.207605 2.33171 1.1746 0.76709 2.66136 0.76709H26.1892C27.676 0.76709 28.643 2.33171 27.9781 3.66152L16.2141 27.1894C15.4771 28.6635 13.3735 28.6635 12.6364 27.1894Z")
-    // /* .attr('heigth', 29)
-    // .attr('width', 29) */
    
     timeLine.append("svg")
     .attr('class', 'triangle')
-    .style("top", "47%")
     .style("width", data.length * 360 + "px")
-    .attr("height", 120)
-    .style('left', '246px')
-    //.style('left', '130px')
     .selectAll('triangle')
     .data(data)
     .enter()    
     .append('svg')
-    .attr("height", 29)
-    .attr("width", 29)
     .attr('x', (d, i) => 358 * i + 100)
     .attr('y', (d, i) => i % 2 ? 0 + "%" : 44 + "%")
     .append('path')
@@ -415,9 +282,7 @@ class TimeLine extends Component {
 
     timeLine.append("svg")
       .attr('class', 'circleLine anime')
-      .style("top", "57%")
       .style("width", data.length * 360 + "px")
-      .attr("height", 130)
       .selectAll('circleTimeLine')
       .data(data)
       .enter()    
@@ -425,8 +290,6 @@ class TimeLine extends Component {
       .attr('cx', (d, i) => 358 * i + 100)
       .attr('cy', (d, i) => i % 2 ? 25 + "%" : 88 + "%")
       .attr('r', '10')
-      .attr('stroke-width', '0')
-      .attr('fill', '#ffffff')
 
     /* //// Time scale //// */
 
@@ -434,40 +297,26 @@ class TimeLine extends Component {
 
     timeLine.append('div')
       .attr('class', "timeScale oneToTen")
-      .style('width', "257px")
-      .style('height', "101px")
-      .style('opacity', '0%')
       .append('p')
       .text('From 1 to 10 years to break down')
 
     timeLine.append('div')
       .attr('class', "timeScale lessOne")
-      .style('width', "257px")
-      .style('height', "101px")
       .append('p')
       .text('Les than 1 year to break down')
 
     timeLine.append('div')
       .attr('class', "timeScale tenToOneHundred")
-      .style('width', "257px")
-      .style('height', "101px")
-      .style('opacity', '0%')
       .append('p')
       .text('from 10 to 100 years to break down ')
 
     timeLine.append('div')
       .attr('class', "timeScale oneHundreadToOneThousand")
-      .style('width', "257px")
-      .style('height', "101px")
-      .style('opacity', '0%')
       .append('p')
       .text('From 100 to 1 000 years to break down')
 
      timeLine.append('div')
       .attr('class', "timeScale moreOneThousand")
-      .style('width', "257px")
-      .style('height', "101px")
-      .style('opacity', '0%')
       .append('p')
       .text('More than 1 000 years to break down')
 
@@ -695,7 +544,7 @@ class TimeLine extends Component {
   }
         
   render(){
-    return <div className="timeLine" id={"#" + this.props.id}></div>
+    return <div className="timeLine"></div>
   }
 
 }
