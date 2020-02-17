@@ -272,8 +272,13 @@ const TreeMap = ({monuments}) => {
       //choose the vignette to display
       var vignette = document.querySelector('.zoomMonument.' + this.classList[1])
 
-      d3.select(vignette)
+      if (window.innerWidth > 1024) {
+        d3.select(vignette)
         .style('display', 'flex')
+      } else {
+        d3.select(vignette)
+        .style('display', 'block')
+      }
 
       //Get trimobiles
       var trimobileID = []
