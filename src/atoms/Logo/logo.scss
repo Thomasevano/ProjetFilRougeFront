@@ -28,10 +28,16 @@
   align-items: center;
   align-content: center;
   height: 100%;
+
   .leafSymbol {
     height: 24px;
     width: 24px;
     z-index: 1;
+
+    @include mobile {
+      height: 20px;
+      width: 20px;
+    }
   }
 
   .title {
@@ -57,14 +63,17 @@
 
     @include mobile {
       transform: unset;
+      height: 20px;
+      width: 39px;
     }
   }
 
   @include mobile {
-    width:85%;
-    margin-right: 15%;
-    margin-left: 10px;
+    width: 75%;
+    //margin-right: 15%;
+    //margin-left: 10px;
     flex-direction: unset;
     justify-content: space-evenly;
+    margin-right: 5%;
   }
 }

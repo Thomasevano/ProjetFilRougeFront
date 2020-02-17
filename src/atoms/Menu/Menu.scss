@@ -42,10 +42,23 @@
     }
 
     @include mobile {
-      width: calc(100vw - 55px);
+      width: calc(100vw - 20px);
       z-index: 2;
       top: 55px;
       border-radius: unset;
+      height: calc(100vh - 40px);
+
+      .list {
+        margin: 20px 5% 0px 5%;
+
+        li {
+          margin: 5% 0;
+
+          .anchor {
+            font-size: 26px;
+          }
+        }
+      }
     }
   }
 
@@ -70,8 +83,8 @@
         visibility: visible;
 
         @include mobile {
-          transform: translateX(-98%);
-          left: 87%;
+          //left: calc(-100vw + 85px);
+          left: 0px;
         }
       }
     }
@@ -108,7 +121,8 @@
   }
 
   @include mobile {
-    width: 15%;
-    position: absolute;
+    width: 30px;
+    //position: absolute;
+    display: contents;
   }
 }

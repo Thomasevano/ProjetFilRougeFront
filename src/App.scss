@@ -2,14 +2,6 @@
 @import './vendors/fonts';
 @import './vendors/variables';
 
-/* // Media Queries// */
-
-@mixin tablet {
-  @media (max-width: 1024px) {
-      @content;
-  }
-}
-
 body {
   background: linear-gradient(61.23deg, $primary-color 0%, $secondary-color 100%);
   padding: 20px;
