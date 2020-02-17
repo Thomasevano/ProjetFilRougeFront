@@ -57,6 +57,10 @@
 
   @include tablet {
     top: unset;
+    position: relative;
+    left: calc(100% - 40px);
+    transform: translateX(-100%);
+    float: unset;
   }
 
   @include mobile {
@@ -65,5 +69,6 @@
     float: unset;
     height: auto;
     width: auto;
+    transform: unset;
   }
 }

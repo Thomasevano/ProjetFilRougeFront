@@ -1,9 +1,15 @@
 @import '../../App.scss';
 
 .visual {
+  z-index: 1;
+
   img {
     width: 50vw;
     height: auto;
     object-fit: cover;
+  }
+
+  @include tablet {
+    position: inherit;
   }
 } 

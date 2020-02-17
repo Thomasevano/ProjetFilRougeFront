@@ -9,7 +9,7 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    z-index: -1;
+    z-index: 0;
     top: -40%;
     max-width: calc(90vw);
   }
@@ -22,6 +22,7 @@
     text-transform: uppercase;
     color: $third-color;
     font-family: $marvin-vision-bold;
+    z-index: 1;
 
     @include tablet {
       width: 40vw;
@@ -49,6 +50,7 @@
     color: #6A6D73;
     align-self: flex-end;
     font-size: $text;
+    z-index: 1;
 
     strong {
       color: $third-color;
@@ -82,7 +84,7 @@
   margin: auto;
   flex-direction: row-reverse;
   top: 50%;
-  transform: translateY(-50%);
+  //transform: translateY(-50%);
 
   h2 {
     left: 15%;
@@ -129,7 +131,7 @@
 }
 
 .textImage.left {
-  transform: translateY(25%);
+  //transform: translateY(25%);
 
   h2 {
     right: 15%;

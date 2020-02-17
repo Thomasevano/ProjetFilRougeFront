@@ -81,7 +81,11 @@ body {
     }
 
     .visualText, .intro {
-      height: 100vh;
+      height: auto;
+    }
+
+    section {
+      margin-bottom: 100px;
     }
 
     .visualText {
