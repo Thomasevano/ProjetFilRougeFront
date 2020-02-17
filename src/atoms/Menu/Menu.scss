@@ -40,6 +40,13 @@
         }
       }
     }
+
+    @include mobile {
+      width: calc(100vw - 55px);
+      z-index: 2;
+      top: 55px;
+      border-radius: unset;
+    }
   }
 
   input {
@@ -61,6 +68,11 @@
         transform: translateX(0%);
         left: $margin-left;
         visibility: visible;
+
+        @include mobile {
+          transform: translateX(-98%);
+          left: 87%;
+        }
       }
     }
   }
@@ -89,6 +101,14 @@
       transition: transform 0.4s ease-in,
       width 0.4s ease-in;
     }
+
+    @include mobile {
+      margin: unset;
+    }
   }
 
+  @include mobile {
+    width: 15%;
+    position: absolute;
+  }
 }

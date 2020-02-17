@@ -77,26 +77,36 @@ body {
         .intro-text {
           font-family: $montserrat-regular;
           font-size: 14px;
-          width: 470px;
+          width: 70%;
           margin: 40px auto auto;
           color: #6A6D73;
         }
       }
+
+      @include mobile {
+        height: calc(100vh - 20px);
+      } 
     }
 
     .visualText, .intro {
       height: 100vh;
-
     }
 
     .visualText {
       margin-left: $margin-left;
-    //   margin-right: $margin-left;
+
+      @include mobile {
+        margin-left: unset;
+      }
     }
 
     .dataVizTimeLine {
       z-index: 0;
       height: 100vh;
     }
+  }
+
+  @include mobile {
+    padding: 10px;
   }
 }

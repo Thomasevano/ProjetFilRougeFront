@@ -18,7 +18,6 @@
     img {
       width: 40px;
       vertical-align: middle;
-      // margin-left: 27%;
       margin-left: 22px;
       transition: transform 0.15s ease-in;
     }
@@ -30,10 +29,9 @@
     }
 
     &:hover {
-
       img {
         transform: scale(1.2);
       }
     }
-  }  
+  } 
 }

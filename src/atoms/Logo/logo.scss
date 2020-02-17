@@ -7,6 +7,17 @@
     color: $third-color;
     letter-spacing: 0.1em;
     font-size:30px;
+
+    @include mobile {
+      font-size: 25px;
+    }
+  }
+
+  @include mobile {
+    .leafSymbol {
+      width: 40px;
+      height: 40px;
+    }
   }
 }
 
@@ -32,10 +43,28 @@
     transform: rotate(-90deg);
     width: 240px;
     margin: 150px 0;
+
+    @include mobile {
+      transform: unset;
+      font-size: 16px;
+      margin: 16px 0px 16px 0px;
+    }
   }
   
   .logo-jo {
     transform: rotate(-90deg);
     height: 24px;
+
+    @include mobile {
+      transform: unset;
+    }
+  }
+
+  @include mobile {
+    width:85%;
+    margin-right: 15%;
+    margin-left: 10px;
+    flex-direction: unset;
+    justify-content: space-evenly;
   }
 }

@@ -9,4 +9,16 @@ nav {
   border-right: 2px solid #c4c4c4;
   border-radius: 10px 0 0 10px;
   background-color: #ffffff;
+
+  @include mobile {
+    position: sticky;
+    flex-direction: row-reverse;
+    height: unset;
+    width: calc(100vw - 55px);
+    border-radius: 10px 10px 0 0px;
+    display: flex;
+    align-items: center;
+    border-right: unset;
+    top: 0px;
+  }
 }
