@@ -77,8 +77,13 @@ const TreeMap = ({monuments}) => {
   const drawChart = (listMonument) => {
     const data = {"children": listMonument}
     
+    let sizeWindow;
     // set the dimensions and margins of the graph
-    const sizeWindow = window.innerWidth - 50;
+    if (window.innerWidth >= 768) {
+      sizeWindow = window.innerWidth - 50;
+    } else {
+      sizeWindow = window.innerWidth + 55;
+    }
 
     const margin = {
       top: 10,

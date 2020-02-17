@@ -100,6 +100,10 @@
           vertical-align: sub;
         }
       }
+
+      @include mobile {
+        margin-left: 0px;
+      } 
     }
 
     .vignetteMonumentContainer {
