@@ -4,7 +4,7 @@ import Navbar from '../molecules/Navbar/Navbar';
 import IntroBlock from '../molecules/IntroBlock/IntroBlock';
 import TreeMapSet from '../molecules/TreeMap/index';
 
-function Page2() {
+function Participate() {
   return (
     <div>
       <Navbar/>
@@ -19,4 +19,4 @@ function Page2() {
   )
 }
 
-export default Page2
+export default Participate
