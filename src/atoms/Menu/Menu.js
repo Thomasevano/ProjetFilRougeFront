@@ -3,10 +3,20 @@ import Step from '../Step/Step'
 import './Menu.scss'
 
 function Menu() {
+
+  //Lock scroll when menu is open
+  const handleClick = (e) => {
+    const bodyEl = document.querySelector("body")
+    if (e.target.checked == true) {
+      bodyEl.style.overflow = "hidden"
+    } else {
+      bodyEl.style.overflow = "unset"
+    }
+  }
   
   return (
     <div className="menu">
-      <input type="checkbox" id="burger-menu"/>
+      <input onClick={handleClick} type="checkbox" id="burger-menu"/>
       <label htmlFor="burger-menu">
         <span className="bar top"></span>
         <span className="bar middle"></span>
