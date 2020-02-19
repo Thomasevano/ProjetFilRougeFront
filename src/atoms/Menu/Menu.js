@@ -27,7 +27,7 @@ function Menu() {
           <ul className="list">
             <li><Step object="circle" stepNumber="Step 1"/><a href="/sensitization" className="anchor">Become aware of our impact</a></li>
             <li><Step object="circle" stepNumber="Step 2"/><a href="/participate" className="anchor">Participate</a></li>
-            <li><Step object="circle" stepNumber="Step 3"/><a href="/step3" className="anchor">Evaluate</a></li>
+            <li><Step object="circle" stepNumber="Step 3"/><a href="/evaluate" className="anchor">Evaluate</a></li>
           </ul>
         </div>
       </aside>
