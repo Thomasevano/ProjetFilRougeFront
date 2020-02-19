@@ -7,7 +7,7 @@ export default class SecondaryButton extends React.Component {
   render() {
     return (
       <div>
-      {!this.props.outside && <Link to="participate" style={{ textDecoration: 'none' }}>
+      {!this.props.outside && <Link to={this.props.pageTo} style={{ textDecoration: 'none' }}>
         <div className="secondaryButton"> 
           <div className="buttonContainer">
             <span className="text">{this.props.text}</span>
