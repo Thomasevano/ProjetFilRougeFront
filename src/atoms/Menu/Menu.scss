@@ -94,8 +94,34 @@
         background-color: white;
         z-index: 1;
 
+        ul {
+          margin: unset;
+          position: relative;
+          /* top: 130px; */
+          height: calc(100vh - 40px - 130px);
+          left: 92px;
+          padding-top: 130px;
+          margin-top: 0px;
+          border-left: 2px solid #c4c4c4;
+          padding-left: 125px;
+
+          @include mobile {
+            position: initial;
+            padding: unset;
+            margin: unset;
+            border: unset;
+            height: calc(100vh - 20px);
+            margin-left: 5%;
+            margin-top: 20%;
+          }
+        }
+
         @include mobile {
           left: 0px;
+          top: 10px;
+          left: 10px;
+          width: calc(100vw - 20px);
+          height: calc(100vh - 20px);
         }
       }
 
@@ -106,6 +132,11 @@
         position: absolute;
         top: -20px;
         left: -20px;
+
+        @include mobile {
+          top: -10px;
+          left: -10px;
+        }
       }
     }
   }
