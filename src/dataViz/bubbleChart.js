@@ -16,7 +16,7 @@ const BubbleChart = ({waste, setWaste, nbDays, setNbDays, isOlympic, setIsOlympi
 
   const DrawChart = (waste) => {
     let hierachalData = makeHierarchy(waste)
-    let packLayout = pack([width -5 , height - 5])
+    let packLayout = pack([width - 5 , height - 5])
     const root = packLayout(hierachalData);
 
     const leaf = svg
@@ -55,43 +55,32 @@ const BubbleChart = ({waste, setWaste, nbDays, setNbDays, isOlympic, setIsOlympi
     .text('TOTAL ' + waste.reduce((accumulator, d) => accumulator + d.tons ,0) + ' tons')
   }
 
-
   const UpdateChart = (days, olympic) => {
-    setNbDays(days)
-    setIsOlympic(olympic)
 
-    // console.log(nbDays)
-    // console.log(setIsOlympic)
-    console.log(days)
-    console.log(olympic)
-    // if (nbDays === 14) {
-    if (days === 14) {
-        console.log("wasteTwoWeeks")
-        console.log(days)
-        console.log(olympic)
-      fetch(`http://127.0.0.1:8000/records-waste-multiplicateur/${nbDays}/${isOlympic}`)
-      // fetch(`http://127.0.0.1:8000/records-waste-multiplicateur/${days}/${olympic}`)
+    useEffect(() => {
+      if (days === 14) {
+      fetch(`http://127.0.0.1:8000/records-waste-multiplicateur/${days}/${olympic}`)
         .then(response => response.json())
         .then(result => setWasteTwoWeeks(result))
         .catch(e => console.error(e))
-        console.log(wasteTwoWeeks)
       hierachalData = makeHierarchy(wasteTwoWeeks);
+        console.log('wasteTwoWeeks')
     }
-    // else if (isOlympics === true) {
     else if (olympic === true) {
-        console.log("wasteOlympics")
-      fetch(`http://127.0.0.1:8000/records-waste-multiplicateur/${nbDays}/${isOlympic}`)
-      // fetch(`http://127.0.0.1:8000/records-waste-multiplicateur/${days}/${olympic}`)
+      fetch(`http://127.0.0.1:8000/records-waste-multiplicateur/${days}/${olympic}`)
         .then(response => response.json())
         .then(result => setWasteOlympics(result))
         .catch(e => console.error(e))
-        console.log(wasteOlympics)
+
        hierachalData = makeHierarchy(wasteOlympics);
+      console.log('wasteOlympics')
     }
-    else {
-      console.log("waste")
-      hierachalData = makeHierarchy(waste);
-    }
+    },[])
+    
+    // else {
+    //   console.log("waste")
+    //   hierachalData = makeHierarchy(waste);
+    // }
 
     let packLayout = pack([width - 5 , height - 5])
     const root = packLayout(hierachalData);
