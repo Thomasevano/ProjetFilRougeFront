@@ -25,3 +25,8 @@ $montserrat-regular: 'Montserrat Regular';
 $bigTitle: 80px;
 $title: 50px;
 $text: 20px;
+
+//media
+
+@mixin mobile() { @media screen and (max-width:767px) { @content; } } // @include mobile { }
+@mixin tablet() { @media screen and (max-width:1024px) { @content; } } // @include tablet { }

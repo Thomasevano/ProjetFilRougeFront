@@ -1,7 +1,6 @@
-@import '../../App.scss';
+@import "../../config/config.scss";
 
 .treeMapSet {
-  //margin-top: 150px;
   height: 100%;
 
   h2 {
@@ -11,6 +10,16 @@
     font-size: $title;
     color: $third-color;
     font-family: $marvin-vision-bold;
+
+    @include tablet {
+      font-size: 40px;
+    }
+
+    @include mobile {
+      margin-left: 0px;
+      font-size: 30px;
+      line-height: 36px;
+    }
   }
 
   .treeMap {
@@ -32,7 +41,14 @@
         -moz-box-shadow: 0px 48px 36px -50px rgba(0,0,0,0.8);
         box-shadow: 0px 40px 36px -50px rgba(0,0,0,0.8);
         -o-box-shadow: 0px 40px 36px -50px rgba(0,0,0,0.8);
+        cursor: pointer;
 
+       .vignetteContainer {
+         width: 100%;
+         height: 100%;
+         background-color: #ffffff;
+         position: absolute;
+       }
       }
 
       p {
@@ -42,6 +58,25 @@
         &:last-of-type {
           margin: 4px 13px 4px 13px;
         }
+      }
+
+      .place {
+        color: #005258;
+        font-size: 15px;
+        font-weight: 600px;
+      }
+
+      .sport {
+        color: #6A6D73;
+        font-size: 15px;
+      }
+
+      .image {
+        margin: auto;
+        width: 90%;
+        border-radius: 5px;
+        background: #C4C4C4;
+        object-fit: cover;
       }
 
       .interet {
@@ -65,6 +100,10 @@
           vertical-align: sub;
         }
       }
+
+      @include mobile {
+        margin-left: 0px;
+      } 
     }
 
     .vignetteMonumentContainer {
@@ -72,6 +111,50 @@
       background-image: url("/data/rond.png");
       background-repeat: no-repeat;
       background-position: bottom left;
+      display: none;
+      width: calc(100% - 92px);
+      height: 100vh;
+      top: 0px;
+      margin-left: 92px;
+
+      .zoomMonument {
+        display: none;
+        width: 90%;
+        height: 70%;
+        margin: auto;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+
+        @include tablet {
+          height: 80%;
+        }
+      }
+
+      .buttonBack {
+        position: absolute;
+        left: 0px;
+        top: -60px;
+        display: flex;
+        cursor: pointer;
+
+        img {
+          transform: rotate(180deg);
+        }
+
+        p {
+          font-size: 16px;
+          color: #005258;
+          margin-left: 30px;
+        }
+
+        @include mobile {
+          left: 5%;
+        }
+      }
 
       .buttonVignette {
         border: none;
@@ -83,6 +166,7 @@
         cursor: pointer;
         margin: 0px 5px 0px 5px;
         transition: all 0.2s ease-out;
+        background-color: #F3F8F9;;
 
         &.active {
           color: #FFFFFF;
@@ -94,10 +178,109 @@
         }
       }
 
+      .imageZoom {
+        text-align: left;
+        width: 35%;
+
+        h3 {
+          color: #005258;
+          font-size: 30px;
+          margin: 0px;
+        }
+
+        h4 {
+          color: #6A6D73;
+          font-size: 14px;
+        }
+
+        img {
+          border-radius: 5px;
+          object-fit: contain;
+          width: 100%;
+        }
+
+        @include tablet {
+          width: 100%;
+
+          h3 {
+            text-align: center;
+          }
+
+          h4 {
+            text-align: center;
+          }
+        }
+      }
+
       .contentVignette {
+        overflow: scroll;
+        width: 65%;
+        padding: 15px;
+
+        .imageTrilib {
+          height: 96px;
+        }
+
+        .imageTrimobile {
+          display: none;
+          height: 96px;
+        }
+
         a:hover {
           font-weight: bold;
         }
+
+        .vignetteTrimobiles {
+          display: none;
+        }
+
+        ul {
+          line-height: 160%;
+
+          li {
+            text-align: left;
+            margin-top: 5px;
+
+            a {
+              text-decoration: none;
+              font-size: 16px;
+              color: #005258;
+            }
+          }
+        }
+
+        @include tablet {
+          margin: auto;
+          width: 95%;
+          height: 50%;
+        }
+
+        @include mobile {
+          height: 65%;
+          width: 90%;
+        }
+      }
+
+      .buttonContainer {
+        margin-bottom: 50px;
+
+        p {
+          color: #6A6D73;
+          font-size: 14px;
+        }
+
+        .textTrimobile {
+          display: none;
+        }
+      }
+
+      @include tablet {
+        height: 180vh;
+      }
+
+      @include mobile {
+        margin-left: 0px;
+        width: 100%;
       }
     }
 

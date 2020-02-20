@@ -1,4 +1,4 @@
-@import '../../App.scss';
+@import "../../config/config.scss";
 
 .home-logo {
   .title {
@@ -7,6 +7,17 @@
     color: $third-color;
     letter-spacing: 0.1em;
     font-size:30px;
+
+    @include mobile {
+      font-size: 25px;
+    }
+  }
+
+  @include mobile {
+    .leafSymbol {
+      width: 40px;
+      height: 40px;
+    }
   }
 }
 
@@ -17,10 +28,18 @@
   align-items: center;
   align-content: center;
   height: 100%;
+  position: relative;
+  z-index: 2;
+
   .leafSymbol {
     height: 24px;
     width: 24px;
     z-index: 1;
+
+    @include mobile {
+      height: 20px;
+      width: 20px;
+    }
   }
 
   .title {
@@ -32,10 +51,31 @@
     transform: rotate(-90deg);
     width: 240px;
     margin: 150px 0;
+
+    @include mobile {
+      transform: unset;
+      font-size: 16px;
+      margin: 16px 0px 16px 0px;
+    }
   }
   
   .logo-jo {
     transform: rotate(-90deg);
     height: 24px;
+
+    @include mobile {
+      transform: unset;
+      height: 20px;
+      width: 39px;
+    }
+  }
+
+  @include mobile {
+    width: 75%;
+    //margin-right: 15%;
+    //margin-left: 10px;
+    flex-direction: unset;
+    justify-content: space-evenly;
+    margin-right: 5%;
   }
 }

@@ -1,14 +1,58 @@
 // Import
-@import './vendors/fonts';
-@import './vendors/variables';
+@import "./config/config.scss";
 
-/* // Media Queries// */
+////font
 
-@mixin tablet {
-  @media (max-width: 1024px) {
-      @content;
-  }
+@font-face {
+  font-family: 'Marvin Visions Bold';
+  font-style: normal;
+  font-weight: bold;
+  src: url('/fonts/MarvinVisions/MarvinVisionsSmall-Bold.ttf') format('woff');
 }
+@font-face {
+  font-family: 'Marvin Visions Medium';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/fonts/MarvinVisions/MarvinVisionsSmall-Medium.ttf') format('woff');
+}
+@font-face {
+  font-family: 'Marvin Visions Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url('/fonts/MarvinVisions/MarvinVisionsSmall-Regular.ttf') format('woff');
+}
+@font-face {
+  font-family: 'Marvin Visions Light';
+  font-style: normal;
+  font-weight: 300;
+  src: url('/fonts/MarvinVisions/MarvinVisionsSmall-Light.ttf') format('woff');
+}
+@font-face {
+  font-family:  'Montserrat Bold';
+  font-style: normal;
+  font-weight: bold;
+  src: url('/fonts/Montserrat/Montserrat-Bold.ttf') format('woff');
+}
+@font-face {
+  font-family:  'Montserrat SemiBold';
+  font-style: normal;
+  font-weight: 600;
+  src: url('/fonts/Montserrat/Montserrat-SemiBold.ttf') format('woff');
+}
+@font-face {
+  font-family:  'Montserrat Medium';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/fonts/Montserrat/Montserrat-Medium.ttf') format('woff');
+}
+@font-face {
+  font-family:  'Montserrat Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url('/fonts/Montserrat/Montserrat-Regular.ttf') format('woff');
+}
+
+////
 
 body {
   background: linear-gradient(61.23deg, $primary-color 0%, $secondary-color 100%);
@@ -77,26 +121,40 @@ body {
         .intro-text {
           font-family: $montserrat-regular;
           font-size: 14px;
-          width: 470px;
+          width: 70%;
           margin: 40px auto auto;
           color: #6A6D73;
         }
       }
+
+      @include mobile {
+        height: calc(100vh - 20px);
+      } 
     }
 
     .visualText, .intro {
-      height: 100vh;
+      height: auto;
+    }
 
+    section {
+      margin-bottom: 100px;
     }
 
     .visualText {
       margin-left: $margin-left;
-    //   margin-right: $margin-left;
+
+      @include mobile {
+        margin-left: unset;
+      }
     }
 
     .dataVizTimeLine {
       z-index: 0;
       height: 100vh;
     }
+  }
+
+  @include mobile {
+    padding: 10px;
   }
 }

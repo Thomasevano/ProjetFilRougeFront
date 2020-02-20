@@ -4,7 +4,7 @@ import Navbar from '../molecules/Navbar/Navbar';
 import IntroBlock from '../molecules/IntroBlock/IntroBlock';
 import TreeMapSet from '../molecules/TreeMap/index';
 
-function Page2() {
+function Participate() {
   return (
     <div>
       <Navbar/>
@@ -14,9 +14,9 @@ function Page2() {
       <section className="dataVizTreeMap">
         <TreeMapSet />
       </section>
-      <EndPart title="Now It’s Time to Participate" subTitle="Last Step" textButton="Go to Step 3"/>
+      <EndPart title="Now It’s Time to Participate" subTitle="Last Step" textButton="Go to Step 3" pageTo="/evaluate"/>
     </div>
   )
 }
 
-export default Page2
+export default Participate
