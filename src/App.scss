@@ -116,6 +116,11 @@ body {
       display: flex;
       flex-direction: column;
       height: calc(100vh - 40px);
+      background-image: url("/data/backgroundHome.png");
+      background-position: bottom;
+      background-repeat: no-repeat;
+      background-size: contain;
+
       .home-container {
         margin: auto;
         .intro-text {
