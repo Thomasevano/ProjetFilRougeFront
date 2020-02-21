@@ -2,6 +2,7 @@
 
 .treeMapSet {
   height: 100%;
+  font-family: "Montserrat Medium";
 
   h2 {
     text-transform: uppercase;
@@ -113,14 +114,14 @@
       background-position: bottom left;
       display: none;
       width: calc(100% - 92px);
-      height: 100vh;
+      height: 110vh;
       top: 0px;
       margin-left: 92px;
 
       .zoomMonument {
         display: none;
         width: 90%;
-        height: 70%;
+        height: 75%;
         margin: auto;
         background-color: #ffffff;
         padding: 20px;
@@ -128,6 +129,11 @@
         position: relative;
         top: 50%;
         transform: translateY(-50%);
+
+        .trilibs, .trimobiles {
+          display: flex;
+          justify-content: space-between;
+        }
 
         @include tablet {
           height: 80%;
@@ -146,6 +152,7 @@
         }
 
         p {
+          margin: auto;
           font-size: 16px;
           color: #005258;
           margin-left: 30px;
@@ -185,12 +192,13 @@
         h3 {
           color: #005258;
           font-size: 30px;
-          margin: 0px;
+          margin-bottom: 5px;
         }
 
         h4 {
           color: #6A6D73;
           font-size: 14px;
+          margin-bottom: 20px;
         }
 
         img {
@@ -217,6 +225,25 @@
         width: 65%;
         padding: 15px;
 
+        .explanation{
+          font-size: 20px;
+          background-color: #FAFCFD;
+          color: #005258;
+          margin-bottom: 40px;
+          font-weight: 600;
+          padding-top: 10px;
+
+          p {
+            margin: auto;
+            width: 80%;
+          }
+
+          img {
+            margin-top: 20px;
+            width: 85%;
+          }
+        }
+
         .imageTrilib {
           height: 96px;
         }
@@ -236,15 +263,25 @@
 
         ul {
           line-height: 160%;
+          margin-left: 20px;
 
           li {
             text-align: left;
-            margin-top: 5px;
 
             a {
               text-decoration: none;
               font-size: 16px;
               color: #005258;
+            }
+          }
+
+          .addPoint {
+            display: flex;
+            cursor: pointer;
+            color: #6A6D73;
+
+            &::before {
+              content: url("/data/treeMap/addPoint.png")
             }
           }
         }
@@ -267,6 +304,7 @@
         p {
           color: #6A6D73;
           font-size: 14px;
+          margin-top: 20px;
         }
 
         .textTrimobile {

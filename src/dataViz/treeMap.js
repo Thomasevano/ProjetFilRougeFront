@@ -14,22 +14,22 @@ const TreeMap = ({monuments}) => {
       .append('div')
       .attr('class','vignetteTrimobiles')
       .append('ul')
-      .style('column-count', (d) => {
-        if (trimobiles.length > 10) {
-          return 2
-        } else {
-          return 1
-        }
-      })
       .selectAll('li')
       .data(trimobiles)
       .enter()
+      .append('div')
+      .attr('class', 'trimobiles')
       .append('li')
       .style('list-style-image', 'url(./data/puceList.png)')
       .append('a')
       .attr('target', '_blank')
       .attr('href', (d) => `https://www.google.com/maps/search/?api=1&query=${d.latitude},${d.longitude}`)
       .text((d) => d.address)
+
+      d3.selectAll('.trimobiles')
+        .append('p')
+        .attr('class', 'addPoint')
+        .text('Recycle')
 
     d3.selectAll('.vignetteTrimobiles')
       .append('p')
@@ -48,22 +48,22 @@ const TreeMap = ({monuments}) => {
       .append('div')
       .attr('class','vignetteTrilibs')
       .append('ul')
-      .style('column-count', (d) => {
-        if (trilibs.length > 10) {
-          return 2
-        } else {
-          return 1
-        }
-      })
       .selectAll('li')
       .data(trilibs)
       .enter()
+      .append('div')
+      .attr('class', 'trilibs')
       .append('li')
       .style('list-style-image', 'url(./data/puceList.png)')
       .append('a')
       .attr('target', '_blank')
       .attr('href', (d) => `https://www.google.com/maps/search/?api=1&query=${d.latitude},${d.longitude}`)
       .text((d) => d.address)
+
+      d3.selectAll('.trilibs')
+      .append('p')
+      .attr('class', 'addPoint')
+      .text('Recycle')
 
     d3.selectAll('.vignetteTrilibs')
       .append('p')
@@ -232,6 +232,15 @@ const TreeMap = ({monuments}) => {
 
     const contentVignette = zoomVignette.append('div')
       .attr('class', 'contentVignette')
+
+    contentVignette.append('div')
+    .attr('class', 'explanation')
+    .append('p')
+    .text('Recycle your waste and contribute to your country’s score')
+
+    d3.selectAll('.explanation')
+    .append('img')
+    .attr('src', './data/treeMap/imgTreemap.png')
 
     contentVignette.append('img')
       .attr('src', './data/treeMap/trilib.png')
