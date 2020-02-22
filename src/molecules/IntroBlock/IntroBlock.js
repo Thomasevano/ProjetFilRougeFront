@@ -3,7 +3,7 @@ import Step from '../../atoms/Step/Step'
 import InfoBlock from '../InfoBlock/InfoBlock';
 import './IntroBlock.scss'
 
-function IntroBlock({img, alt, title, stepNumber, infoTitle, infoSubtitle, infoDescription}) {
+function IntroBlock({img, alt, title, stepNumber, infoTitle, infoSubtitle, infoDescription, imgTop}) {
 
   return(
     <div className="introBlock">
@@ -13,7 +13,7 @@ function IntroBlock({img, alt, title, stepNumber, infoTitle, infoSubtitle, infoD
       <div className="title-block">
         <Step stepNumber={stepNumber} object="circle"/>
         <h1 className="title">{title}</h1>
-        <InfoBlock infoTitle={infoTitle} infoSubtitle={infoSubtitle} infoDescription={infoDescription}/>
+        <InfoBlock imgTop={imgTop} infoTitle={infoTitle} infoSubtitle={infoSubtitle} infoDescription={infoDescription}/>
       </div>
     </div>
   )

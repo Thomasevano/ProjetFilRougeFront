@@ -16,7 +16,7 @@ const ChartBar = ({countrys}) => {
     }
 		
 		const margin = {
-				top: 20,
+				top: 40,
 				right: 20,
 				bottom: 150,
 				left: 120

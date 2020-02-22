@@ -179,6 +179,14 @@ body {
     }
   }
 
+  .evaluate .info-block h2, .evaluate .info-block p{
+    text-align: center;
+  }
+
+  .evaluate .info-block p {
+    font-size: 16px;
+  }
+
   @include mobile {
     padding: 10px;
   }
