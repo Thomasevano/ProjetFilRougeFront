@@ -11,7 +11,6 @@ export default TreeMapSet => {
       .then(result => setMonuments(result))
   }, [])
 
-
   return (
     <div className="treeMapSet">
       <h2>Find where you can limit your impact</h2>

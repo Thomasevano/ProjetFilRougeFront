@@ -10,6 +10,15 @@
   position: absolute;
   top: -260px;
   right: 40px;
+
+  img {
+    height: 48px;
+    width: auto;
+    display: flex;
+    margin: auto;
+    margin-bottom: 5px;
+    filter: brightness(10);
+  }
   
   .text {
     font-family: $montserrat-bold;

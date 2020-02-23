@@ -11,7 +11,15 @@ export default class EndPart extends React.Component {
         <div className="endPartContent">
           <Step stepNumber={this.props.subTitle} object="rectangle"/>
           <h2>{this.props.title}</h2>
-          <SecondaryButton img="data/arrowSecondaryButton.svg" text={this.props.textButton} pageTo={this.props.pageTo}/>
+          { this.props.textButton && 
+          <SecondaryButton img="data/arrowSecondaryButton.svg" text={this.props.textButton} pageTo={this.props.pageTo}/>}
+          {this.props.firstLogo && this.props.secondLogo && this.props.thirdLogo &&
+            <div class="social">
+              <img src={this.props.firstLogo} alt="icone social"></img>
+              <img src={this.props.secondLogo} alt="icone social"></img>
+              <img src={this.props.thirdLogo} alt="icone social"></img>
+            </div>
+          }
         </div>
       </div>
     )
