@@ -1,6 +1,6 @@
 import React from 'react'
 import Step from '../../atoms/Step/Step'
-import InfoBlock from '../InfoBlock/InfoBlock';
+import InfoBlock from '../../atoms/InfoBlock/InfoBlock';
 import './IntroBlock.scss'
 
 function IntroBlock({img, alt, title, stepNumber, infoTitle, infoSubtitle, infoDescription, imgTop}) {

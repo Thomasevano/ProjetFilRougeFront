@@ -7,11 +7,17 @@ function BubbleChartBlock() {
   const [nbDays, setNbDays] = useState(1)
   const [isOlympic, setIsOlympic] = useState(false)
 
+  // useEffect(() => {
+  //   fetch(`http://127.0.0.1:8000/records-waste-multiplicateur/${nbDays}/${isOlympic}`)
+  //   .then(response => response.json())
+  //   .then(result => setWaste(result))
+  // }, [nbDays,isOlympic])
+  
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/records-waste-multiplicateur/${nbDays}/${isOlympic}`)
+    fetch(`http://127.0.0.1:8000/records-waste`)
     .then(response => response.json())
     .then(result => setWaste(result))
-  }, [nbDays,isOlympic])
+  }, [])
   
   return(
     <div className="bubbleChartBlock">

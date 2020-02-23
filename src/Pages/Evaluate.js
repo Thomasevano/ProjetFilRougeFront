@@ -1,7 +1,8 @@
 import React from 'react';
 import Navbar from '../molecules/Navbar/Navbar';
 import IntroBlock from '../molecules/IntroBlock/IntroBlock';
-import ChartBarSet from '../molecules/ChartBar/index';
+import ChartBarSet from '../molecules/ChartBar/index'
+import Leaderboard from '../molecules/Leaderboard/Leaderboard';
 import EndPart from '../molecules/EndPart/index'
  
 function Evaluate() {
@@ -13,6 +14,7 @@ function Evaluate() {
       </section>
       <section className="dataVizChartBar">
         <ChartBarSet />
+        <Leaderboard/>
       </section>
       <EndPart title="Share your experience with your friends" subTitle="The End" textButton="" pageTo="/evaluate" firstLogo="./data/facebook.svg" secondLogo="./data/twitter.svg" thirdLogo="./data/instagram.svg"/>
     </div>
