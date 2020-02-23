@@ -1,0 +1,19 @@
+@import '../../config/config.scss';
+
+.leaderboard {
+  width: 955px;
+  background-color: #fff;
+  border-radius: 10px;
+  display: block;
+  .info-block {
+    width: 335px;
+    height: 132px;
+    float: none;
+    top: 0;
+    right: 0;
+    .info-description {
+      font-family: $montserrat-semibold;
+      font-size: 16px;
+    }
+  }
+}

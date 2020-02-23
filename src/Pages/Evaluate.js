@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../molecules/Navbar/Navbar';
 import IntroBlock from '../molecules/IntroBlock/IntroBlock';
 import ChartBarSet from '../molecules/ChartBar/index'
+import Leaderboard from '../molecules/Leaderboard/Leaderboard';
  
 function Evaluate() {
   return (
@@ -12,6 +13,7 @@ function Evaluate() {
       </section>
       <section className="dataVizChartBar">
         <ChartBarSet />
+        <Leaderboard/>
       </section>
     </div>
   )
