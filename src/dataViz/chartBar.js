@@ -16,10 +16,10 @@ const ChartBar = ({countrys}) => {
     }
 		
 		const margin = {
-				top: 40,
-				right: 20,
+				top: 150,
+				right: 80,
 				bottom: 150,
-				left: 120
+				left: 80
 			},
 			width = sizeWindow - margin.left - margin.right - 92,
 			height = 600 - margin.top - margin.bottom;
@@ -38,6 +38,22 @@ const ChartBar = ({countrys}) => {
 			.attr("height", height + margin.top + margin.bottom)
 			.append("g")
 			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+		//title of dataViz
+		d3.select("#svg")
+			.append('text')
+			.attr('class', 'title')
+			.text('Today’s Ranking')
+			.attr('x', '50%')
+			.attr('y', 50)
+
+		//subTitle of dataViz
+		d3.select("#svg")
+			.append('text')
+			.attr('class', 'subTitle')
+			.text('Which countries made the 10 best scores ')
+			.attr('x', '50%')
+			.attr('y', 90)
 
 		const div = d3.select("body")
 			.append("div")
