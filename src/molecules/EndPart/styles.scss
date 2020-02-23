@@ -33,6 +33,14 @@
       bottom: -40%;
     }
 
+    .social img {
+      cursor: pointer;
+
+      @include tablet {
+        width: 60px;
+      }
+    } 
+
     @include tablet {
       width: 50%;
     }
