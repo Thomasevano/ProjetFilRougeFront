@@ -3,6 +3,13 @@
 .chartBarSet {
   margin-left: 92px;
 
+  .chartBarDataViz {
+    background-color: #F3F8F9;
+    background-image: url(/data/rond.png);
+    background-repeat: no-repeat;
+    background-position: bottom left;
+  } 
+
   h2 {
     text-transform: uppercase;
     text-align: center;
@@ -13,10 +20,10 @@
   }
 
   svg {
-    background-color: #F3F8F9;
-    background-image: url("/data/rond.png");
-    background-repeat: no-repeat;
-    background-position: bottom left;
+    // background-color: #F3F8F9;
+    // background-image: url("/data/rond.png");
+    // background-repeat: no-repeat;
+    // background-position: bottom left;
 
     .title {
       font-family: $montserrat-bold;

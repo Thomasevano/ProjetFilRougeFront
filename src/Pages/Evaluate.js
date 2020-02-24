@@ -15,9 +15,9 @@ function Evaluate() {
       <section className="dataVizChartBar">
         <ChartBarSet />
       </section>
-      <section>
+      {/* <section>
         <Leaderboard/>
-      </section>
+      </section> */}
       <EndPart title="Share your experience with your friends" subTitle="The End" textButton="" pageTo="/evaluate" firstLogo="./data/facebook.svg" secondLogo="./data/twitter.svg" thirdLogo="./data/instagram.svg"/>
     </div>
   )
