@@ -1,7 +1,7 @@
 @import '../../config/config.scss';
 
 .leaderboard {
-  width: 955px;
+  width: 90%;
   background-color: #fff;
   border-radius: 10px;
   display: block;
@@ -22,9 +22,9 @@
   .info-block {
     position: absolute;
     left: 0;
-    top: -85px;
+    top: -65px;
     width: 335px;
-    height: 132px;
+    height: auto;
     float: none;
     //top: 0;
     right: 0;

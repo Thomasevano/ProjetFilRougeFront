@@ -18,7 +18,7 @@ const ChartBar = ({countrys}) => {
 		const margin = {
 				top: 150,
 				right: 80,
-				bottom: 220,
+				bottom: 230,
 				left: 80
 			},
 			width = sizeWindow - margin.left - margin.right - 92,
