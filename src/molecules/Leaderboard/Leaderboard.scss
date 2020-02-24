@@ -8,6 +8,9 @@
   margin-left: $margin-left;
   margin: auto;
   margin-top: 50px;
+  position: relative;
+  padding-top: 125px;
+  margin-top: 140px;
   
   @include tablet {
     width: 88%;
@@ -17,12 +20,14 @@
     width: 85%;
   }
   .info-block {
+    position: absolute;
+    left: 0;
+    top: -85px;
     width: 335px;
     height: 132px;
     float: none;
-    top: 0;
+    //top: 0;
     right: 0;
-    position: relative;
     margin: auto;
 
     @include tablet {

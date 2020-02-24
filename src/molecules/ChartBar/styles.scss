@@ -8,6 +8,7 @@
     background-image: url(/data/rond.png);
     background-repeat: no-repeat;
     background-position: bottom left;
+    padding-bottom: 80px;
   } 
 
   h2 {
@@ -20,10 +21,6 @@
   }
 
   svg {
-    // background-color: #F3F8F9;
-    // background-image: url("/data/rond.png");
-    // background-repeat: no-repeat;
-    // background-position: bottom left;
 
     .title {
       font-family: $montserrat-bold;

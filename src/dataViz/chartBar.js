@@ -18,11 +18,11 @@ const ChartBar = ({countrys}) => {
 		const margin = {
 				top: 150,
 				right: 80,
-				bottom: 150,
+				bottom: 200,
 				left: 80
 			},
 			width = sizeWindow - margin.left - margin.right - 92,
-			height = 600 - margin.top - margin.bottom;
+			height = 700 - margin.top - margin.bottom;
 
 		const x = d3.scaleBand()
 			.range([0, width])
