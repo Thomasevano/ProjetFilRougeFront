@@ -31,7 +31,7 @@
     margin: auto;
 
     @include tablet {
-      left: initial;
+      //left: initial;
       transform: initial;
     }
     .info-description {

@@ -18,11 +18,11 @@ const ChartBar = ({countrys}) => {
 		const margin = {
 				top: 150,
 				right: 80,
-				bottom: 200,
+				bottom: 220,
 				left: 80
 			},
 			width = sizeWindow - margin.left - margin.right - 92,
-			height = 700 - margin.top - margin.bottom;
+			height = 750 - margin.top - margin.bottom;
 
 		const x = d3.scaleBand()
 			.range([0, width])
@@ -91,7 +91,14 @@ const ChartBar = ({countrys}) => {
 			const domainSize = document.querySelector('.domain')
 
 			svg.append("g")
-				.call(d3.axisLeft(y).ticks(6).tickSize(-domainSize.getBBox().width));
+				.call(d3.axisLeft(y).ticks(6).tickSize(-domainSize.getBBox().width))
+				.attr('class', 'leftBar')
+			
+
+			d3.selectAll('.leftBar text')
+			.attr('y', -10)
+			.attr('x', 0)
+			.style('text-anchor', 'start')
 
 			// Ajout des bars en utilisant les données de notre fichier data
 			// La largeur de la barre est déterminée par la fonction x
@@ -129,7 +136,7 @@ const ChartBar = ({countrys}) => {
 				})
 				.append('xhtml:div')
 
-
+				d3.selectAll('path.domain').remove()
 
 		//https://www.datavis.fr/index.php?page=barchart
 	}
