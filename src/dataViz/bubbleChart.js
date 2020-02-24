@@ -13,37 +13,6 @@ const BubbleChart = ({waste}) => {
   let packLayout = pack([width - 5 , height - 5])
   const root = packLayout(hierachalData);
 
-  //   const leaf = svg
-  //     .selectAll("g")
-  //     .data(root.leaves())
-  //     .join('g')
-  //     .attr("transform", d =>  `translate(${d.y + 200},${d.x - 200})`)
-
-  //   leaf.append("circle")
-  //       .attr('r', d => d.r)
-  //       .attr("fill", "#C4C4C4");
-  
-  //   leaf.append("text")
-  //       .data(waste)
-  //       .attr('class', 'data-text data-name')
-  //       .attr("x", - 4 + "%")
-  //       // .attr("y", (d, i, nodes) => `${i - nodes.length / 2 + 0.8}em`)
-  //       .attr("y", - 30)
-  //       .text(d => d.name)
-  
-  //   leaf.append("text")
-  //       .data(waste)
-  //       .attr('class', 'data-text data-tons')
-  //       .attr('x', - 3 + '%')
-  //       .text(d => d.tons + ' tons');
-
-    div.append('div')
-    .attr('class', 'totalTons')
-    .style('width', "257px")
-    .style('height', "101px")
-    .append('p')
-    .text('TOTAL ' + waste.reduce((accumulator, d) => accumulator + d.tons ,0) + ' tons')
-  
   function createSVG() {
   return div
     .append("svg")
@@ -79,56 +48,61 @@ const BubbleChart = ({waste}) => {
       .enter()
       .append('g')
       .attr('class', 'node')
-      .attr('transform', function(d) {
-        return 'translate(' + d.x + ' ' + d.y + ')';
-      })
+      .attr("transform", d =>  `translate(${d.y + 200},${d.x - 50})`)
       .append('g')
       .attr('class', 'graph');
 
     node
-      .append('circle')
-      .attr('r', function(d) {
-        return d.r;
-      })
-      .style('fill', '#C4C4C4');
+      .append("circle")
+      .attr('r', d => d.r)
+      .attr("fill", "#C4C4C4");
 
     node
       .append('text')
-      .attr('dy', '.3em')
-      .style('text-anchor', 'middle')
-      .text(function(d) {
-        return d.data.tons;
-      })
-      .style('fill', '#ffffff');
-    console.log('basique')
+      .attr('class', 'data-text data-name')
+      .attr("x", - 4 + "%")
+      .attr("y", - 30)
+      .text(d => d.data.name)
+
+    node
+      .append('text')
+      .attr('class', 'data-text data-tons')
+      .attr('x', - 3 + '%')
+      .text(d => d.data.tons + ' tons');
   }
+
+  let totalTons = 
+  div.append('div')
+  .attr('class', 'totalTons')
+  .append('div');
+
+  totalTons.append('p')
+  .text('TOTAL')
+  totalTons.append('p')
+  .text(waste.reduce((accumulator, d) => accumulator + d.tons ,0) + ' tons')
 
   function update(days, olympic) {
     fetch(`http://127.0.0.1:8000/records-waste-multiplicateur/${days}/${olympic}`)
     .then(response => response.json())
     .then(
       function(result) {
-        document.querySelectorAll('circle + text').forEach((node, index) => {
-          node.innerHTML = result[index].tons;
+        document.querySelectorAll('.data-tons').forEach((node, index) => {
+          node.innerHTML = result[index].tons + ' tons';
         })
-        div.select('.totalTons')
-        .data(result)
-        .transition()
-        .text('TOTAL ' + result.reduce((accumulator, d) => accumulator + d.tons ,0) + ' tons')
+        document.querySelector('.totalTons div')
+          .innerHTML = (`<p>TOTAL</p><p>${result.reduce((accumulator, d) => accumulator + d.tons ,0) + ' tons'}</p>`)
       }
     )
     .catch(e => console.error(e))
-    
   }
 
   return (
     <div className="wasteAmountBlock" ref={svgRef}>
       {DrawChart1()}
       {/* <Filter title="Duration" labelId="1DayParis" label="1 Day" functionName={UpdateChart(waste, setNbDays, 1, false)} secondLabelId="2WeeksParis" secondLabel="2 Weeks" secondFunctionName={() => UpdateChart(waste, setNbDays, 14, false)}></Filter> */}
-      <Filter title="Population" labelId="1DayParisOlympics" label="Paris" functionName={update} secondLabelId="2WeeksParisOlympics" secondLabel="Olympics" labelDays="1" labelOlympics="false" secondLabelDays="14" secondLabelOlympics="false"></Filter>
       <Filter title="Duration" labelId="1DayParis" label="1 Day" functionName={update} secondLabelId="2WeeksParis" secondLabel="2 Weeks" labelDays={1} labelOlympics={false} secondLabelDays={14} secondLabelOlympics={false}></Filter>
       {/* <Filter title="Population" labelId="1DayParisOlympics" label="Paris" functionName={UpdateChart(waste, setNbDays, 1, true)} secondLabelId="2WeeksParisOlympics" secondLabel="Olympics" secondFunctionName={() => UpdateChart(waste, setNbDays, 14, true)}></Filter> */}
-      {/* <Filter title="Population" labelId="1DayParisOlympics" label="Paris" functionName={UpdateChart} secondLabelId="2WeeksParisOlympics" secondLabel="Olympics" labelDays={1} labelOlympics={true} secondLabelDays={1} secondLabelOlympics={true}></Filter> */}
+      <Filter title="Population" labelId="1DayParisOlympics" label="Paris" functionName={update} secondLabelId="2WeeksParisOlympics" secondLabel="Olympics" labelDays={1} labelOlympics={true} secondLabelDays={1} secondLabelOlympics={true}></Filter>
     </div>
   )
 }
