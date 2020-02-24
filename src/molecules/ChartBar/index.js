@@ -1,5 +1,6 @@
 import React , { useState, useEffect} from 'react';
 import ChartBar from '../../dataViz/chartBar';
+import Leaderboard from '../Leaderboard/Leaderboard';
 import './styles.scss'
 
 export default ChartBarSet => {
@@ -14,7 +15,10 @@ export default ChartBarSet => {
   return (
     <div className="chartBarSet">
       <h2>Our world’s best supporters</h2>
-      { countrys.length ? <ChartBar countrys={countrys}/> : ''}
+      <div class="chartBarDataViz">
+        { countrys.length ? <ChartBar countrys={countrys}/> : ''}
+        <Leaderboard/>
+      </div>
     </div>
   )
 }

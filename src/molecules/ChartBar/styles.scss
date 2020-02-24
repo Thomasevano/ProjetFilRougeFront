@@ -3,6 +3,14 @@
 .chartBarSet {
   margin-left: 92px;
 
+  .chartBarDataViz {
+    background-color: #F3F8F9;
+    background-image: url(/data/rond.png);
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    padding-bottom: 80px;
+  } 
+
   h2 {
     text-transform: uppercase;
     text-align: center;
@@ -13,10 +21,6 @@
   }
 
   svg {
-    background-color: #F3F8F9;
-    background-image: url("/data/rond.png");
-    background-repeat: no-repeat;
-    background-position: bottom left;
 
     .title {
       font-family: $montserrat-bold;
@@ -32,7 +36,15 @@
       font-family: $montserrat-regular;
       font-weight: 500;
       text-anchor: middle;
-    } 
+    }
+
+    g.tick:first-child line {
+      stroke-width: 5px;
+    }
+
+    g {
+      font-family: "Montserrat Medium";
+    }
   }
 
   .bar {
@@ -50,7 +62,7 @@
   .domain {
     color: #FFFFFF;
     box-shadow: 10px 4px 10px rgba(0, 0, 0, 0.15);
-    stroke-width: 5px;
+    //stroke-width: 5px;
   }
 
   .tick {
