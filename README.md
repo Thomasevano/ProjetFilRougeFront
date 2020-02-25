@@ -8,6 +8,9 @@
 - Virgil Limongi
 - Tristan Lemire
 
+## Le Twitter
+https://twitter.com/MarvelousBot
+
 ## First step
 
 install npm:
