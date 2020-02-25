@@ -1,9 +1,8 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import * as d3 from 'd3';
 import Filter from '../atoms/FilterDataviz/Filter';
 
 const BubbleChart = ({waste}) => {
-
   const width = 900;
   const height = 600;
   const svgRef = useRef();
@@ -81,28 +80,37 @@ const BubbleChart = ({waste}) => {
   totalTons.append('p')
   .text(waste.reduce((accumulator, d) => accumulator + d.tons ,0) + ' tons')
 
-  function update(days, olympic) {
+  function Update(days, olympic) {
     fetch(`http://127.0.0.1:8000/records-waste-multiplicateur/${days}/${olympic}`)
     .then(response => response.json())
     .then(
       function(result) {
         document.querySelectorAll('.data-tons').forEach((node, index) => {
-          node.innerHTML = result[index].tons + ' tons';
+          node.innerHTML = Math.round(result[index].tons * 100)/100 + ' tons';
         })
         document.querySelector('.totalTons div')
-          .innerHTML = (`<p>TOTAL</p><p>${result.reduce((accumulator, d) => accumulator + d.tons ,0) + ' tons'}</p>`)
+          .innerHTML = (`<p>TOTAL</p><p>${result.reduce((accumulator, d) => Math.round(accumulator + d.tons * 100)/100 ,0) + ' tons'}</p>`)
       }
     )
+    .then(console.log(`http://127.0.0.1:8000/records-waste-multiplicateur/${days}/${olympic}`))
     .catch(e => console.error(e))
   }
 
   return (
     <div className="wasteAmountBlock" ref={svgRef}>
       {DrawChart1()}
-      {/* <Filter title="Duration" labelId="1DayParis" label="1 Day" functionName={UpdateChart(waste, setNbDays, 1, false)} secondLabelId="2WeeksParis" secondLabel="2 Weeks" secondFunctionName={() => UpdateChart(waste, setNbDays, 14, false)}></Filter> */}
-      <Filter title="Duration" labelId="1DayParis" label="1 Day" functionName={update} secondLabelId="2WeeksParis" secondLabel="2 Weeks" labelDays={1} labelOlympics={false} secondLabelDays={14} secondLabelOlympics={false}></Filter>
-      {/* <Filter title="Population" labelId="1DayParisOlympics" label="Paris" functionName={UpdateChart(waste, setNbDays, 1, true)} secondLabelId="2WeeksParisOlympics" secondLabel="Olympics" secondFunctionName={() => UpdateChart(waste, setNbDays, 14, true)}></Filter> */}
-      <Filter title="Population" labelId="1DayParisOlympics" label="Paris" functionName={update} secondLabelId="2WeeksParisOlympics" secondLabel="Olympics" labelDays={1} labelOlympics={true} secondLabelDays={1} secondLabelOlympics={true}></Filter>
+      <Filter firstButtonTitle="Duration"
+        firstButtonLabelId="1-day"
+        firstButtonLabel="1 Day"
+        firstButtonLabelId2="2-weeks"
+        firstButtonLabel2="2 Weeks"
+        secondButtonTitle="Population"
+        secondButtonLabelId="no-olympics"
+        secondButtonLabel="Paris"
+        secondButtonLabelId2="olympics"
+        secondButtonLabel2="Olympics"
+        functionName={Update}>
+      </Filter>
     </div>
   )
 }

@@ -48,13 +48,16 @@
         text-align: left;
         height: 100px;
         width: 230px;
+        display: table;
         div {
-          // padding: 20px 20px 0;
-          line-height: 30px;
+          padding-left: 35px;
+          vertical-align:middle;
+          display: table-cell;
           p {
             color: #ffffff;
             font-family: $montserrat-bold;
             font-size: 20px;
+            line-height: 30px;
           }
         }
     }

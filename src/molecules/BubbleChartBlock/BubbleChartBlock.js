@@ -4,8 +4,6 @@ import './BubbleChartBlock.scss'
 
 function BubbleChartBlock() {
   const [waste, setWaste] = useState([])
-  const [nbDays, setNbDays] = useState(1)
-  const [isOlympic, setIsOlympic] = useState(false)
 
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/records-waste`)
