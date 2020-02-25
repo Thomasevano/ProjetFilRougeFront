@@ -2,11 +2,11 @@
 
 ## Equipe
 
-- Amandine Donat-filliod - Design
-- Kento Monthubert - Back
-- Thomas Evano - Front
-- Virgil Limongi - Front
-- Tristan Lemire - Back
+- Amandine Donat-filliod - __Design__
+- Kento Monthubert - __Back__
+- Thomas Evano - __Front__
+- Virgil Limongi - __Front__
+- Tristan Lemire - __Back__
 
 ## Technologie
 
