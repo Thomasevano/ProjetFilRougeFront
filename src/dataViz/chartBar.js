@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react';
+import React, {useEffect} from 'react';
 import * as d3 from "d3";
 
 const ChartBar = ({countrys}) => {
@@ -79,13 +79,23 @@ const ChartBar = ({countrys}) => {
 			// Selection des noeuds text, positionnement puis rotation
 			svg.append("g")
 				.attr("transform", "translate(0," + height + ")")
+				.attr('class', 'bottomAxe')
 				.call(d3.axisBottom(x).tickSize(0))
 				.selectAll("text")
 				.attr('class', 'countrys')
 				.style("text-anchor", "end")
 				.attr("dx", "-.8em")
+				.attr('x', -50)
 				.attr("dy", ".15em")
 				.attr("transform", "rotate(-90)");
+
+			d3.selectAll('.bottomAxe .tick')
+			.append('foreignObject')
+			.attr('x', -12)
+			.attr('y', 20)
+			.data(data)
+			.append('xhtml:img')
+			.attr('src', (d) => d.img_url)
 
 			// Ajout de l'axe Y au SVG avec 6 éléments de légende en utilisant la fonction ticks (sinon D3JS en place autant qu'il peut).
 			const domainSize = document.querySelector('.domain')
@@ -94,7 +104,6 @@ const ChartBar = ({countrys}) => {
 				.call(d3.axisLeft(y).ticks(6).tickSize(-domainSize.getBBox().width))
 				.attr('class', 'leftBar')
 			
-
 			d3.selectAll('.leftBar text')
 			.attr('y', -10)
 			.attr('x', 0)
@@ -116,7 +125,7 @@ const ChartBar = ({countrys}) => {
 				})
 				.attr("width", x.bandwidth())
 				.attr("y", function (d) {
-					return y(d.score);
+					return y(d.score + 20);
 				})
 				.attr("height", function (d) {
 					return height - y(d.score);
@@ -125,7 +134,7 @@ const ChartBar = ({countrys}) => {
 					div.transition()
 						.duration(200)
 						.style("opacity", .9);
-					div.html(d.score + ` good actions`)
+					div.html(d.score + ` points`)
 						.style("left", (d3.event.pageX + 10) + "px")
 						.style("top", (d3.event.pageY - 50) + "px");
 				})
@@ -137,8 +146,6 @@ const ChartBar = ({countrys}) => {
 				.append('xhtml:div')
 
 				d3.selectAll('path.domain').remove()
-
-		//https://www.datavis.fr/index.php?page=barchart
 	}
 
 	useEffect(() => {
@@ -146,7 +153,7 @@ const ChartBar = ({countrys}) => {
   }, [countrys])
 
 	return ( 
-		<div className="chartBar"> </div>
+		<div className="chartBar"></div>
 	)
 }
 
