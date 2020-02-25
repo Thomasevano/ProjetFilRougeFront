@@ -13,7 +13,6 @@
   margin-top: 140px;
 
   img {
-    width: 40px;
     height: 40px;
     align-self: center;
     vertical-align: middle;
@@ -33,12 +32,10 @@
     width: 335px;
     height: auto;
     float: none;
-    //top: 0;
     right: 0;
     margin: auto;
 
     @include tablet {
-      //left: initial;
       transform: initial;
     }
     .info-description {
@@ -51,69 +48,71 @@
     display: flex;
   }
 
+  #legend {
+    background-color: rgba(204, 204, 204, 0.3);
+    height: 80px;
+    padding: 0 3% 0 3%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      font-family: $marvin-vision-medium;
+      color: $third-color;
+      font-size: 22px;
+    }
+  }  
+
   .country-list {
-    ul {
-      li {
-        justify-content: space-between;
-        list-style: none;
-        //width: 100%;
-        height: 80px;
-        padding: 0 60px 0 75px;
-        display: flex;
-        span {
-          line-height: 80px;
-          color: $third-color;
-          font-size: 20px;
-          font-family: $montserrat-regular;
-          strong {
-            font-family: $montserrat-bold;
-          }
-        }
+    ul li {
+      list-style: none;
+      height: 80px;
+      padding: 0 3% 0 3%;
+      display: flex;
+      overflow: hidden;
 
-        span:nth-child(2){
-          margin-right: 10%;
-        }
+      span {
+        line-height: 80px;
+        color: $third-color;
+        font-size: 20px;
+        font-family: $montserrat-regular;
+        text-align: left;
 
-        div {
-          width: 30%;
-          margin-left: -15%;
-        }
-
-        .country-ranking {
-          //float: left;
-          min-width: 40px;
-        }
-        .country-name {
-          font-family: $montserrat-semibold;
-          //float: left;
-
-          margin-left: 3%;
-        }
-        .country-score {
-          //float: right;
-        }
-
-        &:nth-child(odd) {
-          background: rgba(243, 248, 249, 0.4);
-        }
-
-        &:nth-child(even) {
-          background: #fff;
+        strong {
+          font-family: $montserrat-bold;
         }
       }
 
-      #legend {
-        background-color: rgba(204, 204, 204, 0.3);
+      div {
+        width: 37%;
+      }
 
-        span {
-          font-family: $marvin-vision-medium;
-          color: $third-color;
-          font-size: 22px;
-        }
+      .country-ranking {
+        min-width: 40px;
+        margin-right: 12%;
+      }
 
-        span:nth-child(2){
-          width: auto;
-        }
+      .country-name {
+        font-family: $montserrat-semibold;
+        margin-left: 3%;
+      }
+
+      .country-score {
+        position: absolute;
+        right: 5%;
+      }
+
+      .person-score {
+        margin-right: 5%;
+         min-width: 20%;
+      }
+
+      &:nth-child(odd) {
+        background: rgba(243, 248, 249, 0.4);
+      }
+
+      &:nth-child(even) {
+        background: #fff;
       }
     }
   }
