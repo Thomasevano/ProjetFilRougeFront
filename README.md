@@ -2,11 +2,20 @@
 
 ## Equipe
 
-- Amandine Donat-filliod
-- Kento Monthubert
-- Thomas Evano
-- Virgil Limongi
-- Tristan Lemire
+- Amandine Donat-filliod - Design
+- Kento Monthubert - Back
+- Thomas Evano - Front
+- Virgil Limongi - Front
+- Tristan Lemire - Back
+
+## Technologie
+
+- Create React App (CRA)
+- Webpack (inclut dans CRA)
+
+## Librairie utilisée
+
+- D3.js => permet d'interpréter des données et de les transformées en graphique
 
 ## First step
 
