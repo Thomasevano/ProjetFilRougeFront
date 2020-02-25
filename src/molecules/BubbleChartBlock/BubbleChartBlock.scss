@@ -28,15 +28,18 @@
     background-image: url("/data/rond.png");
     background-repeat: no-repeat;
     background-position: bottom left;
-
       .data-text {
         font-family: $montserrat-regular;
         font-size: 14px;
         fill: $third-color;
+        text-anchor: middle;
       }
       .data-name {
         font-family: $montserrat-bold;
         font-size: 16px;
+        @include mobile {
+          font-size: 14px;
+        }
       }
     
       .totalTons {

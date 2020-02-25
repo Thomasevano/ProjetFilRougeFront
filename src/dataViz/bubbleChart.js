@@ -3,21 +3,23 @@ import * as d3 from 'd3';
 import Filter from '../atoms/FilterDataviz/Filter';
 
 const BubbleChart = ({waste}) => {
-  const width = 900;
+  const width = 600;
   const height = 600;
+  let sizeWindow = 600;
+  
   const svgRef = useRef();
   const div = d3.select(svgRef.current);
   const svg = createSVG();
   let hierachalData = makeHierarchy(waste)
-  let packLayout = pack([width - 5 , height - 5])
+  let packLayout = pack([sizeWindow - 5 , sizeWindow - 5])
   const root = packLayout(hierachalData);
 
   function createSVG() {
   return div
     .append("svg")
     .attr("class", "wasteAmount")
-    .attr("width", width)
-    .attr("height", height)
+    .attr("width", sizeWindow)
+    .attr("height", sizeWindow)
   }
 
   function makeHierarchy(data) {
@@ -32,41 +34,31 @@ const BubbleChart = ({waste}) => {
 
   const DrawChart1 = () => {
 
-    var diameter = 600;
-
-    var bubble = d3
-      .pack()
-      .size([diameter, diameter])
-      .padding(5);
-
-    bubble(root);
-
     var node = svg
       .selectAll('.node')
       .data(root.leaves())
       .enter()
       .append('g')
       .attr('class', 'node')
-      .attr("transform", d =>  `translate(${d.y + 200},${d.x - 50})`)
+      .attr("transform", d =>  `translate(${d.y},${d.x - 50})`)
       .append('g')
       .attr('class', 'graph');
 
     node
-      .append("circle")
-      .attr('r', d => d.r)
-      .attr("fill", "#C4C4C4");
+      .append('circle')
+      .attr('class', 'circle')
+      .attr('r', d => d.r / 2)
+      .attr("fill", "#C4C4C4")
 
     node
       .append('text')
       .attr('class', 'data-text data-name')
-      .attr("x", - 4 + "%")
-      .attr("y", - 30)
+      .attr("y", - 24)
       .text(d => d.data.name)
 
     node
       .append('text')
       .attr('class', 'data-text data-tons')
-      .attr('x', - 3 + '%')
       .text(d => d.data.tons + ' tons');
   }
 
@@ -80,20 +72,42 @@ const BubbleChart = ({waste}) => {
   totalTons.append('p')
   .text(waste.reduce((accumulator, d) => accumulator + d.tons ,0) + ' tons')
 
-  function Update(days, olympic) {
+  const Update = (days, olympic) => {
     fetch(`http://127.0.0.1:8000/records-waste-multiplicateur/${days}/${olympic}`)
     .then(response => response.json())
-    .then(
-      function(result) {
-        document.querySelectorAll('.data-tons').forEach((node, index) => {
-          node.innerHTML = Math.round(result[index].tons * 100)/100 + ' tons';
-        })
-        document.querySelector('.totalTons div')
-          .innerHTML = (`<p>TOTAL</p><p>${result.reduce((accumulator, d) => Math.round(accumulator + d.tons * 100)/100 ,0) + ' tons'}</p>`)
-      }
-    )
+    .then(result => UpdateBubble(result))
     .then(console.log(`http://127.0.0.1:8000/records-waste-multiplicateur/${days}/${olympic}`))
     .catch(e => console.error(e))
+
+    const UpdateBubble = (data) => {
+      let hierachalData = makeHierarchy(data)
+      const dataRoot = packLayout(hierachalData);
+      let circle = svg
+        .selectAll('.node')
+        .select('.graph')
+        .select('circle')
+        .data(dataRoot.leaves())
+        .transition()
+
+      document.querySelectorAll('.data-tons').forEach((node, index) => {
+        node.innerHTML = Math.round(data[index].tons * 100)/100 + ' tons';
+      })
+      document.querySelector('.totalTons div')
+        .innerHTML = (`<p>TOTAL</p>
+        <p>${data.reduce((accumulator, d) => Math.round(accumulator + d.tons * 100)/100 ,0) + ' tons'}</p>`)
+      if (days === 14 && olympic === false) {
+        circle.attr('r', d => d.r / 1.5)
+      }
+      else if (days === 14 && olympic === true) {
+        circle.attr('r', d => d.r)
+      }
+      else if (days === 1 && olympic === true) {
+        circle.attr('r', d => d.r / 1.3)
+      }
+      else if (days === 1 && olympic === false) {
+        circle.attr('r', d => d.r / 2)
+      }
+    }
   }
 
   return (

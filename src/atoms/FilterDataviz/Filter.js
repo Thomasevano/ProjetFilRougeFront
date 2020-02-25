@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, {useState} from 'react'
 import './Filter.scss'
 
 const Filter = ({firstButtonTitle, firstButtonLabelId, firstButtonLabel, firstButtonLabelId2, firstButtonLabel2, secondButtonTitle, secondButtonLabelId, secondButtonLabel, secondButtonLabelId2, secondButtonLabel2, functionName}) => {
@@ -18,15 +18,6 @@ const Filter = ({firstButtonTitle, firstButtonLabelId, firstButtonLabel, firstBu
   }
 
   return (
-    // <div className="filter">
-    //   <h3 className="filter-title">{title}</h3>
-    //   <div className="filter-button">
-    //     <input type="checkbox" className="UpdateButton" id={labelId} checked={isChecked} onChange={() => { functionName(labelDays, labelOlympics); setIsCheckedSecondary(false); setIsChecked(true)} }></input>
-    //     <label htmlFor={labelId}>{label}</label>
-    //     <input type="checkbox" className="UpdateButton" id={secondLabelId} checked={isCheckedSecondary} onChange={() => { functionName(secondLabelDays, secondLabelOlympics); setIsCheckedSecondary(true); setIsChecked(false)} }></input>
-    //     <label className="secondary" htmlFor={secondLabelId}>{secondLabel}</label>
-    //   </div>
-    // </div>
     <div>
       <div className="filter">
         <h3 className="filter-title">{firstButtonTitle}</h3>

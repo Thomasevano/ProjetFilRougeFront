@@ -7,7 +7,7 @@ function Menu() {
   //Lock scroll when menu is open
   const handleClick = (e) => {
     const bodyEl = document.querySelector("body")
-    if (e.target.checked == true) {
+    if (e.target.checked === true) {
       bodyEl.style.overflow = "hidden"
     } else {
       bodyEl.style.overflow = "unset"
