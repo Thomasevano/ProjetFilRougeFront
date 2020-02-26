@@ -15,9 +15,9 @@ export default class EndPart extends React.Component {
           <SecondaryButton img="data/arrowSecondaryButton.svg" text={this.props.textButton} pageTo={this.props.pageTo}/>}
           {this.props.firstLogo && this.props.secondLogo && this.props.thirdLogo &&
             <div className="social">
-              <img src={this.props.firstLogo} alt="icone social"></img>
-              <img src={this.props.secondLogo} alt="icone social"></img>
-              <img src={this.props.thirdLogo} alt="icone social"></img>
+              <a href={this.props.firstUrl}><img src={this.props.firstLogo} alt="icone social"></img></a>
+              <a href={this.props.secondUrl}><img src={this.props.secondLogo} alt="icone social"></img></a>
+              <a href={this.props.thirdUrl}><img src={this.props.thirdLogo} alt="icone social"></img></a>
             </div>
           }
         </div>

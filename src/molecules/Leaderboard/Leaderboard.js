@@ -22,13 +22,13 @@ const Leaderboard = () => {
         <span className="country-name">{country.country}</span>
       </div>
       <span className='person-score'>
-        <strong>{Math.round(country.score*10)/10}</strong> good actions
+        <strong>{Math.round(country.score*10)/10}</strong><span> good actions</span>
       </span>
       <span className="country-score">
-        <strong>{country.scoresNotAverage}</strong> points
+        <strong>{country.scoresNotAverage}</strong><span> points</span>
       </span>
     </li>
-    )
+  )
 
   return (
     <div className="leaderboard">
