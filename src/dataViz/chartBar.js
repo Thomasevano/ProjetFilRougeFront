@@ -12,7 +12,7 @@ const ChartBar = ({countrys}) => {
     if (window.innerWidth >= 768) {
       sizeWindow = window.innerWidth - 50;
     } else {
-      sizeWindow = window.innerWidth + 55;
+      sizeWindow = window.innerWidth + 150;
     }
 		
 		const margin = {
