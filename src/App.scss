@@ -145,13 +145,18 @@ body {
       margin-top: 0px;
     }
 
-    section, .endPart {
-      margin-top: 300px;
+    .endPart {
+      margin-top: 0px;
+    }
+
+    section {
+      margin-top: 200px;
     }
 
     .visualText {
       margin-left: $margin-left;
       height: auto;
+      margin-bottom: 250px;
 
       @include mobile {
         margin-left: unset;
