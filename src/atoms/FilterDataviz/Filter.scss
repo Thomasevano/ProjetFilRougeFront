@@ -9,6 +9,9 @@
     font-size: 26px;
     color: $third-color;
     margin-bottom: 15px;
+    @include mobile {
+      display: none;
+    }
   }
   input {
     display: none;
@@ -36,6 +39,10 @@
     line-height: 55px;
     background-color: #FFF;
     border-radius: 10px 0 0 10px;
+      @include mobile {
+        width: 80px;
+        font-size: 14px;
+      }
     cursor: pointer;
     transition: background-color 0.2s ease-out;
   }

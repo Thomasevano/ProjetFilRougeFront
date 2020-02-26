@@ -112,6 +112,20 @@ body {
 
       .home-container {
         margin: auto;
+        .home-logo {
+          .leafSymbol {
+            width: 40px;
+            height: 40px;
+          }
+          .title {
+            font-size: 35px;
+            margin: 25px 0;
+          }
+          .logo-jo {
+            width: 80px;
+            height: 40px;
+          }
+        }
         .intro-text {
           font-family: $montserrat-regular;
           font-size: 14px;

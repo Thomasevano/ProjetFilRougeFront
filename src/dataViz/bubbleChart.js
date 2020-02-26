@@ -6,10 +6,12 @@ const BubbleChart = ({waste}) => {
   let width = 1250;
   let height = 950;
   if (window.innerWidth <= 375) {
-    width = 375;
+    width = 355;
+    height = 500;
   }
   else if (window.innerWidth <= 768){
     width = 600;
+    height = 600;
   }
   let color
   const svgRef = useRef();
@@ -66,8 +68,6 @@ const BubbleChart = ({waste}) => {
       .attr('class', 'data-text data-tons')
       .attr("y", + 12)
       .text(d => d.data.tons + ' tons');
-
-      console.log(d => d)
   }
 
   let totalTons = 
