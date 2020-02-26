@@ -25,18 +25,12 @@
     height: 1100px;
     background-color: #F3F8F9;
     position: relative;
-    background-image: url("/data/rond.png");
+    overflow: hidden;
+    background-image: url("/data/circle-segment.png");
     background-repeat: no-repeat;
     background-position: bottom left;
 
     .wasteAmount {
-      @include tablet {
-        width: 600px;
-      }
-      @include mobile {
-        width: 350px;
-      }
-    }
       .data-text {
         font-family: $montserrat-regular;
         font-size: 14px;
@@ -50,29 +44,55 @@
           font-size: 14px;
         }
       }
+      @include tablet {
+        width: 600px;
+      }
+      @include mobile {
+        width: 350px;
+      }
+    }
     
-      .totalTons {
-        background: linear-gradient(52.51deg, #FB8070 0%, #FFB097 100%);
-        border-radius: 20px;
-        position: relative;
-        left: 40px;
-        // bottom: 45px;
-        bottom: 155px;
-        text-align: left;
-        height: 100px;
-        width: 230px;
-        display: table;
-        div {
-          padding-left: 35px;
-          vertical-align:middle;
-          display: table-cell;
-          p {
-            color: #ffffff;
-            font-family: $montserrat-bold;
-            font-size: 20px;
-            line-height: 30px;
+    .totalTons {
+      background: linear-gradient(52.51deg, #FB8070 0%, #FFB097 100%);
+      border-radius: 20px;
+      position: relative;
+      left: 40px;
+      // bottom: 45px;
+      bottom: 155px;
+      text-align: left;
+      height: 100px;
+      width: 230px;
+      display: table;
+      @include mobile {
+        width: 205px;
+        height: 80px;
+        text-align: center;
+        margin: auto;
+        left: 0;
+      }
+      div {
+        padding-left: 35px;
+        vertical-align:middle;
+        display: table-cell;
+        @include mobile {
+          padding-left: 0;
+        }
+        p {
+          color: #ffffff;
+          font-family: $montserrat-bold;
+          font-size: 20px;
+          line-height: 30px;
+          @include mobile {
+            font-size: 16px;
+            line-height: 26px;
           }
         }
+      }
+    }
+      @include mobile {
+        height: 540px;
+        background-image: url("/data/circle-mobile.png");
+        background-position: bottom center;
     }
   }
 
