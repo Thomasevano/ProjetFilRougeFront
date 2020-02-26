@@ -55,17 +55,27 @@
       left: 40px;
       bottom: 45px;
       will-change: auto;
+      width: 257px;
+      height: 101px;
+      transition: opacity 0.2s ease-out;
+      opacity: 0;
+      text-align: left;
+
 
       p {
         color: #ffffff;
         font-family: 'Montserrat bold';
         font-weight: bold;
-        width: 90%;
+        width: 80%;
         margin: auto;
         position: relative;
         top: 50%;
         transform: translateY(-50%);
         font-size: 20px;
+      }
+
+      &.lessOne{
+        opacity: 1;
       }
     }
 
@@ -81,6 +91,8 @@
       box-shadow: 0px 40px 36px -50px rgba(0,0,0,0.8);
       overflow: unset;
       position: relative;
+      font-family: $montserrat-regular;
+
 
       .imgContainer {
         height: 100%;
@@ -97,8 +109,8 @@
 
       .title {
         text-anchor: middle;
-        font-weight: 600;
-        fill: #005258;
+        font-weight: bold;
+        fill: $third-color;
         font-size: 20px;
       }
 
@@ -161,7 +173,7 @@
       height: 250px;
 
       circle{
-        fill: #FB8070;
+        fill: $fourth-color;
         stroke-width: 0;
       }
     }
@@ -208,17 +220,6 @@
       circle {
         fill: #ffffff;
         stroke-width: 0;
-      }
-    }
-
-    .timeScale {
-      width: 257px;
-      height: 101px;
-      transition: opacity 0.2s ease-out;
-      opacity: 0;
-
-      &.lessOne{
-        opacity: 1;
       }
     }
 

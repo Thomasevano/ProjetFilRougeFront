@@ -10,8 +10,8 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 0;
-    top: -40%;
-    max-width: calc(90vw);
+    bottom: 0px;
+    max-width: 50vw;
   }
 
   h2 {
@@ -39,6 +39,12 @@
 
     strong {
       color: $fourth-color;
+    }
+  }
+
+  .visual {
+    @include tablet {
+      text-align: center;
     }
   }
 
@@ -85,7 +91,6 @@
   margin: auto;
   flex-direction: row-reverse;
   top: 50%;
-  //transform: translateY(-50%);
 
   h2 {
     left: 15%;
@@ -123,16 +128,9 @@
       margin-left: 5%;
     }
   }
-
-  @include tablet {
-    .visual {
-      text-align: right;
-    }
-  }
 }
 
 .textImage.left {
-  //transform: translateY(25%);
 
   h2 {
     right: 15%;
@@ -166,12 +164,6 @@
 
     @include mobile {
       left: 5%;
-    }
-  }
-
-  @include tablet {
-    .visual {
-      text-align: left;
     }
   }
 }
