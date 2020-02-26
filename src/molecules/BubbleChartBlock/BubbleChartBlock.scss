@@ -1,7 +1,6 @@
 @import "../../config/config.scss";
 
 .bubbleChartBlock {
-  height: 100vh;
   margin-left: $margin-left;
   h1 {
     text-transform: uppercase;
@@ -23,11 +22,21 @@
   }
 
   .wasteAmountBlock {
+    height: 1100px;
     background-color: #F3F8F9;
     position: relative;
     background-image: url("/data/rond.png");
     background-repeat: no-repeat;
     background-position: bottom left;
+
+    .wasteAmount {
+      @include tablet {
+        width: 600px;
+      }
+      @include mobile {
+        width: 350px;
+      }
+    }
       .data-text {
         font-family: $montserrat-regular;
         font-size: 14px;
@@ -47,7 +56,8 @@
         border-radius: 20px;
         position: relative;
         left: 40px;
-        bottom: 45px;
+        // bottom: 45px;
+        bottom: 155px;
         text-align: left;
         height: 100px;
         width: 230px;
