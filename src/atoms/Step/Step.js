@@ -4,7 +4,10 @@ import './Step.scss'
 function Step({stepNumber, object}){
   
   return(
-  <div className="step"><span className={object}></span><p className="step-text">{stepNumber}</p></div>
+    <div className="step">
+      <span className={object}></span>
+      <p className="step-text">{stepNumber}</p>
+    </div>
   )
 }
 
