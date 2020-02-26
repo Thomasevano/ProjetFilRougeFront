@@ -173,9 +173,11 @@ const TreeMap = ({monuments}) => {
       .style('height', function(d) {
         var pSize = document.querySelector('.vignette' + d.data.id + " .place");
         var p2Size = document.querySelector('.vignette' + d.data.id + " .sport");
+        var sizeVignette = document.querySelector('.vignette' + d.data.id + ' div');
         var vSize = d.y1 - d.y0;
 
-        return vSize - pSize.offsetHeight - p2Size.offsetHeight - 40 + 'px'
+
+        return vSize - pSize.offsetHeight - p2Size.offsetHeight - 55 + 'px'
       })
       .attr('src', (d) => d.data.img_url)
       .style('display', function(d) {
@@ -189,10 +191,10 @@ const TreeMap = ({monuments}) => {
     vignette.append('xhtml:div')
       .attr('class', 'interet')
       .style('top', function(d) {
-        if ((d.y1 - d.y0) > 90) {
+        if ((d.y1 - d.y0) > 120) {
           return '-20px'
         } else {
-          return '0px'
+          return '-5px'
         }
       })
       .append('xhtml:p')

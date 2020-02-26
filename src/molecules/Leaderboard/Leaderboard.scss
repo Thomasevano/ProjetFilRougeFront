@@ -47,6 +47,17 @@
       font-size: 16px;
     }
 
+    .info-subtitle {
+      font-family: $marvin-vision-regular;
+      font-size: 30px;
+      line-height: 26px;
+      letter-spacing: 0.05em;
+
+      @include mobile {
+        font-size: 24px;
+      }
+    }
+
     @include mobile {
       width: 70%;
     }
