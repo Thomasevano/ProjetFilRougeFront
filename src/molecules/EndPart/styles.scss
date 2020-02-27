@@ -32,13 +32,18 @@
       width: 100%;
     }
 
-    .social img {
-      cursor: pointer;
-
-      @include tablet {
-        width: 60px;
+    .social {
+      img {
+        cursor: pointer;
+        transition: transform 0.3s ease-out;
+        &:hover {
+          transform: translateY(-5px);
+        }
+        @include tablet {
+          width: 60px;
+        }
       }
-    } 
+    }
 
     @include tablet {
       width: 50%;
