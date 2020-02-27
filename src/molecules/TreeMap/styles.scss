@@ -137,6 +137,25 @@
           margin-bottom: 10px;
         }
 
+        a {
+          text-decoration: none;
+        }
+
+        .goThere {
+          display: flex;
+          color: #6A6D73;
+          font-size: 16px;
+          cursor: pointer;
+
+          &:hover {
+            color: rgb(75, 76, 80);
+
+            img {
+              transform: scale(1.1);
+            }
+          }
+        }
+
         @include tablet {
           height: 80%;
         }

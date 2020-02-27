@@ -15,7 +15,8 @@ export default ChartBarSet => {
   return (
     <div className="chartBarSet">
       <h2 className="title-dataviz circle">Our world’s best supporters
-      <span className="circle"></span></h2>
+        <span className="circle"></span>
+      </h2>
       <div className="chartBarDataViz">
         { countrys.length ? <ChartBar countrys={countrys}/> : ''}
         <Leaderboard/>
