@@ -108,10 +108,18 @@ const BubbleChart = ({waste}) => {
       .attr("y", + 12)
       .text(d => d.data.tons + ' tons')
 
-    svg.append("circle").attr("cx",50).attr("cy",100).attr("r", 12).style("fill", "url(#recyclable)")
-    svg.append("circle").attr("cx",50).attr("cy",150).attr("r", 12).style("fill", "url(#non-recyclable)")
-    svg.append("text").attr("x", 90).attr("y", 105).text("Recyclable").attr('class', 'legend-name').attr("alignment-baseline","middle")
-    svg.append("text").attr("x", 90).attr("y", 155).text("Non-Recyclable").attr('class', 'legend-name').attr("alignment-baseline","middle")
+      if (window.innerWidth <= 375) {
+        svg.append("circle").attr("cx",50).attr("cy",300).attr("r", 6).style("fill", "url(#recyclable)")
+        svg.append("circle").attr("cx",50).attr("cy",330).attr("r", 6).style("fill", "url(#non-recyclable)")
+        svg.append("text").attr("x", 70).attr("y", 305).text("Recyclable").attr('class', 'legend-name')
+        svg.append("text").attr("x", 70).attr("y", 335).text("Non-Recyclable").attr('class', 'legend-name')
+      }
+      else {
+        svg.append("circle").attr("cx",50).attr("cy",100).attr("r", 12).style("fill", "url(#recyclable)")
+        svg.append("circle").attr("cx",50).attr("cy",150).attr("r", 12).style("fill", "url(#non-recyclable)")
+        svg.append("text").attr("x", 90).attr("y", 105).text("Recyclable").attr('class', 'legend-name')
+        svg.append("text").attr("x", 90).attr("y", 155).text("Non-Recyclable").attr('class', 'legend-name')
+      }
       
   }
 
