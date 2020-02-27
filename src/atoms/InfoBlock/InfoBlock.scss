@@ -3,9 +3,7 @@
 .info-block {
   width: 270px;
   height: 270px;
-  background: url("/data/garbage.png"), linear-gradient(73.27deg, $fourth-color 0%, #FFB097 100%);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: linear-gradient(73.27deg, $fourth-color 0%, #FFB097 100%);
   border-radius: 20px;
   padding: 30px;
   float: right;
