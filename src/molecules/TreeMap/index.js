@@ -13,7 +13,8 @@ export default TreeMapSet => {
 
   return (
     <div className="treeMapSet">
-      <h2>Find where you can limit your impact</h2>
+      <h2 className="title-dataviz circle">Find where you can limit your impact
+      <span className="circle"></span></h2>
       { monuments.length ? <TreeMap monuments={monuments}/> : ''}
     </div>
   )

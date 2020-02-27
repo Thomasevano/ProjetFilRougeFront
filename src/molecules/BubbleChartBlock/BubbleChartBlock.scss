@@ -2,25 +2,6 @@
 
 .bubbleChartBlock {
   margin-left: $margin-left;
-  h1 {
-    text-transform: uppercase;
-    text-align: center;
-    margin-left: $margin-left;
-    font-size: $title;
-    color: $third-color;
-    font-family: $marvin-vision-bold;
-    margin-bottom: 30px;
-
-    @include tablet {
-      font-size: 40px;
-    }
-
-    @include mobile {
-      margin-left: 0px;
-      font-size: 30px;
-      line-height: 36px;
-    }
-  }
 
   .wasteAmountBlock {
     height: 1100px;
@@ -31,11 +12,17 @@
     background-repeat: no-repeat;
     background-position: bottom left;
 
+    .legend-name {
+      font-size: 16px;
+      fill: $third-color;
+      font-family: $montserrat-bold;
+    }
+
     .wasteAmount {
       .data-text {
         font-family: $montserrat-regular;
         font-size: 14px;
-        fill: $third-color;
+        fill: #FFFFFF;
         text-anchor: middle;
       }
       .data-name {
