@@ -2,7 +2,6 @@ import React from 'react';
 import Navbar from '../molecules/Navbar/Navbar';
 import IntroBlock from '../molecules/IntroBlock/IntroBlock';
 import ChartBarSet from '../molecules/ChartBar/index'
-import Leaderboard from '../molecules/Leaderboard/Leaderboard';
 import EndPart from '../molecules/EndPart/index'
 
 function Evaluate() {

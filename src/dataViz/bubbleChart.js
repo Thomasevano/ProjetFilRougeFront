@@ -13,7 +13,6 @@ const BubbleChart = ({waste}) => {
     width = 600;
     height = 600;
   }
-  let color
   const svgRef = useRef();
   const div = d3.select(svgRef.current);
   const svg = createSVG();
@@ -55,7 +54,7 @@ const BubbleChart = ({waste}) => {
       .append('circle')
       .attr('class', 'circle')
       .attr('r', d => d.r / 1.8)
-      .attr("fill", d => d.data.is_recyclabe ? color = "url(#recyclable)" : color = "url(#non-recyclable)")
+      .attr("fill", d => d.data.is_recyclabe ? "url(#recyclable)" : "url(#non-recyclable)")
 
     var defs = svg.append("defs");
     var recyclable = defs.append("linearGradient")
