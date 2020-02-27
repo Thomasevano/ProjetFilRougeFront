@@ -7,7 +7,7 @@ export default ChartBarSet => {
   const [countrys, setCountrys] = useState([])
   
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/country-ranking-not-average/')
+    fetch('http://127.0.0.1:8000/country-ranking-not-average')
       .then(response => response.json())
       .then(result => setCountrys(result));
   }, [])

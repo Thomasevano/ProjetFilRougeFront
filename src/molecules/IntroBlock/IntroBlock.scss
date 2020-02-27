@@ -2,9 +2,6 @@
 
 .introBlock {
   margin-left: 92px;
-  background-image: url("/data/circle.png");
-  background-repeat: no-repeat;
-  background-position: bottom right 100px;
   
   .intro-image {
     @include tablet {
