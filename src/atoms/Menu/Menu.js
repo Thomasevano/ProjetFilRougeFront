@@ -1,5 +1,6 @@
 import React from 'react';
 import Step from '../Step/Step'
+import { Link } from 'react-router-dom';
 import './Menu.scss'
 
 function Menu({imgFirstPart, imgSecondPart, imgThirdPart}) {
@@ -37,7 +38,7 @@ function Menu({imgFirstPart, imgSecondPart, imgThirdPart}) {
               <div className="menuContent">
                 <Step object="circle" stepNumber="Step 2"/>
                 <a href="/participate" className="anchor">Participate</a>
-              </div>  
+              </div>
             </li>
             <li>
               {imgThirdPart && <img src={imgThirdPart} alt="illustartion part"></img>}
