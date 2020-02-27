@@ -14,6 +14,13 @@ const TreeMap = ({monuments}) => {
       .append('div')
       .attr('class','vignetteTrimobiles')
       .append('ul')
+      .style('column-count', function(d) {
+        if (trimobiles.length > 8) {
+          return 2
+        } else {
+          return 1
+        }
+      })
       .selectAll('li')
       .data(trimobiles)
       .enter()
@@ -25,11 +32,6 @@ const TreeMap = ({monuments}) => {
       .attr('target', '_blank')
       .attr('href', (d) => `https://www.google.com/maps/search/?api=1&query=${d.latitude},${d.longitude}`)
       .text((d) => d.address)
-
-      d3.selectAll('.trimobiles')
-        .append('p')
-        .attr('class', 'addPoint')
-        .text('Recycle')
 
     d3.selectAll('.vignetteTrimobiles')
       .append('p')
@@ -48,6 +50,13 @@ const TreeMap = ({monuments}) => {
       .append('div')
       .attr('class','vignetteTrilibs')
       .append('ul')
+      .style('column-count', function(d) {
+        if (trilibs.length > 8) {
+          return 2
+        } else {
+          return 1
+        }
+      })
       .selectAll('li')
       .data(trilibs)
       .enter()
@@ -59,11 +68,6 @@ const TreeMap = ({monuments}) => {
       .attr('target', '_blank')
       .attr('href', (d) => `https://www.google.com/maps/search/?api=1&query=${d.latitude},${d.longitude}`)
       .text((d) => d.address)
-
-      d3.selectAll('.trilibs')
-      .append('p')
-      .attr('class', 'addPoint')
-      .text('Recycle')
 
     d3.selectAll('.vignetteTrilibs')
       .append('p')
