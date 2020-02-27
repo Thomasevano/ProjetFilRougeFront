@@ -1,7 +1,6 @@
 import React from 'react';
 import Logo from '../atoms/Logo/Logo';
 import Button from '../atoms/Button/Button';
-import { Link } from 'react-router-dom';
 
 function Home() {
   
@@ -13,9 +12,7 @@ function Home() {
         <br></br>A great challenge at the center of our current concerns.
         <br></br><br></br>And if you could, too, be the first actor of this positive impact ?.
         </p>
-        <Link to="/sensitization" style={{ textDecoration: 'none' }}>
-          <Button text="Start the experience"/>
-        </Link>
+        <Button text="Start the experience"/>
       </div>
     </div>
   )
