@@ -303,7 +303,7 @@ class TimeLine extends Component {
     timeLine.append('div')
       .attr('class', "timeScale lessOne")
       .append('p')
-      .text('Les than 1 year to break down')
+      .text('Less than 1 year to break down')
 
     timeLine.append('div')
       .attr('class', "timeScale tenToOneHundred")
