@@ -4,7 +4,7 @@ import Filter from '../atoms/FilterDataviz/Filter';
 
 const BubbleChart = ({waste}) => {
   let width = 1250;
-  let height = 950;
+  let height = 700;
   if (window.innerWidth <= 375) {
     width = 355;
     height = 500;
@@ -47,7 +47,7 @@ const BubbleChart = ({waste}) => {
       .enter()
       .append('g')
       .attr('class', 'node')
-      .attr("transform", d =>  `translate(${d.y},${d.x - 115})`)
+      .attr("transform", d =>  `translate(${d.y},${d.x - 90})`)
       .append('g')
       .attr('class', 'graph');
 
