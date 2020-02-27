@@ -55,7 +55,46 @@ const BubbleChart = ({waste}) => {
       .append('circle')
       .attr('class', 'circle')
       .attr('r', d => d.r / 1.8)
-      .attr("fill", d => d.data.is_recyclabe ? color = "#E5E5E5" : color = "#C4C4C4")
+      .attr("fill", d => d.data.is_recyclabe ? color = "url(#recyclable)" : color = "url(#non-recyclable)")
+
+    var defs = svg.append("defs");
+    var recyclable = defs.append("linearGradient")
+      .attr("id", "recyclable")
+      .attr("x1", "0%")
+      .attr("x2", "100%")
+      .attr("y1", "0%")
+      .attr("y2", "100%");
+
+    recyclable.append("stop")
+      .attr('class', 'start')
+      .attr("offset", "0%")
+      .attr("stop-color", "#55B297")
+      .attr("stop-opacity", 1);
+
+    recyclable.append("stop")
+      .attr('class', 'end')
+      .attr("offset", "100%")
+      .attr("stop-color", "#29E898")
+      .attr("stop-opacity", 1);
+
+   var nonRecyclable = defs.append("linearGradient")
+      .attr("id", "non-recyclable")
+      .attr("x1", "0%")
+      .attr("x2", "100%")
+      .attr("y1", "0%")
+      .attr("y2", "100%");
+
+    nonRecyclable.append("stop")
+      .attr('class', 'start')
+      .attr("offset", "0%")
+      .attr("stop-color", "#005258")
+      .attr("stop-opacity", 1);
+
+    nonRecyclable.append("stop")
+      .attr('class', 'end')
+      .attr("offset", "100%")
+      .attr("stop-color", "#29897E")
+      .attr("stop-opacity", 1);
 
     node
       .append('text')
@@ -67,7 +106,13 @@ const BubbleChart = ({waste}) => {
       .append('text')
       .attr('class', 'data-text data-tons')
       .attr("y", + 12)
-      .text(d => d.data.tons + ' tons');
+      .text(d => d.data.tons + ' tons')
+
+    svg.append("circle").attr("cx",50).attr("cy",100).attr("r", 12).style("fill", "url(#recyclable)")
+    svg.append("circle").attr("cx",50).attr("cy",150).attr("r", 12).style("fill", "url(#non-recyclable)")
+    svg.append("text").attr("x", 90).attr("y", 105).text("Recyclable").attr('class', 'legend-name').attr("alignment-baseline","middle")
+    svg.append("text").attr("x", 90).attr("y", 155).text("Non-Recyclable").attr('class', 'legend-name').attr("alignment-baseline","middle")
+      
   }
 
   let totalTons = 

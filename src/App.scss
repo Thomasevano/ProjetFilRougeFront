@@ -140,6 +140,34 @@ body {
       } 
     }
 
+    .title-dataviz {
+      text-transform: uppercase;
+      text-align: center;
+      margin-left: $margin-left;
+      font-size: $title;
+      color: $third-color;
+      font-family: $marvin-vision-bold;
+      margin-bottom: 20px;
+      .circle {
+        height: 11px;
+        width: 11px;
+        border-radius: 50%;
+        background-color: $fourth-color;
+        margin-right: 20px;
+        display: block;
+        margin: 20px auto auto;
+      }
+      @include tablet {
+        font-size: 40px;
+      }
+
+      @include mobile {
+        margin-left: 0px;
+        font-size: 30px;
+        line-height: 36px;
+      }
+    }
+
     .intro {
       height: auto;
       margin-top: 0px;

@@ -4,8 +4,6 @@
   margin-left: 92px;
   
   .intro-image {
-    height: 380px;
-
     @include tablet {
       height: auto;
     }
@@ -23,12 +21,12 @@
   }
 
   .title-block {
-    margin: 50px 0 0 15%;
+    margin: 55px 0 0 10%;
     position: relative;
     text-align: left;
 
     .title {
-      width: 80%;
+      width: 650px;
       margin-right: 100px;
       font-family: $marvin-vision-bold;
       color: $third-color;

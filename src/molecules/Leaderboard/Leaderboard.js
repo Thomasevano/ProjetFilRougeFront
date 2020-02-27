@@ -6,7 +6,7 @@ const Leaderboard = () => {
   const [countrysRanking, setCountrysRanking] = useState([])
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/country-ranking/')
+    fetch('http://127.0.0.1:8000/country-ranking')
       .then(response => response.json())
       .then(result => setCountrysRanking(result))
   }, [])
@@ -16,9 +16,9 @@ const Leaderboard = () => {
       {country.ranking === 1 && <img className="country-ranking" src="data/gold-medal.svg" alt="Gold Medal"/>}
       {country.ranking === 2 && <img className="country-ranking" src="data/silver-medal.svg" alt="Silver Medal"/>}
       {country.ranking === 3 && <img className="country-ranking" src="data/copper-medal.svg" alt="Copper Medal"/>}
-      {country.ranking != 1 && country.ranking != 2 && country.ranking != 3 && <span className="country-ranking"><strong>{country.ranking}</strong>&nbsp;</span>}
+      {country.ranking !== 1 && country.ranking !== 2 && country.ranking !== 3 && <span className="country-ranking"><strong>{country.ranking}</strong>&nbsp;</span>}
       <div className="country">
-        <img src={country.img_url}></img>
+        <img src={country.img_url} alt={country.country}></img>
         <span className="country-name">{country.country}</span>
       </div>
       <span className='person-score'>

@@ -13,7 +13,8 @@ function BubbleChartBlock() {
 
   return(
     <div className="bubbleChartBlock">
-      <h1>Amounts of waste that could break records</h1>
+      <h1 className="title-dataviz circle">Amounts of waste that could break records
+      <span className="circle"></span></h1>
       <BubbleChart waste={waste}/>
     </div>
   )
