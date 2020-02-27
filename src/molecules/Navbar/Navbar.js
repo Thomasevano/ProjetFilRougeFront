@@ -6,7 +6,7 @@ import './Navbar.scss'
 function Navbar() {
   return (
     <nav>
-      <Menu/>
+      <Menu imgFirstPart="./data/intro-background-eiffelTower.jpg" imgSecondPart="./data/imageParticipate.jpg" imgThirdPart="./data/imageEvaluate.jpg"/>
       <Logo className="menu-logo" leafSymbol="data/greenleaf.svg" title="green paris 2024" logoJo="data/jo-logo.svg"/>
     </nav>
   )

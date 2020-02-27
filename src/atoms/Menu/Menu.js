@@ -2,7 +2,7 @@ import React from 'react';
 import Step from '../Step/Step'
 import './Menu.scss'
 
-function Menu() {
+function Menu({imgFirstPart, imgSecondPart, imgThirdPart}) {
 
   //Lock scroll when menu is open
   const handleClick = (e) => {
@@ -25,9 +25,27 @@ function Menu() {
       <aside>
         <div className="section">
           <ul className="list">
-            <li><Step object="circle" stepNumber="Step 1"/><a href="/sensitization" className="anchor">Become aware of our impact</a></li>
-            <li><Step object="circle" stepNumber="Step 2"/><a href="/participate" className="anchor">Participate</a></li>
-            <li><Step object="circle" stepNumber="Step 3"/><a href="/evaluate" className="anchor">Evaluate</a></li>
+            <li>
+              {imgFirstPart && <img src={imgFirstPart} alt="illustartion part"></img>}
+              <div className="menuContent">
+                <Step object="circle" stepNumber="Step 1"/>
+                <a href="/sensitization" className="anchor">Become aware of our impact</a>
+              </div>
+            </li>
+            <li>
+              {imgSecondPart && <img src={imgSecondPart} alt="illustartion part"></img>}
+              <div className="menuContent">
+                <Step object="circle" stepNumber="Step 2"/>
+                <a href="/participate" className="anchor">Participate</a>
+              </div>  
+            </li>
+            <li>
+              {imgThirdPart && <img src={imgThirdPart} alt="illustartion part"></img>}
+              <div className="menuContent">
+                <Step object="circle" stepNumber="Step 3"/>
+                <a href="/evaluate" className="anchor">Evaluate</a>
+              </div>
+            </li>
           </ul>
         </div>
       </aside>

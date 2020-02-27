@@ -12,17 +12,23 @@ const ChartBar = ({countrys}) => {
     if (window.innerWidth >= 768) {
       sizeWindow = window.innerWidth - 50;
     } else {
-      sizeWindow = window.innerWidth + 150;
+      sizeWindow = window.innerWidth + 60;
     }
 		
-		const margin = {
+		let margin = {
 				top: 150,
 				right: 80,
 				bottom: 230,
 				left: 80
-			},
-			width = sizeWindow - margin.left - margin.right - 92,
-			height = 750 - margin.top - margin.bottom;
+			}
+
+		if (window.innerWidth <= 768) {
+			margin.right = 10
+			margin.left = 10
+		}
+
+		let width = sizeWindow - margin.left - margin.right - 92,
+		height = 750 - margin.top - margin.bottom;
 
 		const x = d3.scaleBand()
 			.range([0, width])
@@ -55,6 +61,7 @@ const ChartBar = ({countrys}) => {
 			.attr('x', '50%')
 			.attr('y', 90)
 
+		//Element on hover
 		const div = d3.select("body")
 			.append("div")
 			.attr("class", "tooltip")
@@ -64,9 +71,9 @@ const ChartBar = ({countrys}) => {
 			d.score = +d.score;
 		});
 
-			// Mise en relation du scale avec les données de notre fichier
-			// Pour l'axe X, c'est la liste des pays
-			// Pour l'axe Y, c'est le max des populations
+			// Relation between scale and data
+			// X => Country
+			// Y => Score
 			x.domain(data.map(function (d) {
 				return d.country;
 			}));
@@ -74,9 +81,9 @@ const ChartBar = ({countrys}) => {
 				return d.score;
 			})]);
 
-			// Ajout de l'axe X au SVG
-			// Déplacement de l'axe horizontal et du futur texte (via la fonction translate) au bas du SVG
-			// Selection des noeuds text, positionnement puis rotation
+			// Add X axis to svg
+			// Moving the horizontal axis and future text (via the translate function) at the bottom of the SVG
+			// Selection of text nodes, positioning then rotation
 			svg.append("g")
 				.attr("transform", "translate(0," + height + ")")
 				.attr('class', 'bottomAxe')
@@ -97,7 +104,7 @@ const ChartBar = ({countrys}) => {
 			.append('xhtml:img')
 			.attr('src', (d) => d.img_url)
 
-			// Ajout de l'axe Y au SVG avec 6 éléments de légende en utilisant la fonction ticks (sinon D3JS en place autant qu'il peut).
+			// Adding the Y axis to SVG with 6 legend elements using the ticks function.
 			const domainSize = document.querySelector('.domain')
 
 			svg.append("g")
@@ -109,10 +116,10 @@ const ChartBar = ({countrys}) => {
 			.attr('x', 0)
 			.style('text-anchor', 'start')
 
-			// Ajout des bars en utilisant les données de notre fichier data
-			// La largeur de la barre est déterminée par la fonction x
-			// La hauteur par la fonction y en tenant compte du score
-			// La gestion des events de la souris pour le popup
+			// Adding bars using data from our data file
+			// The width of the bar is determined by the function x
+			// The height by the function y taking into account the score
+			// Managing mouse events for the popup
 			svg.selectAll(".bar")
 				.data(data)
 				.enter()

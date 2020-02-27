@@ -9,6 +9,7 @@
     font-size: $title;
     color: $third-color;
     font-family: $marvin-vision-bold;
+    margin-bottom: 30px;
 
     @include tablet {
       font-size: 40px;

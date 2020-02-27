@@ -14,20 +14,37 @@
     // transition: transform 0.4s ease-in-out;
     visibility: hidden;
     z-index: 1;
+
     .list {
       list-style: none;
       padding: 0;
       margin: 130px 0 0 125px;
       text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: calc(100vh - 40px);
+
+      img {
+        max-width: 40%;
+        border-radius: 10px;
+        height: 25vh;
+        object-fit: cover;
+      }
+
       li {
-        margin: 135px 0;
+        display: flex;
+        margin: 20px 0;
+
         &:first-child, &:last-child {
           margin: 0;
         }
+
         .step {
         display: inline-block;
         margin-right: 45px;
         }
+
         .anchor {
           padding-bottom: 7px;
           color: $third-color;
@@ -64,7 +81,9 @@
 
   input {
     display: none;
+
     &:checked {
+
       ~ label {
         transform: rotate(0);
         z-index: 2;
@@ -73,13 +92,16 @@
         .top {
           transform: translateY(6px) rotate(45deg);
         }
+
         .middle {
           width: 0;
         }
+
         .bottom {
           transform: translateY(-16px) rotate(-45deg);
         }
       }
+
       ~ aside .section {
         transform: translateX(0%);
         left: $margin-left;
@@ -97,13 +119,20 @@
         ul {
           margin: unset;
           position: relative;
-          /* top: 130px; */
-          height: calc(100vh - 40px - 130px);
           left: 92px;
-          padding-top: 130px;
           margin-top: 0px;
           border-left: 2px solid #c4c4c4;
-          padding-left: 125px;
+          padding-left: 55px;
+
+          .step {
+            margin-bottom: 20px;
+            display: block;
+          }
+
+          .menuContent {
+            width: 40%;
+            margin: auto 0px auto 5%;
+          }
 
           @include mobile {
             position: initial;
@@ -112,7 +141,7 @@
             border: unset;
             height: calc(100vh - 20px);
             margin-left: 5%;
-            margin-top: 20%;
+            margin-top: 5%;
           }
         }
 
@@ -152,10 +181,11 @@
     cursor: pointer;
     margin: 40px auto auto;
     transition: transform 0.4s ease;
-    // z-index: 3;
+
     &:hover {
       transform: rotate(90deg);
     }
+
     .bar {
       display: block;
       background-color: $third-color;
@@ -173,7 +203,6 @@
 
   @include mobile {
     width: 30px;
-    //position: absolute;
     display: contents;
   }
 }
