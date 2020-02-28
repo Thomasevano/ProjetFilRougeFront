@@ -1,6 +1,5 @@
 import React from 'react';
 import Step from '../Step/Step'
-import { Link } from 'react-router-dom';
 import './Menu.scss'
 
 function Menu({imgFirstPart, imgSecondPart, imgThirdPart}) {
