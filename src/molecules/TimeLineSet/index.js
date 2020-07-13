@@ -6,7 +6,7 @@ export default (TimeLineSet) => {
   const [dataTest, setDataTest] = useState([]);
 
   useEffect(() => {
-    fetch("${process.env.REACT_APP_API_BASE_URL}/waste")
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/waste`)
       .then((response) => response.json())
       .then((result) => setDataTest(result));
   }, []);
