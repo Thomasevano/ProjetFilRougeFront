@@ -6,7 +6,7 @@ export default (TreeMapSet) => {
   const [monuments, setMonuments] = useState([]);
 
   useEffect(() => {
-    fetch("https://green-paris-api.herokuapp.com/monument-all-dist/2000")
+    fetch("${process.env.REACT_APP_API_BASE_URL}/monument-all-dist/2000")
       .then((response) => response.json())
       .then((result) => setMonuments(result));
   }, []);

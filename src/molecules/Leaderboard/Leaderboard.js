@@ -6,7 +6,7 @@ const Leaderboard = () => {
   const [countrysRanking, setCountrysRanking] = useState([]);
 
   useEffect(() => {
-    fetch("https://green-paris-api.herokuapp.com/country-ranking")
+    fetch("${process.env.REACT_APP_API_BASE_URL}/country-ranking")
       .then((response) => response.json())
       .then((result) => setCountrysRanking(result));
   }, []);

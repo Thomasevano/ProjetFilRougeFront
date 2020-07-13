@@ -198,13 +198,13 @@ const BubbleChart = ({ waste }) => {
 
   const Update = (days, olympic) => {
     fetch(
-      `https://green-paris-api.herokuapp.com/records-waste-multiplicateur/${days}/${olympic}`
+      `${process.env.REACT_APP_API_BASE_URL}/records-waste-multiplicateur/${days}/${olympic}`
     )
       .then((response) => response.json())
       .then((result) => UpdateBubble(result))
       .then(
         console.log(
-          `https://green-paris-api.herokuapp.com/records-waste-multiplicateur/${days}/${olympic}`
+          `${process.env.REACT_APP_API_BASE_URL}/records-waste-multiplicateur/${days}/${olympic}`
         )
       )
       .catch((e) => console.error(e));

@@ -7,7 +7,7 @@ export default (ChartBarSet) => {
   const [countrys, setCountrys] = useState([]);
 
   useEffect(() => {
-    fetch("https://green-paris-api.herokuapp.com/country-ranking-not-average")
+    fetch("${process.env.REACT_APP_API_BASE_URL}/country-ranking-not-average")
       .then((response) => response.json())
       .then((result) => setCountrys(result));
   }, []);

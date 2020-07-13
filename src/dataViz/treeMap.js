@@ -349,7 +349,7 @@ const TreeMap = ({ monuments }) => {
         trimobilesID = "null";
       }
 
-      fetch(`https://green-paris-api.herokuapp.com/trimobiles/${trimobilesID}`)
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/trimobiles/${trimobilesID}`)
         .then((response) => response.json())
         .then((result) => setTrimobiles(result))
         .catch((e) => console.error(e));
@@ -369,7 +369,7 @@ const TreeMap = ({ monuments }) => {
         trilibsID = "null";
       }
 
-      fetch(`https://green-paris-api.herokuapp.com/trilibs/${trilibsID}`)
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/trilibs/${trilibsID}`)
         .then((response) => response.json())
         .then((result) => setTrilibs(result))
         .catch((e) => console.error(e));

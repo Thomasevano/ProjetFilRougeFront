@@ -6,7 +6,7 @@ function BubbleChartBlock() {
   const [waste, setWaste] = useState([]);
 
   useEffect(() => {
-    fetch(`https://green-paris-api.herokuapp.com/records-waste`)
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/records-waste`)
       .then((response) => response.json())
       .then((result) => setWaste(result));
   }, []);
